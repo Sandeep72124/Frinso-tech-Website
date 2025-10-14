@@ -11,31 +11,60 @@ export default function ProductsSection() {
       desc: "Next-gen Industry 4.0 gateway supporting 5G, LoRa, NB-IoT, Satellite. Connects any sensor, meter, or valve with real-time analytics.",
       img: "/product-edge.png",
     },
-    {
-      title: "Frinso.io Dashboard",
-      desc: "Cloud and on-prem SCADA platform for real-time monitoring, analytics, and regulatory compliance reporting.",
-      img: "/product-dashboard.png",
-    },
+   
     {
       title: "Smart Prepaid Water Meters",
       desc: "JJM & AMRUT 2.0 ready smart water metering with GSM/LoRa communication and prepaid billing integration.",
-      img: "/product-meter.jpg",
+      img: "/prepared_watermeter.png",
     },
-    {
-      title: "Smart DG Monitoring System",
-      desc: "End-to-end diesel generator monitoring with remote diagnostics, fuel theft detection, and smart reporting.",
-      img: "/product-dg.png",
-    },
+    // {
+    //   title: "Smart DG Monitoring System",
+    //   desc: "End-to-end diesel generator monitoring with remote diagnostics, fuel theft detection, and smart reporting.",
+    //   img: "/product-dg.png",
+    // },
     {
       title: "Smart HVAC Automation",
       desc: "AI-driven HVAC energy optimization and performance analytics for large facilities and hospitals.",
-      img: "/product-hvac.png",
+      img: "/hvac.png",
     },
     {
       title: "Smart Solar Monitoring",
       desc: "Comprehensive IoT-based solar plant management with fault detection and energy efficiency tracking.",
-      img: "/product-solar.png",
+      img: "/solar.png",
     },
+    {
+  title: "Smart Ultrasonic IoT Level Sensor",
+  desc: "An intelligent ultrasonic level monitoring device designed for real-time water tank and sump management.",
+  img: "/ultra.jpg",
+},
+
+    {
+  title: "Smart Electromagnetic Flow Meter",
+  desc: "The Smart Electromagnetic Flow Meter by Frinso Tech is an advanced precision instrument for monitoring water flow in pipelines with high accuracy. ",
+  img: "/electro.png",
+},
+
+    {
+  title: "IoT-Based Flood Monitoring System",
+  desc: "The IoT-Based Flood Monitoring System by Frinso Tech provides real-time flood detection and water level monitoring for smart cities, urban drainage networks, and critical infrastructure.",
+  img: "/flood.jpg",
+},
+{
+  title: "Frinso IoT Gateway & Controller",
+  desc: "The Frinso IoT Gateway & Controller is a rugged industrial-grade device designed to seamlessly connect field instruments, sensors, and actuators to the cloud. ",
+  img: "/iot-gateway-controller.png",
+},
+{
+  title: "Frinso Multi-Parameter Water Quality Sensor",
+  desc: "The Frinso Multi-Parameter Water Quality Sensor is an advanced probe designed for real-time monitoring of key water quality parameters such as pH, dissolved oxygen (DO), temperature, and conductivity.",
+  img: "/water-quality-sensor.png",
+},
+{
+  title: "Frinso LoRaWAN Gateway",
+  desc: "The Frinso LoRaWAN Gateway provides seamless long-range, low-power connectivity for industrial IoT applications. ",
+  img: "/lora.png",
+},
+
   ];
 
   const [index, setIndex] = useState(0);

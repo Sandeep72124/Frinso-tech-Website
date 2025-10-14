@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import Reveal from "./Reveal";
-
 export default function Hero() {
   const videos = [
     {
@@ -77,7 +76,9 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1 }}
+          
         />
+        
       </AnimatePresence>
 
       {/* Dark overlay */}
@@ -86,6 +87,7 @@ export default function Hero() {
       {/* Content Overlay */}
       <div className="absolute inset-0 flex flex-col justify-center px-6 text-white max-w-7xl mx-auto">
         <Reveal>
+          
           <motion.h1
             key={videos[current].title}
             className="text-5xl md:text-7xl font-bold leading-tight max-w-4xl"
@@ -138,13 +140,16 @@ export default function Hero() {
         onClick={nextSlide}
         className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-black/40 hover:bg-black/60 p-3 rounded-full transition"
       >
+        
         <ChevronRight size={28} className="text-white" />
       </button>
 
-      {/* Progress Dots */}
-      <div className="absolute bottom-8 w-full flex justify-center gap-3">
-       
-      </div>
+      
+   
+        
+     
+     
     </section>
+   
   );
 }

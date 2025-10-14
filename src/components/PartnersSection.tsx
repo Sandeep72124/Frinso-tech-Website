@@ -34,7 +34,10 @@ export default function PartnersSection() {
   ];
 
   return (
-    <section className="py-15 bg-white relative overflow-hidden">
+    <>
+   
+    <section className="py-25 bg-white relative overflow-hidden">
+      
       <div className="text-center mb-12">
         <h2 className="text-4xl font-bold text-sky-700">Our Partners & Clients</h2>
         <p className="mt-2 text-gray-600">
@@ -64,5 +67,6 @@ export default function PartnersSection() {
       <div className="absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-white to-transparent pointer-events-none"></div>
       <div className="absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
     </section>
+    </>
   );
 }

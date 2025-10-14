@@ -67,7 +67,7 @@ export default function DashboardShowcase() {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 0.5, x: 0 }}
           transition={{ duration: 0.6 }}
-          className="w-[30%] scale-90 blur-sm opacity-60 rounded-2xl overflow-hidden shadow-lg"
+          className="w-[30%] scale-90 blur-sm-18 opacity-60 rounded-2xl overflow-hidden shadow-lg"
         >
           <img
             src={getSlide(-1).img}
@@ -81,9 +81,8 @@ export default function DashboardShowcase() {
           key={index}
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -100 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
-          className="relative w-[70%] rounded-3xl overflow-hidden shadow-2xl border border-sky-100 bg-white"
+          transition={{ duration: 0.6 }}
+          className="w-[70%] scale-90  opacity-60 rounded-2xl overflow-hidden shadow-lg"
         >
           <img
             src={getSlide(0).img}
@@ -102,7 +101,7 @@ export default function DashboardShowcase() {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 0.5, x: 0 }}
           transition={{ duration: 0.6 }}
-          className="w-[30%] scale-90 blur-sm opacity-60 rounded-2xl overflow-hidden shadow-lg"
+          className="w-[30%] scale-90 blur-sm-18 opacity-60 rounded-2xl overflow-hidden shadow-lg"
         >
           <img
             src={getSlide(1).img}

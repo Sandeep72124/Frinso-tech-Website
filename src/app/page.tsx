@@ -14,12 +14,13 @@ import AboutSection from "@/components/AboutSection";
 import DashboardShowcase from "@/components/DashboardShowcase";
 import VisionMissionSection from "@/components/VisionMissionSection";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
-
+import StatsSection from "@/components/StatsSection";
 export default function HomePage() {
   return (
     <main>
       <Navbar />
       <Hero />
+      <StatsSection />
       <PartnersSection /> 
      <AboutSection/>
       <ProductsSection />

@@ -11,17 +11,11 @@ export default function ProductsSection() {
       desc: "Next-gen Industry 4.0 gateway supporting 5G, LoRa, NB-IoT, Satellite. Connects any sensor, meter, or valve with real-time analytics.",
       img: "/product-edge.png",
     },
-   
     {
       title: "Smart Prepaid Water Meters",
       desc: "JJM & AMRUT 2.0 ready smart water metering with GSM/LoRa communication and prepaid billing integration.",
       img: "/prepared_watermeter.png",
     },
-    // {
-    //   title: "Smart DG Monitoring System",
-    //   desc: "End-to-end diesel generator monitoring with remote diagnostics, fuel theft detection, and smart reporting.",
-    //   img: "/product-dg.png",
-    // },
     {
       title: "Smart HVAC Automation",
       desc: "AI-driven HVAC energy optimization and performance analytics for large facilities and hospitals.",
@@ -33,38 +27,35 @@ export default function ProductsSection() {
       img: "/solar.png",
     },
     {
-  title: "Smart Ultrasonic IoT Level Sensor",
-  desc: "An intelligent ultrasonic level monitoring device designed for real-time water tank and sump management.",
-  img: "/ultra.jpg",
-},
-
+      title: "Smart Ultrasonic IoT Level Sensor",
+      desc: "An intelligent ultrasonic level monitoring device designed for real-time water tank and sump management.",
+      img: "/ultra.jpg",
+    },
     {
-  title: "Smart Electromagnetic Flow Meter",
-  desc: "The Smart Electromagnetic Flow Meter by Frinso Tech is an advanced precision instrument for monitoring water flow in pipelines with high accuracy. ",
-  img: "/electro.png",
-},
-
+      title: "Smart Electromagnetic Flow Meter",
+      desc: "The Smart Electromagnetic Flow Meter by Frinso Tech is an advanced precision instrument for monitoring water flow in pipelines with high accuracy.",
+      img: "/electro.png",
+    },
     {
-  title: "IoT-Based Flood Monitoring System",
-  desc: "The IoT-Based Flood Monitoring System by Frinso Tech provides real-time flood detection and water level monitoring for smart cities, urban drainage networks, and critical infrastructure.",
-  img: "/flood.jpg",
-},
-{
-  title: "Frinso IoT Gateway & Controller",
-  desc: "The Frinso IoT Gateway & Controller is a rugged industrial-grade device designed to seamlessly connect field instruments, sensors, and actuators to the cloud. ",
-  img: "/iot-gateway-controller.png",
-},
-{
-  title: "Frinso Multi-Parameter Water Quality Sensor",
-  desc: "The Frinso Multi-Parameter Water Quality Sensor is an advanced probe designed for real-time monitoring of key water quality parameters such as pH, dissolved oxygen (DO), temperature, and conductivity.",
-  img: "/water-quality-sensor.png",
-},
-{
-  title: "Frinso LoRaWAN Gateway",
-  desc: "The Frinso LoRaWAN Gateway provides seamless long-range, low-power connectivity for industrial IoT applications. ",
-  img: "/lora.png",
-},
-
+      title: "IoT-Based Flood Monitoring System",
+      desc: "The IoT-Based Flood Monitoring System by Frinso Tech provides real-time flood detection and water level monitoring for smart cities, urban drainage networks, and critical infrastructure.",
+      img: "/flood.jpg",
+    },
+    {
+      title: "Frinso IoT Gateway & Controller",
+      desc: "The Frinso IoT Gateway & Controller is a rugged industrial-grade device designed to seamlessly connect field instruments, sensors, and actuators to the cloud.",
+      img: "/iot-gateway-controller.png",
+    },
+    {
+      title: "Frinso Multi-Parameter Water Quality Sensor",
+      desc: "The Frinso Multi-Parameter Water Quality Sensor is an advanced probe designed for real-time monitoring of key water quality parameters such as pH, dissolved oxygen (DO), temperature, and conductivity.",
+      img: "/water-quality-sensor.png",
+    },
+    {
+      title: "Frinso LoRaWAN Gateway",
+      desc: "The Frinso LoRaWAN Gateway provides seamless long-range, low-power connectivity for industrial IoT applications.",
+      img: "/lora.png",
+    },
   ];
 
   const [index, setIndex] = useState(0);
@@ -80,9 +71,7 @@ export default function ProductsSection() {
   };
 
   const prevSlide = () => {
-    setIndex((prev) =>
-      prev - 3 < 0 ? products.length - 3 : prev - 3
-    );
+    setIndex((prev) => (prev - 3 < 0 ? products.length - 3 : prev - 3));
   };
 
   // Get visible products (3 at a time)
@@ -99,7 +88,8 @@ export default function ProductsSection() {
           Our Key Products
         </h2>
         <p className="text-gray-300">
-          Discover Frinso’s powerful suite of IoT solutions transforming water, energy, and infrastructure.
+          Discover Frinso’s powerful suite of IoT solutions transforming water,
+          energy, and infrastructure.
         </p>
       </div>
 
@@ -124,15 +114,15 @@ export default function ProductsSection() {
           {visibleProducts.map((p, i) => (
             <motion.div
               key={i}
-              whileHover={{ scale: 1.02 }}
-              className="relative rounded-xl overflow-hidden bg-white/10 backdrop-blur-sm shadow-lg transition transform hover:-translate-y-2"
+              whileHover={{ scale: 1.03 }}
+              className="relative group rounded-2xl overflow-hidden bg-white/10 backdrop-blur-md shadow-xl transition-all duration-700"
             >
-              {/* Water fill animation */}
+              {/* Water Fill Animation */}
               <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute bottom-[-100%] left-0 w-full h-full bg-gradient-to-t from-sky-500/80 to-sky-300/50 rounded-xl transition-all duration-700 ease-in-out group-hover:bottom-0"></div>
+                <div className="absolute bottom-[-100%] left-0 w-full h-full bg-gradient-to-t from-sky-500/70 to-sky-300/40 transition-all duration-700 ease-in-out group-hover:bottom-0"></div>
               </div>
 
-              {/* Product image with zoom on hover */}
+              {/* Image */}
               <div className="relative z-10 overflow-hidden">
                 <img
                   src={p.img}
@@ -141,16 +131,18 @@ export default function ProductsSection() {
                 />
               </div>
 
-              {/* Product content */}
+              {/* Content */}
               <div className="relative z-20 p-6 text-gray-100">
                 <h3 className="text-xl font-semibold mb-2 text-white">
                   {p.title}
                 </h3>
-                <p className="text-gray-200 text-sm leading-relaxed">{p.desc}</p>
+                <p className="text-gray-200 text-sm leading-relaxed">
+                  {p.desc}
+                </p>
               </div>
 
-              {/* Subtle glass overlay */}
-              <div className="absolute inset-0 border border-white/20 rounded-xl"></div>
+              {/* Border Glow */}
+              <div className="absolute inset-0 border border-white/20 rounded-2xl group-hover:border-sky-400/40 transition-all duration-700"></div>
             </motion.div>
           ))}
         </motion.div>

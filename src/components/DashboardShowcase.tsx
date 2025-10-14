@@ -9,7 +9,7 @@ export default function DashboardShowcase() {
     {
       title: "Smart Water Management",
       desc: "Real-time water flow, pressure, and quality analytics for efficient city networks.",
-      img: "/dashboards/water.jpg",
+      img: "/dashboards/water.png",
     },
     {
       title: "Smart Energy Management",
@@ -24,13 +24,69 @@ export default function DashboardShowcase() {
     {
       title: "Smart DG Monitoring",
       desc: "Comprehensive DG fuel tracking, runtime reports, and maintenance alerts.",
-      img: "/dashboards/dg.jpg",
+      img: "/dashboards/dg.png",
+    },
+    {
+      title: "Smart DG Monitoring",
+      desc: "Comprehensive DG fuel tracking, runtime reports, and maintenance alerts.",
+      img: "/dashboards/jal jeevan.png",
+    },
+    {
+      title: "Smart DG Monitoring",
+      desc: "Comprehensive DG fuel tracking, runtime reports, and maintenance alerts.",
+      img: "/dashboards/2.png",
     },
     {
       title: "Smart Solar Dashboard",
       desc: "Solar production, battery analytics, and energy savings visualization.",
-      img: "/dashboards/solar.jpg",
+      img: "/dashboards/1.png",
     },
+    {
+      title: "Smart Solar Dashboard",
+      desc: "Solar production, battery analytics, and energy savings visualization.",
+      img: "/dashboards/3.jpg",
+    },
+    {
+      title: "Smart Solar Dashboard",
+      desc: "Solar production, battery analytics, and energy savings visualization.",
+      img: "/dashboards/4.jpg",
+    },
+    {
+      title: "Smart Solar Dashboard",
+      desc: "Solar production, battery analytics, and energy savings visualization.",
+      img: "/dashboards/5.jpg",
+    },
+    {
+      title: "Smart Solar Dashboard",
+      desc: "Solar production, battery analytics, and energy savings visualization.",
+      img: "/dashboards/6.jpg",
+    },
+    {
+      title: "Smart Solar Dashboard",
+      desc: "Solar production, battery analytics, and energy savings visualization.",
+      img: "/dashboards/7.jpg",
+    },
+    {
+      title: "Smart Solar Dashboard",
+      desc: "Solar production, battery analytics, and energy savings visualization.",
+      img: "/dashboards/8.jpg",
+    },
+    {
+      title: "Smart Solar Dashboard",
+      desc: "Solar production, battery analytics, and energy savings visualization.",
+      img: "/dashboards/9.jpg",
+    },
+    {
+      title: "Smart Solar Dashboard",
+      desc: "Solar production, battery analytics, and energy savings visualization.",
+      img: "/dashboards/10.jpg",
+    },
+    {
+      title: "Smart Solar Dashboard",
+      desc: "Solar production, battery analytics, and energy savings visualization.",
+      img: "/dashboards/11.jpg",
+    },
+    
   ];
 
   const [index, setIndex] = useState(0);

@@ -2,13 +2,15 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown,ChevronRight } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [productOpen, setProductOpen] = useState(false);
+  const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
   const [companyOpen, setCompanyOpen] = useState(false);
   const pathname = usePathname();
 
@@ -19,6 +21,44 @@ export default function Navbar() {
   }, []);
 
   const isHomePage = pathname === "/";
+  const productMenu = [
+    {
+      title: "IoT Gateway / Modems / RTU / Telemetry / Data Loggers",
+      sub: [
+        "F1",
+        "F1: CGWA",
+        "F1: 4-20 mA",
+        "F6 - PLC",
+        "F10 Battery Based",
+        "F10 Pulse and Battery Based",
+        "F5",
+      ],
+    },
+    {
+      title: "Real Time IoT Dashboard / SCADA",
+      sub: [
+        "SCADA for JAL JEEVAN MISSION / AMRUT 2.0 / WTP / STP / ETP Project",
+        "SCADA for Solar Plant",
+        "SCADA for Smart Grid",
+        "Real-Time Dashboard for Water Management",
+        "Real-Time Dashboard for Energy Management",
+      ],
+    },
+    {
+      title: "Meters / Sensors / Analyzers",
+      sub: [
+        "Electromagnetic Water Flowmeter",
+        "Ultrasonic Water Flowmeter",
+        "Bulk Flowmeter",
+        "Pulse-Based Mechanical Water Meter",
+        "Battery-Based Ultrasonic Water Meter",
+      ],
+    },
+    {
+      title: "Industry-Based Custom Hardware / Software",
+      sub: [],
+    },
+  ];
 
   return (
     <nav
@@ -29,12 +69,12 @@ export default function Navbar() {
       <div className="flex items-center justify-between w-full px-10 py-4">
         {/* Logo */}
         <Link href="/" className="flex items-center">
-          <img src="/logo.svg" alt="Frinso Tech logo" className="h-14 w-auto" />
+          <img src="/logo.svg" alt="Frinso Tech logo" className="h-12 w-auto " />
         </Link>
 
         {/* Desktop Menu */}
         <div
-          className={`hidden md:flex items-center gap-10 font-medium ${
+          className={`hidden md:flex items-center gap-5 font-medium ${
             scrolled ? "text-gray-700" : "text-white"
           }`}
         >
@@ -90,7 +130,74 @@ export default function Navbar() {
             </AnimatePresence>
           </div>
 
-          <Link href="/product" className="px-4 py-2 hover:text-sky-500">Product</Link>
+          {/* Product Dropdown */}
+          <div
+            className="relative group"
+            onMouseEnter={() => setProductOpen(true)}
+            onMouseLeave={() => {
+              setProductOpen(false);
+              setHoveredCategory(null);
+            }}
+          >
+            <button className="flex items-center gap-1 hover:text-sky-500 transition">
+              Product
+              <ChevronDown
+                className={`w-4 h-4 transition-transform ${
+                  productOpen ? "rotate-180 text-sky-400" : ""
+                }`}
+              />
+            </button>
+
+            <AnimatePresence>
+              {productOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute top-full left-0 mt-2 bg-white text-gray-800 rounded-xl shadow-2xl p-4 min-w-[320px] grid gap-2 border border-gray-200"
+                >
+                  {productMenu.map((cat, i) => (
+                    <div
+                      key={i}
+                      className="relative group/item"
+                      onMouseEnter={() => setHoveredCategory(cat.title)}
+                      onMouseLeave={() => setHoveredCategory(null)}
+                    >
+                      <div className="flex items-center justify-between p-2 rounded-lg hover:bg-sky-50 cursor-pointer">
+                        <span className="font-medium">{cat.title}</span>
+                        {cat.sub.length > 0 && (
+                          <ChevronRight className="w-4 h-4 text-gray-500 group-hover/item:text-sky-500" />
+                        )}
+                      </div>
+
+                      {/* Submenu */}
+                      {cat.sub.length > 0 && hoveredCategory === cat.title && (
+                        <motion.div
+                          initial={{ opacity: 0, x: 20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: 20 }}
+                          transition={{ duration: 0.3 }}
+                          className="absolute top-0 left-full ml-2 bg-white rounded-xl shadow-xl border border-gray-200 w-[300px] p-3 flex flex-col gap-2 z-50"
+                        >
+                          {cat.sub.map((item, idx) => (
+                            <Link
+                              key={idx}
+                              href="#"
+                              className="text-sm text-gray-700 hover:text-sky-500 hover:bg-sky-50 px-3 py-2 rounded-lg transition"
+                            >
+                              {item}
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </div>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
           <Link href="/solutions" className="px-4 py-2 hover:text-sky-500">Solutions</Link>
           <Link href="/projects" className="px-4 py-2 hover:text-sky-500">Projects</Link>
           <Link href="/case-studies" className="px-4 py-2 hover:text-sky-500">Case Studies</Link>

@@ -42,8 +42,8 @@ export default function ProductsSection() {
     {
       title: "Air Quality & Noise Monitoring Device",
       desc: "Comprehensive solution for real-time monitoring of PM2.5, PM10, humidity, temperature, and noise.",
-      img: "/air-quality.png",
-      slug: "air_quality",
+      img: "/air.png",
+      slug: "Air",
     },
     {
       title: "Frinso IoT Gateway & Controller",
@@ -70,7 +70,7 @@ export default function ProductsSection() {
   ];
 
   const goToProductPage = (slug) => {
-    router.push(`/products/${slug}`);
+    router.push(`/products_info/${slug}`);
   };
 
   return (

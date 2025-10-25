@@ -12,6 +12,8 @@ export default function Navbar() {
   const [productOpen, setProductOpen] = useState(false);
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
   const [companyOpen, setCompanyOpen] = useState(false);
+  const [projectOpen, setProjectOpen] = useState(false);
+
   const pathname = usePathname();
 
   useEffect(() => {
@@ -25,41 +27,44 @@ export default function Navbar() {
     {
       title: "IoT Gateway / Modems / RTU / Telemetry / Data Loggers",
       sub: [
-        "F1",
-        "F1: CGWA",
-        "F1: 4-20 mA",
-        "F6 - PLC",
-        "F10 Battery Based",
-        "F10 Pulse and Battery Based",
-        "F5",
+        { name: "F1", href: "/Nav_Product/f1" },
+        { name: "F1: CGWA", href: "/Nav_Product/f1-cgwa" },
+        { name: "F1: 4-20 mA", href: "/Nav_Product/f1-420" },
+        { name: "F6 - PLC", href: "/Nav_Product/f6-plc" },
+        { name: "F10 Battery Based", href: "/Nav_Product/f10-battery" },
+        { name: "F10 Pulse and Battery Based", href: "/Nav_Product/f10-pulse" },
+        { name: "F5", href: "/Nav_Product/f5" },
       ],
     },
     {
       title: "Real Time IoT Dashboard / SCADA",
       sub: [
-        "SCADA for JAL JEEVAN MISSION / AMRUT 2.0 / WTP / STP / ETP Project",
-        "SCADA for Solar Plant",
-        "SCADA for Smart Grid",
-        "Real-Time Dashboard for Water Management",
-        "Real-Time Dashboard for Energy Management",
+        { name: "SCADA for Jal Jeevan Mission / AMRUT 2.0 / WTP / STP / ETP Project", href: "/product/scada-jjm" },
+        { name: "SCADA for Solar Plant", href: "/Nav_Product/scada-solar" },
+        { name: "SCADA for Smart Grid", href: "/Nav_Product/scada-grid" },
+        { name: "Real-Time Dashboard for Water Management", href: "/Nav_Product/dashboard-water" },
+        { name: "Real-Time Dashboard for Energy Management", href: "/Nav_Product/dashboard-energy" },
       ],
     },
     {
       title: "Meters / Sensors / Analyzers",
       sub: [
-        "Electromagnetic Water Flowmeter",
-        "Ultrasonic Water Flowmeter",
-        "Bulk Flowmeter",
-        "Pulse-Based Mechanical Water Meter",
-        "Battery-Based Ultrasonic Water Meter",
+        { name: "Electromagnetic Water Flowmeter", href: "/Nav_Product/meter-em" },
+        { name: "Ultrasonic Water Flowmeter", href: "/Nav_Product/meter-ultra" },
+        { name: "Bulk Flowmeter", href: "/Nav_Product/meter-bulk" },
+        { name: "Pulse-Based Mechanical Water Meter", href: "/Nav_Product/meter-mech" },
+        { name: "Battery-Based Ultrasonic Water Meter", href: "/Nav_Product/meter-battery" },
       ],
     },
     {
       title: "Industry-Based Custom Hardware / Software",
-      sub: [],
+      sub: [
+        { name: "Industrial IoT Systems", href: "/Nav_Product/industrial-iot" },
+        { name: "Custom EMS/SCADA Software", href: "/Nav_Product/custom-ems" },
+        { name: "Predictive Maintenance AI Tools", href: "/Nav_Product/predictive-ai" },
+      ],
     },
   ];
-
   return (
     <nav
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
@@ -199,7 +204,56 @@ export default function Navbar() {
           </div>
 
           <Link href="/solutions" className="px-4 py-2 hover:text-sky-500">Solutions</Link>
-          <Link href="/projects" className="px-4 py-2 hover:text-sky-500">Projects</Link>
+          {/* Project Dropdown */}
+<div
+  className="relative"
+  onMouseEnter={() => setProjectOpen(true)}
+  onMouseLeave={() => setProjectOpen(false)}
+>
+  <button
+    className="flex items-center gap-1 px-4 py-2 hover:text-sky-500"
+    aria-haspopup="menu"
+    aria-expanded={projectOpen}
+  >
+    Project
+    <ChevronDown
+      size={16}
+      className={`transition-transform ${projectOpen ? "rotate-180" : ""}`}
+    />
+  </button>
+
+  <AnimatePresence>
+    {projectOpen && (
+      <motion.div
+        initial={{ opacity: 0, y: -8 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -8 }}
+        transition={{ duration: 0.2 }}
+        className="absolute left-0 mt-2 w-72 rounded-xl bg-white text-gray-800 shadow-xl border border-gray-200 overflow-hidden z-50"
+        role="menu"
+      >
+        {[
+          { label: "Water", href: "/Nav_Project/water" },
+          { label: "Energy Management System", href: "/projects/energy-management" },
+          { label: "HVAC", href: "/projects/hvac" },
+          { label: "Solar", href: "/projects/solar" },
+          { label: "Building Management System", href: "/projects/building" },
+        ].map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            className="block px-5 py-3 hover:bg-sky-50 hover:text-sky-700 transition"
+            role="menuitem"
+          >
+            {item.label}
+          </Link>
+        ))}
+      </motion.div>
+    )}
+  </AnimatePresence>
+</div>
+
+
           <Link href="/case-studies" className="px-4 py-2 hover:text-sky-500">Case Studies</Link>
           <Link href="/contact" className="px-4 py-2 hover:text-sky-500">Contact Us</Link>
 

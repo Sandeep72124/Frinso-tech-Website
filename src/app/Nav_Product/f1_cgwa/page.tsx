@@ -35,7 +35,7 @@ export default function F1CGWAPage() {
           className="mt-12 flex justify-center"
         >
           <Image
-            src="/images/f1-device.jpg"
+            src="/f1_cgwa.jpg"
             alt="F1 CGWA IoT Gateway"
             width={600}
             height={400}
@@ -70,7 +70,7 @@ export default function F1CGWAPage() {
             className="flex justify-center"
           >
             <Image
-              src="/images/cgwa-dashboard.jpg"
+              src="/dashboards/3.jpg"
               alt="CGWA Dashboard"
               width={520}
               height={350}
@@ -141,7 +141,7 @@ export default function F1CGWAPage() {
         </p>
         <div className="flex justify-center">
           <Image
-            src="/images/cgwa-project.jpg"
+            src="/cgwa-project.png"
             alt="CGWA Project Overview"
             width={800}
             height={400}

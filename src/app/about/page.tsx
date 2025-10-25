@@ -7,20 +7,29 @@ import { Cpu, Cloud, Zap, Leaf, Globe, Award, Users } from "lucide-react";
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen flex flex-col bg-gradient-to-b from-[#031625] via-[#0a2540] to-[#1e3a8a] text-white overflow-hidden">
+    <main className="min-h-screen flex flex-col bg-gradient-to-b from-[#031625] via-[#0a2540] to-[#1e3a8a] text-white overflow-hidden"
+    >
       <Navbar />
 
       {/* Hero Section */}
       <section className="relative h-[60vh] flex flex-col justify-center items-center text-center">
-        <video
-          src="/videos/about.mp4"
+        {/* <video
+          src="/about_bg.jpg"
           autoPlay
           muted
           loop
           playsInline
           className="absolute inset-0 h-full w-full object-cover opacity-60"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-[#0a2540]/80"></div>
+        /> */}
+        <div className="absolute inset-0 bg-blur-sm bg-gradient-to-b from-black/40 to-[#0a2540]/80"
+        style={{
+    backgroundImage: "url('/about_bg.jpg')", 
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    filter:"blur(8px)",
+  }}
+></div>
         <motion.h1
           className="text-5xl md:text-6xl font-bold relative z-10"
           initial={{ opacity: 0, y: 40 }}

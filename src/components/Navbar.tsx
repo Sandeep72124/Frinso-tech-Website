@@ -28,11 +28,11 @@ export default function Navbar() {
       title: "IoT Gateway / Modems / RTU / Telemetry / Data Loggers",
       sub: [
         { name: "F1", href: "/Nav_Product/f1" },
-        { name: "F1: CGWA", href: "/Nav_Product/f1-cgwa" },
-        { name: "F1: 4-20 mA", href: "/Nav_Product/f1-420" },
-        { name: "F6 - PLC", href: "/Nav_Product/f6-plc" },
-        { name: "F10 Battery Based", href: "/Nav_Product/f10-battery" },
-        { name: "F10 Pulse and Battery Based", href: "/Nav_Product/f10-pulse" },
+        { name: "F1: CGWA", href: "/Nav_Product/f1_cgwa" },
+        { name: "F1: 4-20 mA", href: "/Nav_Product/f_4-20_ma" },
+        { name: "F6 - PLC", href: "/Nav_Product/f6_plc" },
+        { name: "F10 Battery Based", href: "/Nav_Product/f10_battery_based" },
+        { name: "F10 Pulse and Battery Based", href: "/Nav_Product/f10_pulse" },
         { name: "F5", href: "/Nav_Product/f5" },
       ],
     },
@@ -188,10 +188,10 @@ export default function Navbar() {
                           {cat.sub.map((item, idx) => (
                             <Link
                               key={idx}
-                              href="#"
+                              href={item.href}
                               className="text-sm text-gray-700 hover:text-sky-500 hover:bg-sky-50 px-3 py-2 rounded-lg transition"
                             >
-                              {item}
+                              {item.name}
                             </Link>
                           ))}
                         </motion.div>
@@ -234,10 +234,10 @@ export default function Navbar() {
       >
         {[
           { label: "Water", href: "/Nav_Project/water" },
-          { label: "Energy Management System", href: "/projects/energy-management" },
-          { label: "HVAC", href: "/projects/hvac" },
-          { label: "Solar", href: "/projects/solar" },
-          { label: "Building Management System", href: "/projects/building" },
+          { label: "Energy Management System", href: "/Nav_Project/energy-management" },
+          { label: "HVAC", href: "/Nav_Project/hvac" },
+          { label: "Solar", href: "/Nav_Project/solar" },
+          { label: "Building Management System", href: "/Nav_Project/building" },
         ].map((item) => (
           <Link
             key={item.href}

@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function F10BatteryPage() {
+export default function F1_420_Page() {
   return (
     <>
     <Navbar/>
@@ -20,12 +20,11 @@ export default function F10BatteryPage() {
           className="text-center max-w-5xl mx-auto px-6"
         >
           <h1 className="text-5xl md:text-6xl font-bold text-sky-700">
-            F10 Battery-Based IoT Gateway
+            F1: 4–20 mA IoT Gateway
           </h1>
           <p className="mt-4 text-lg text-gray-600 leading-relaxed">
-            A self-powered IoT gateway built for <span className="font-semibold">remote data logging</span> and 
-            <span className="font-semibold"> telemetry applications</span> — designed for locations without 
-            continuous power supply, ensuring long-term field operation.
+            Industrial-grade IoT gateway for <span className="font-semibold">analog 4–20 mA signal acquisition</span>,
+            enabling seamless integration with sensors, transmitters, and SCADA dashboards for real-time monitoring.
           </p>
         </motion.div>
 
@@ -36,8 +35,8 @@ export default function F10BatteryPage() {
           className="mt-12 flex justify-center"
         >
           <Image
-            src="/images/f10-device.jpg"
-            alt="F10 Battery IoT Gateway"
+            src="/f1-device.jpg"
+            alt="F1 4-20mA IoT Gateway"
             width={600}
             height={400}
             className="rounded-2xl shadow-xl"
@@ -55,12 +54,12 @@ export default function F10BatteryPage() {
           >
             <h2 className="text-3xl font-bold text-sky-700 mb-4">Key Features</h2>
             <ul className="space-y-3 text-gray-700 leading-relaxed">
-              <li>🔋 Long-lasting lithium battery (up to 5 years of operation).</li>
-              <li>📶 Supports 2G / 4G / NB-IoT / LoRa communication modes.</li>
-              <li>📊 Internal data logging with intelligent sleep-wake scheduling.</li>
-              <li>💧 Ideal for remote flowmeters, pressure sensors, and tank monitoring.</li>
-              <li>📦 Compact IP68-rated enclosure for harsh field conditions.</li>
-              <li>🧠 AI-optimized telemetry intervals for energy conservation.</li>
+              <li>⚙️ Supports up to 8 isolated 4–20 mA input channels.</li>
+              <li>🌐 MODBUS RTU/TCP & MQTT-based cloud communication.</li>
+              <li>🔌 Compatible with pressure, flow, and temperature transmitters.</li>
+              <li>📊 Real-time data logging with configurable sampling interval.</li>
+              <li>🧠 AI-based anomaly detection and trend prediction.</li>
+              <li>📱 Remote calibration, diagnostics, and over-the-air firmware updates.</li>
             </ul>
           </motion.div>
 
@@ -71,8 +70,8 @@ export default function F10BatteryPage() {
             className="flex justify-center"
           >
             <Image
-              src="/images/f10-dashboard.jpg"
-              alt="Battery IoT Dashboard"
+              src="/420-dashboard.jpg"
+              alt="4-20mA Dashboard"
               width={520}
               height={350}
               className="rounded-xl shadow-md"
@@ -97,28 +96,28 @@ export default function F10BatteryPage() {
             <table className="w-full text-left border border-gray-200 rounded-lg">
               <tbody>
                 <tr className="border-b border-gray-200">
-                  <td className="p-4 font-medium text-gray-700">Power Source</td>
-                  <td className="p-4">Inbuilt Li-SOCl₂ Battery (3.6V / 19Ah)</td>
+                  <td className="p-4 font-medium text-gray-700">Input Channels</td>
+                  <td className="p-4">4 / 8 isolated 4–20 mA analog inputs</td>
                 </tr>
                 <tr className="border-b border-gray-200">
-                  <td className="p-4 font-medium text-gray-700">Battery Life</td>
-                  <td className="p-4">Up to 5 years (with 1 data push/hour)</td>
+                  <td className="p-4 font-medium text-gray-700">Signal Resolution</td>
+                  <td className="p-4">16-bit ADC for high-accuracy measurement</td>
                 </tr>
                 <tr className="border-b border-gray-200">
                   <td className="p-4 font-medium text-gray-700">Communication</td>
-                  <td className="p-4">2G / 4G / NB-IoT / LoRa / BLE</td>
+                  <td className="p-4">RS485 (MODBUS RTU), Ethernet, 4G/LTE, MQTT</td>
                 </tr>
                 <tr className="border-b border-gray-200">
-                  <td className="p-4 font-medium text-gray-700">Protocol</td>
-                  <td className="p-4">MODBUS, MQTT, HTTP</td>
+                  <td className="p-4 font-medium text-gray-700">Data Storage</td>
+                  <td className="p-4">Local flash up to 1GB with auto sync</td>
                 </tr>
                 <tr className="border-b border-gray-200">
-                  <td className="p-4 font-medium text-gray-700">Data Logging</td>
-                  <td className="p-4">Local EEPROM / Flash Storage (30,000+ records)</td>
+                  <td className="p-4 font-medium text-gray-700">Power Supply</td>
+                  <td className="p-4">9–36V DC, surge-protected</td>
                 </tr>
                 <tr>
-                  <td className="p-4 font-medium text-gray-700">Enclosure Rating</td>
-                  <td className="p-4">IP68 – Dustproof and Waterproof</td>
+                  <td className="p-4 font-medium text-gray-700">Enclosure</td>
+                  <td className="p-4">IP65, Polycarbonate Industrial Grade</td>
                 </tr>
               </tbody>
             </table>
@@ -126,7 +125,7 @@ export default function F10BatteryPage() {
         </div>
       </section>
 
-      {/* Applications Section */}
+      {/* Use Cases Section */}
       <section className="py-16 bg-white text-center">
         <motion.h3
           initial={{ opacity: 0 }}
@@ -134,17 +133,17 @@ export default function F10BatteryPage() {
           transition={{ duration: 0.8 }}
           className="text-3xl font-semibold text-sky-700 mb-6"
         >
-          Designed for Remote & Off-Grid Monitoring
+          Ideal for Industrial Process Monitoring
         </motion.h3>
         <p className="max-w-3xl mx-auto text-gray-600 mb-8">
-          The F10 Battery-Based IoT Gateway is ideal for remote water flow monitoring, tank level 
-          management, and isolated field stations — enabling real-time visibility even in 
-          non-powered environments.
+          The F1 4–20 mA IoT Gateway is widely used for remote pressure, flow, 
+          and energy monitoring in industrial automation, water treatment, and 
+          energy management systems.
         </p>
         <div className="flex justify-center">
           <Image
-            src="/images/f10-field.jpg"
-            alt="F10 Field Deployment"
+            src="/420-usecase.jpg"
+            alt="4-20mA Industrial Usecase"
             width={800}
             height={400}
             className="rounded-xl shadow-lg"
@@ -160,11 +159,10 @@ export default function F10BatteryPage() {
           transition={{ duration: 0.8 }}
           className="text-3xl font-semibold mb-4"
         >
-          Bring IoT to Remote Locations with Battery Power
+          Connect Your Analog Sensors to the Cloud
         </motion.h3>
         <p className="text-white/90 mb-6">
-          Deploy Frinso’s F10 Battery Gateway for reliable, long-term telemetry without 
-          external power — perfect for smart water and energy infrastructure.
+          Deploy Frinso’s 4–20 mA gateway to modernize your analog infrastructure with real-time IoT analytics.
         </p>
         <Link
           href="/contact"

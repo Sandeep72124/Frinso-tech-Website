@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function F6PLCPage() {
+export default function F10PulsePage() {
   return (
     <>
     <Navbar/>
@@ -20,12 +20,11 @@ export default function F6PLCPage() {
           className="text-center max-w-5xl mx-auto px-6"
         >
           <h1 className="text-5xl md:text-6xl font-bold text-sky-700">
-            F6 – PLC IoT Gateway
+            F10 Pulse + Battery-Based IoT Gateway
           </h1>
           <p className="mt-4 text-lg text-gray-600 leading-relaxed">
-            A robust <span className="font-semibold">industrial IoT gateway</span> 
-            engineered for Programmable Logic Controller (PLC) integration — enabling 
-            seamless real-time SCADA data exchange and analytics through secure cloud platforms.
+            A compact, battery-powered IoT gateway with <span className="font-semibold">pulse input compatibility</span>, 
+            designed for mechanical water meters and low-power AMR (Automatic Meter Reading) systems.
           </p>
         </motion.div>
 
@@ -36,8 +35,8 @@ export default function F6PLCPage() {
           className="mt-12 flex justify-center"
         >
           <Image
-            src="/images/f6-device.jpg"
-            alt="F6 PLC IoT Gateway"
+            src="/f10-pulse-device.jpg"
+            alt="F10 Pulse IoT Gateway"
             width={600}
             height={400}
             className="rounded-2xl shadow-xl"
@@ -55,12 +54,12 @@ export default function F6PLCPage() {
           >
             <h2 className="text-3xl font-bold text-sky-700 mb-4">Key Features</h2>
             <ul className="space-y-3 text-gray-700 leading-relaxed">
-              <li>🔌 Direct connectivity to Siemens, Allen Bradley, and Delta PLCs.</li>
-              <li>🌐 Supports MODBUS RTU/TCP, OPC UA, and MQTT protocols.</li>
-              <li>📊 Edge computing support for local logic and pre-processing.</li>
-              <li>🧠 Integrates seamlessly with Frinso SCADA and cloud dashboards.</li>
-              <li>📱 Web-based configuration and real-time device management.</li>
-              <li>⚙️ Ideal for Industrial Automation, Water Plants, and OEM systems.</li>
+              <li>💧 Compatible with mechanical water meters with reed or open-drain pulse output.</li>
+              <li>🔋 Battery life up to 5 years (1 pulse per second, hourly transmission).</li>
+              <li>📶 2G / 4G / NB-IoT communication with secure MQTT data push.</li>
+              <li>📊 Real-time consumption tracking with cloud dashboard integration.</li>
+              <li>🧠 AI-based pulse-to-volume conversion and tamper detection.</li>
+              <li>🌦️ IP68 waterproof enclosure for field and underground installations.</li>
             </ul>
           </motion.div>
 
@@ -71,8 +70,8 @@ export default function F6PLCPage() {
             className="flex justify-center"
           >
             <Image
-              src="/images/plc-dashboard.jpg"
-              alt="PLC IoT Dashboard"
+              src="/f10-pulse-dashboard.jpg"
+              alt="F10 Pulse IoT Dashboard"
               width={520}
               height={350}
               className="rounded-xl shadow-md"
@@ -97,28 +96,28 @@ export default function F6PLCPage() {
             <table className="w-full text-left border border-gray-200 rounded-lg">
               <tbody>
                 <tr className="border-b border-gray-200">
-                  <td className="p-4 font-medium text-gray-700">Processor</td>
-                  <td className="p-4">ARM Cortex-A53 Industrial Grade SoC</td>
+                  <td className="p-4 font-medium text-gray-700">Pulse Input</td>
+                  <td className="p-4">1 / 2 channels – dry contact, open collector, or reed switch</td>
                 </tr>
                 <tr className="border-b border-gray-200">
-                  <td className="p-4 font-medium text-gray-700">Communication Ports</td>
-                  <td className="p-4">RS485 / RS232 / Ethernet / USB / 4G LTE</td>
+                  <td className="p-4 font-medium text-gray-700">Communication</td>
+                  <td className="p-4">2G / 4G / NB-IoT / LoRa</td>
                 </tr>
                 <tr className="border-b border-gray-200">
-                  <td className="p-4 font-medium text-gray-700">Protocol Support</td>
-                  <td className="p-4">MODBUS RTU/TCP, MQTT, OPC UA, HTTPs</td>
+                  <td className="p-4 font-medium text-gray-700">Battery Type</td>
+                  <td className="p-4">Li-SOCl₂ 3.6V / 19Ah (replaceable module)</td>
                 </tr>
                 <tr className="border-b border-gray-200">
-                  <td className="p-4 font-medium text-gray-700">Memory & Storage</td>
-                  <td className="p-4">1GB DDR + 8GB Flash / SD Card Support</td>
+                  <td className="p-4 font-medium text-gray-700">Battery Life</td>
+                  <td className="p-4">3–5 years (based on data push frequency)</td>
                 </tr>
                 <tr className="border-b border-gray-200">
-                  <td className="p-4 font-medium text-gray-700">Power Supply</td>
-                  <td className="p-4">12–36V DC with Reverse Polarity Protection</td>
+                  <td className="p-4 font-medium text-gray-700">Data Logging</td>
+                  <td className="p-4">Local EEPROM – 25,000+ readings</td>
                 </tr>
                 <tr>
-                  <td className="p-4 font-medium text-gray-700">Operating Temperature</td>
-                  <td className="p-4">-20°C to +75°C (IP65)</td>
+                  <td className="p-4 font-medium text-gray-700">Protection Rating</td>
+                  <td className="p-4">IP68 – waterproof and dustproof</td>
                 </tr>
               </tbody>
             </table>
@@ -126,7 +125,7 @@ export default function F6PLCPage() {
         </div>
       </section>
 
-      {/* Applications Section */}
+      {/* Use Case Section */}
       <section className="py-16 bg-white text-center">
         <motion.h3
           initial={{ opacity: 0 }}
@@ -134,16 +133,16 @@ export default function F6PLCPage() {
           transition={{ duration: 0.8 }}
           className="text-3xl font-semibold text-sky-700 mb-6"
         >
-          Perfect for Industrial & Utility Automation
+          Designed for Water Utilities & Smart Metering
         </motion.h3>
         <p className="max-w-3xl mx-auto text-gray-600 mb-8">
-          The F6 PLC IoT Gateway enables remote monitoring and control for PLC-based automation systems, 
-          transforming industrial plants into smart, connected ecosystems.
+          The F10 Pulse Gateway simplifies mechanical meter digitization — allowing water boards, 
+          industries, and smart city operators to monitor consumption remotely with full analytics integration.
         </p>
         <div className="flex justify-center">
           <Image
-            src="/images/plc-industrial.jpg"
-            alt="PLC Industrial Application"
+            src="/f10-pulse-usecase.jpg"
+            alt="F10 Pulse Use Case"
             width={800}
             height={400}
             className="rounded-xl shadow-lg"
@@ -159,10 +158,11 @@ export default function F6PLCPage() {
           transition={{ duration: 0.8 }}
           className="text-3xl font-semibold mb-4"
         >
-          Connect Your PLC Systems to the Cloud
+          Make Your Water Meters Smart with F10 Pulse
         </motion.h3>
         <p className="text-white/90 mb-6">
-          Frinso’s F6 Gateway bridges your industrial PLCs and real-time analytics dashboards — securely and efficiently.
+          Connect any mechanical or pulse-based water meter to the cloud effortlessly — 
+          with long-life battery operation and zero maintenance.
         </p>
         <Link
           href="/contact"

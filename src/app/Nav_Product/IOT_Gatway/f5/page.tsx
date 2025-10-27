@@ -6,12 +6,12 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function F10PulsePage() {
+export default function F5Page() {
   return (
     <>
     <Navbar/>
     <main className="relative min-h-screen bg-gradient-to-b from-sky-50 to-white text-gray-800">
-      {/* Hero Section */}
+      {/* Hero */}
       <section className="relative overflow-hidden py-20">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -20,58 +20,59 @@ export default function F10PulsePage() {
           className="text-center max-w-5xl mx-auto px-6"
         >
           <h1 className="text-5xl md:text-6xl font-bold text-sky-700">
-            F10 Pulse + Battery-Based IoT Gateway
+            F5 Multiprotocol IoT Gateway
           </h1>
           <p className="mt-4 text-lg text-gray-600 leading-relaxed">
-            A compact, battery-powered IoT gateway with <span className="font-semibold">pulse input compatibility</span>, 
-            designed for mechanical water meters and low-power AMR (Automatic Meter Reading) systems.
+            Compact, DIN-rail/field-mountable gateway for fast integration of{" "}
+            <span className="font-semibold">MODBUS devices, pulses, and analog I/O</span>—built for
+            water, energy, DG and building automation projects.
           </p>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
           className="mt-12 flex justify-center"
         >
           <Image
-            src="/images/f10-pulse-device.jpg"
-            alt="F10 Pulse IoT Gateway"
-            width={600}
-            height={400}
+            src="/f5-device.jpg" // add your image later
+            alt="F5 IoT Gateway"
+            width={640}
+            height={420}
             className="rounded-2xl shadow-xl"
           />
         </motion.div>
       </section>
 
-      {/* Features Section */}
+      {/* Features */}
       <section className="py-20 bg-white/60">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -28 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl font-bold text-sky-700 mb-4">Key Features</h2>
             <ul className="space-y-3 text-gray-700 leading-relaxed">
-              <li>💧 Compatible with mechanical water meters with reed or open-drain pulse output.</li>
-              <li>🔋 Battery life up to 5 years (1 pulse per second, hourly transmission).</li>
-              <li>📶 2G / 4G / NB-IoT communication with secure MQTT data push.</li>
-              <li>📊 Real-time consumption tracking with cloud dashboard integration.</li>
-              <li>🧠 AI-based pulse-to-volume conversion and tamper detection.</li>
-              <li>🌦️ IP68 waterproof enclosure for field and underground installations.</li>
+              <li>🌐 MODBUS RTU/TCP, MQTT, HTTPs — plug-and-play with meters & PLCs.</li>
+              <li>🔌 I/O mix: 4×DI (pulse up to 5 kHz), 2×DO (relay), 4×AI (4–20 mA / 0–10 V).</li>
+              <li>📶 Connectivity: RS485/RS232, Ethernet, 4G/LTE, optional Wi-Fi/BLE.</li>
+              <li>🧠 Edge logic, local buffering & store-and-forward to cloud/SCADA.</li>
+              <li>🛰️ Optional GPS for mobile assets and run-hour logging for DG sets.</li>
+              <li>🛡️ Industrial build: surge protection, watchdog, OTA updates.</li>
             </ul>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 28 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             className="flex justify-center"
           >
             <Image
-              src="/images/f10-pulse-dashboard.jpg"
-              alt="F10 Pulse IoT Dashboard"
+              src="/f5-dashboard.jpg" // add your image later
+              alt="F5 Dashboard"
               width={520}
               height={350}
               className="rounded-xl shadow-md"
@@ -80,11 +81,11 @@ export default function F10PulsePage() {
         </div>
       </section>
 
-      {/* Technical Specifications */}
+      {/* Specs */}
       <section className="py-20 bg-gradient-to-r from-sky-100 to-sky-50">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <motion.h2
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 26 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="text-3xl font-bold text-sky-700 mb-8"
@@ -96,28 +97,32 @@ export default function F10PulsePage() {
             <table className="w-full text-left border border-gray-200 rounded-lg">
               <tbody>
                 <tr className="border-b border-gray-200">
-                  <td className="p-4 font-medium text-gray-700">Pulse Input</td>
-                  <td className="p-4">1 / 2 channels – dry contact, open collector, or reed switch</td>
+                  <td className="p-4 font-medium text-gray-700">CPU & Memory</td>
+                  <td className="p-4">ARM-based edge controller, 256MB RAM, 8GB Flash</td>
                 </tr>
                 <tr className="border-b border-gray-200">
-                  <td className="p-4 font-medium text-gray-700">Communication</td>
-                  <td className="p-4">2G / 4G / NB-IoT / LoRa</td>
+                  <td className="p-4 font-medium text-gray-700">Interfaces</td>
+                  <td className="p-4">RS485, RS232, Ethernet 10/100, USB (service)</td>
                 </tr>
                 <tr className="border-b border-gray-200">
-                  <td className="p-4 font-medium text-gray-700">Battery Type</td>
-                  <td className="p-4">Li-SOCl₂ 3.6V / 19Ah (replaceable module)</td>
+                  <td className="p-4 font-medium text-gray-700">I/O</td>
+                  <td className="p-4">4×DI (pulse), 2×DO (relay 30V/1A), 4×AI (4–20 mA / 0–10V)</td>
                 </tr>
                 <tr className="border-b border-gray-200">
-                  <td className="p-4 font-medium text-gray-700">Battery Life</td>
-                  <td className="p-4">3–5 years (based on data push frequency)</td>
+                  <td className="p-4 font-medium text-gray-700">Wireless</td>
+                  <td className="p-4">4G/LTE Cat-1, NB-IoT (opt.), Wi-Fi/BLE (opt.)</td>
                 </tr>
                 <tr className="border-b border-gray-200">
-                  <td className="p-4 font-medium text-gray-700">Data Logging</td>
-                  <td className="p-4">Local EEPROM – 25,000+ readings</td>
+                  <td className="p-4 font-medium text-gray-700">Protocols</td>
+                  <td className="p-4">MODBUS RTU/TCP, MQTT, HTTPs, NTP, TLS 1.2</td>
+                </tr>
+                <tr className="border-b border-gray-200">
+                  <td className="p-4 font-medium text-gray-700">Power</td>
+                  <td className="p-4">9–36 VDC, <span className="whitespace-nowrap">≤3 W</span>, reverse-polarity protected</td>
                 </tr>
                 <tr>
-                  <td className="p-4 font-medium text-gray-700">Protection Rating</td>
-                  <td className="p-4">IP68 – waterproof and dustproof</td>
+                  <td className="p-4 font-medium text-gray-700">Enclosure</td>
+                  <td className="p-4">DIN-rail / IP65 field box, −20°C to +70°C</td>
                 </tr>
               </tbody>
             </table>
@@ -125,7 +130,7 @@ export default function F10PulsePage() {
         </div>
       </section>
 
-      {/* Use Case Section */}
+      {/* Applications */}
       <section className="py-16 bg-white text-center">
         <motion.h3
           initial={{ opacity: 0 }}
@@ -133,16 +138,16 @@ export default function F10PulsePage() {
           transition={{ duration: 0.8 }}
           className="text-3xl font-semibold text-sky-700 mb-6"
         >
-          Designed for Water Utilities & Smart Metering
+          Built for Water, Energy & DG Monitoring
         </motion.h3>
         <p className="max-w-3xl mx-auto text-gray-600 mb-8">
-          The F10 Pulse Gateway simplifies mechanical meter digitization — allowing water boards, 
-          industries, and smart city operators to monitor consumption remotely with full analytics integration.
+          Connect flow/energy meters, DG controllers, pump panels and PLCs to real-time
+          dashboards with alerts, reports and automation rules.
         </p>
         <div className="flex justify-center">
           <Image
-            src="/images/f10-pulse-usecase.jpg"
-            alt="F10 Pulse Use Case"
+            src="/f5-usecase.jpg" // add your image later
+            alt="F5 Use Cases"
             width={800}
             height={400}
             className="rounded-xl shadow-lg"
@@ -150,7 +155,7 @@ export default function F10PulsePage() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA */}
       <section className="py-16 text-center bg-gradient-to-r from-sky-500 to-sky-600 text-white">
         <motion.h3
           initial={{ opacity: 0 }}
@@ -158,11 +163,10 @@ export default function F10PulsePage() {
           transition={{ duration: 0.8 }}
           className="text-3xl font-semibold mb-4"
         >
-          Make Your Water Meters Smart with F10 Pulse
+          Deploy F5 for Fast, Reliable Integrations
         </motion.h3>
         <p className="text-white/90 mb-6">
-          Connect any mechanical or pulse-based water meter to the cloud effortlessly — 
-          with long-life battery operation and zero maintenance.
+          Get your devices online with secure cloud connectivity and edge intelligence.
         </p>
         <Link
           href="/contact"

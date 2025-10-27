@@ -513,9 +513,6 @@ export default function Navbar() {
     )}
   </AnimatePresence>
 </div>
-
-
-
           <Link href="/case-studies" className="px-4 py-2 hover:text-sky-500">Case Studies</Link>
           <Link href="/contact" className="px-4 py-2 hover:text-sky-500">Contact Us</Link>
 

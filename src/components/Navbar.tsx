@@ -2,14 +2,16 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Menu, X, ChevronDown,ChevronRight } from "lucide-react";
+import { Menu, X, ChevronDown,ChevronRight,Cpu, MonitorSmartphone, Activity, ServerCog, Building, Globe2, Newspaper, Target, Users2, Briefcase} from "lucide-react";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import Footer from "./Footer";
+
+
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [solutionOpen, setSolutionOpen] = useState(false);
   const [productOpen, setProductOpen] = useState(false);
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
   const [companyOpen, setCompanyOpen] = useState(false);
@@ -27,6 +29,7 @@ export default function Navbar() {
   const productMenu = [
     {
       title: "IoT Gateway / Modems / RTU / Telemetry / Data Loggers",
+      icon: Cpu,
       sub: [
         { name: "F1", href: "/Nav_Product/IOT_Gatway/f1" },
         { name: "F1: CGWA", href: "/Nav_Product/IOT_Gatway/f1_cgwa" },
@@ -39,6 +42,7 @@ export default function Navbar() {
     },
     {
       title: "Real Time IoT Dashboard / SCADA",
+      icon: MonitorSmartphone,
       sub: [
         { name: "SCADA for Jal Jeevan Mission / AMRUT 2.0 / WTP / STP / ETP Project", href: "/Nav_Product/IOT_Dashboard/scada-jjm" },
         { name: "SCADA for Solar Plant", href: "/Nav_Product/IOT_Dashboard/scada-solar" },
@@ -49,6 +53,7 @@ export default function Navbar() {
     },
     {
       title: "Meters / Sensors / Analyzers",
+      icon: Activity,
       sub: [
         { name: "Electromagnetic Water Flowmeter", href: "/Nav_Product/Meter-Sensor/meter-em" },
         { name: "Ultrasonic Water Flowmeter", href: "/Nav_Product/Meter-Sensor/meter-ultra" },
@@ -59,6 +64,7 @@ export default function Navbar() {
     },
     {
       title: "Industry-Based Custom Hardware / Software",
+       icon: ServerCog,
       sub: [
         { name: "Industrial IoT Systems", href: "/Nav_Product/Custom-Hardware-Software/industrial-iot" },
         { name: "Custom EMS/SCADA Software", href: "/Nav_Product/Custom-Hardware-Software/custom-ems" },
@@ -66,6 +72,53 @@ export default function Navbar() {
       ],
     },
   ];
+
+  const solutionMenu = [
+    {
+      title: "💧 Water Solutions",
+      sub: [
+        { name: "Smart Flow Water Management", href: "/nav_solutions/water/smart-flow" },
+        { name: "Smart Level Management", href: "/nav_solutions/water/smart-level" },
+        { name: "Smart Water Quality Analyzer", href: "/nav_solutions/water/smart-quality" },
+        { name: "CGWA Solution", href: "/nav_solutions/water/cgwa-solution" },
+        { name: "Railway Water Monitoring", href: "/nav_solutions/water/railway" },
+        { name: "Intake Well Cum Pump House", href: "/nav_solutions/water/intake-pump-house" },
+        { name: "WTP Monitoring", href: "/nav_solutions/water/wtp-monitoring" },
+        { name: "Clear Water Sump Cum Pump House", href: "/nav_solutions/water/clear-water-sump" },
+        { name: "OHSR / OHMBR Monitoring", href: "/nav_solutions/water/ohsr-monitoring" },
+      ],
+    },
+    {
+      title: "🌬️ HVAC Solutions",
+      sub: [
+        { name: "Smart HVAC Automation", href: "/nav_solutions/hvac/smart-hvac-automation" },
+        { name: "Industrial HVAC Energy Management", href: "/nav_solutions/hvac/industrial-energy-management" },
+      ],
+    },
+    {
+      title: "🏙️ Smart City Solutions",
+      sub: [
+        { name: "Smart Water Network SCADA", href: "/nav_solutions/smart-city/smart-water-network" },
+        { name: "Smart STP / Sewage Management", href: "/nav_solutions/smart-city/smart-stp-management" },
+        { name: "Solid Waste Management IoT", href: "/nav_solutions/smart-city/solid-waste-management" },
+        { name: "Smart Energy Management", href: "/nav_solutions/smart-city/smart-energy" },
+        { name: "Environmental Monitoring", href: "/nav_solutions/smart-city/environment-monitoring" },
+        { name: "Smart Infrastructure Analytics", href: "/nav_solutions/smart-city/infrastructure-analytics" },
+        { name: "Smart Asset Tracking", href: "/nav_solutions/smart-city/asset-tracking" },
+      ],
+    },
+    { title: "⚡ Energy & Power Solutions", href: "/nav_solutions/energy-power" },
+    { title: "🏭 Industrial & Infrastructure", href: "/nav_solutions/industrial-infra" },
+    { title: "🏗️ Building Management System (BMS)", href: "/nav_solutions/bms" },
+    { title: "☀️ Solar Plant SCADA", href: "/nav_solutions/solar-scada" },
+    { title: "🔋 DG Monitoring & Fuel Management", href: "/nav_solutions/dg-monitoring" },
+    { title: "🔌 Smart Energy Management System (EMS)", href: "/nav_solutions/ems" },
+    { title: "🌾 Environmental Compliance & OLEMS", href: "/nav_solutions/environmental-compliance" },
+    { title: "🧠 Predictive Maintenance AI", href: "/nav_solutions/predictive-ai" },
+    { title: "📡 IoT Edge / Gateway Devices", href: "/nav_solutions/iot-edge" },
+    { title: "🧩 Custom EMS / SCADA Software", href: "/nav_solutions/custom-ems" },
+  ];
+
   return (
     <nav
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
@@ -86,57 +139,79 @@ export default function Navbar() {
         >
           <Link href="/" className="px-4 py-2 hover:text-sky-500">Home</Link>
 
-          {/* Company Dropdown (desktop) */}
-          <div
-            className="relative"
-            onMouseEnter={() => setCompanyOpen(true)}
-            onMouseLeave={() => setCompanyOpen(false)}
+        {/* Company Dropdown (desktop) */}
+<div
+  className="relative"
+  onMouseEnter={() => {
+    clearTimeout((window as any).companyHoverTimeout);
+    setCompanyOpen(true);
+  }}
+  onMouseLeave={() => {
+    (window as any).companyHoverTimeout = setTimeout(() => {
+      setCompanyOpen(false);
+    }, 200);
+  }}
+>
+  <button
+    className="flex items-center gap-1 px-4 py-2 hover:text-sky-500 transition"
+    aria-haspopup="menu"
+    aria-expanded={companyOpen}
+  >
+    Company
+    <ChevronDown
+      size={16}
+      className={`transition-transform duration-200 ${companyOpen ? "rotate-180" : ""}`}
+    />
+  </button>
+
+  <AnimatePresence>
+    {companyOpen && (
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95, x: -20 }}
+        animate={{ opacity: 1, scale: 1, x: 0 }}
+        exit={{ opacity: 0, scale: 0.95, x: -20 }}
+        transition={{ duration: 0.25, ease: "easeOut" }}
+        className="absolute left-0 mt-3 w-64 rounded-xl bg-white text-gray-800 shadow-2xl border border-gray-200 z-50 overflow-hidden"
+        role="menu"
+        onMouseEnter={() => clearTimeout((window as any).companyHoverTimeout)}
+        onMouseLeave={() => {
+          (window as any).companyHoverTimeout = setTimeout(() => {
+            setCompanyOpen(false);
+          }, 200);
+        }}
+      >
+        {[
+          { label: "About Us", href: "/about", icon: "🏢" },
+          { label: "Social Impact", href: "/social", icon: "🌍" },
+          { label: "Media Wall", href: "/wall", icon: "📰" },
+          { label: "Vision & Mission", href: "/vision", icon: "🎯" },
+          { label: "Our Team", href: "/team", icon: "👥" },
+          { label: "Careers", href: "/careers", icon: "💼" },
+        ].map((item, index) => (
+          <motion.div
+            key={item.href}
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: index * 0.05, duration: 0.2 }}
           >
-            <button
-              className="flex items-center gap-1 px-4 py-2 hover:text-sky-500"
-              aria-haspopup="menu"
-              aria-expanded={companyOpen}
+            <Link
+              href={item.href}
+              className="flex items-center gap-3 px-5 py-3 hover:bg-sky-50 hover:text-sky-600 transition-all"
+              role="menuitem"
+              onClick={() => setCompanyOpen(false)}
             >
-              Company
-              <ChevronDown
-                size={16}
-                className={`transition-transform ${companyOpen ? "rotate-180" : ""}`}
-              />
-            </button>
+              <span className="text-lg">{item.icon}</span>
+              <span className="font-medium">{item.label}</span>
+            </Link>
+          </motion.div>
+        ))}
+      </motion.div>
+    )}
+  </AnimatePresence>
+</div>
 
-            <AnimatePresence>
-              {companyOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: -8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute left-0 mt-2 w-56 rounded-xl bg-white text-gray-800 shadow-xl border border-gray-200 overflow-hidden"
-                  role="menu"
-                >
-                  {[
-                    { label: "About Us", href: "/about" },
-                    { label: "Social Impact", href: "/social" },
-                    { label: "Media Wall", href: "/wall" },
-                    { label: "Vision & Mission", href: "/vision" },
-                    { label: "Our Team", href: "/team" },
-                    { label: "Careers", href: "/careers" },
-                  ].map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className="block px-5 py-3 hover:bg-sky-50 hover:text-sky-700"
-                      role="menuitem"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
 
-         {/* Product Dropdown */}
+{/* ---------------- PRODUCT DROPDOWN ---------------- */}
 <div
   className="relative group"
   onMouseEnter={() => {
@@ -147,10 +222,14 @@ export default function Navbar() {
     (window as any).productHoverTimeout = setTimeout(() => {
       setProductOpen(false);
       setHoveredCategory(null);
-    }, 250); // <-- small delay to prevent flicker
+    }, 400);
   }}
 >
-  <button className="flex items-center gap-1 hover:text-sky-500 transition">
+  <button
+    className="flex items-center gap-1 hover:text-sky-500 transition font-medium"
+    aria-haspopup="menu"
+    aria-expanded={productOpen}
+  >
     Product
     <ChevronDown
       className={`w-4 h-4 transition-transform ${
@@ -162,64 +241,71 @@ export default function Navbar() {
   <AnimatePresence>
     {productOpen && (
       <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 10 }}
-        transition={{ duration: 0.3 }}
-        className="absolute top-full left-0 mt-2 bg-white text-gray-800 rounded-xl shadow-2xl p-4 min-w-[320px] grid gap-2 border border-gray-200"
-        onMouseEnter={() => {
-          clearTimeout((window as any).productHoverTimeout);
-        }}
+        initial={{ opacity: 0, x: -40 }} // Slide from left
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -40 }}
+        transition={{ duration: 0.35, type: "spring", stiffness: 180, damping: 16 }}
+        className="absolute top-full left-0 mt-3 bg-white text-gray-800 rounded-2xl shadow-2xl p-3 
+                   w-[420px] border border-gray-200 z-50 grid gap-1"
+        onMouseEnter={() => clearTimeout((window as any).productHoverTimeout)}
         onMouseLeave={() => {
           (window as any).productHoverTimeout = setTimeout(() => {
             setProductOpen(false);
             setHoveredCategory(null);
-          }, 250);
+          }, 400);
         }}
       >
         {productMenu.map((cat, i) => (
           <div
-            key={i}
+            key={`${cat.title}-${i}`}
             className="relative group/item"
             onMouseEnter={() => {
               clearTimeout((window as any).hoverTimeout);
-              setHoveredCategory(cat.title);
+              if (cat.sub.length > 0) setHoveredCategory(cat.title);
             }}
             onMouseLeave={() => {
               (window as any).hoverTimeout = setTimeout(() => {
                 setHoveredCategory(null);
-              }, 200);
+              }, 250);
             }}
           >
-            <div className="flex items-center justify-between p-2 rounded-lg hover:bg-sky-50 cursor-pointer">
-              <span className="font-medium">{cat.title}</span>
+            {/* ---- Main Category ---- */}
+            <div className="flex items-center justify-between px-3 py-1.5 rounded-md hover:bg-sky-50 cursor-pointer transition">
+              <span className="font-medium text-[15px] flex items-center gap-2">
+                {/* 🧠 Icon section */}
+                {i === 0 && <Cpu className="w-4 h-4 text-sky-500" />} {/* IoT Gateway */}
+                {i === 1 && <MonitorSmartphone className="w-4 h-4 text-sky-500" />} {/* Dashboard */}
+                {i === 2 && <Activity className="w-4 h-4 text-sky-500" />} {/* Meters */}
+                {i === 3 && <ServerCog className="w-4 h-4 text-sky-500" />} {/* Custom HW/SW */}
+                {cat.title}
+              </span>
               {cat.sub.length > 0 && (
-                <ChevronRight className="w-4 h-4 text-gray-500 group-hover/item:text-sky-500" />
+                <ChevronRight className="w-4 h-4 text-gray-400 group-hover/item:text-sky-500" />
               )}
             </div>
 
-            {/* Submenu */}
+            {/* ---- Submenu ---- */}
             {cat.sub.length > 0 && hoveredCategory === cat.title && (
               <motion.div
-                initial={{ opacity: 0, x: 20 }}
+                initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 20 }}
-                transition={{ duration: 0.3 }}
-                className="absolute top-0 left-full ml-2 bg-white rounded-xl shadow-xl border border-gray-200 w-[300px] p-3 flex flex-col gap-2 z-50"
-                onMouseEnter={() => {
-                  clearTimeout((window as any).hoverTimeout);
-                }}
+                exit={{ opacity: 0, x: 30 }}
+                transition={{ duration: 0.25, type: "spring", stiffness: 200 }}
+                className="absolute top-0 left-full ml-2 bg-white rounded-xl shadow-xl border border-gray-200 
+                           w-[300px] p-2 flex flex-col gap-1 z-50"
+                onMouseEnter={() => clearTimeout((window as any).hoverTimeout)}
                 onMouseLeave={() => {
                   (window as any).hoverTimeout = setTimeout(() => {
                     setHoveredCategory(null);
-                  }, 200);
+                  }, 250);
                 }}
               >
                 {cat.sub.map((item, idx) => (
                   <Link
-                    key={idx}
+                    key={`${cat.title}-${idx}`}
                     href={item.href}
-                    className="text-sm text-gray-700 hover:text-sky-500 hover:bg-sky-50 px-3 py-2 rounded-lg transition"
+                    className="text-sm text-gray-700 hover:text-sky-500 hover:bg-sky-50 
+                               px-3 py-1.5 rounded-md transition"
                     onClick={() => {
                       setProductOpen(false);
                       setHoveredCategory(null);
@@ -236,57 +322,198 @@ export default function Navbar() {
     )}
   </AnimatePresence>
 </div>
+{/* ---------------- END PRODUCT DROPDOWN ---------------- */}
 
 
-          <Link href="/solutions" className="px-4 py-2 hover:text-sky-500">Solutions</Link>
-          {/* Project Dropdown */}
+{/* ---------------- SOLUTIONS DROPDOWN ---------------- */}
 <div
-  className="relative"
-  onMouseEnter={() => setProjectOpen(true)}
-  onMouseLeave={() => setProjectOpen(false)}
+  className="relative group"
+  onMouseEnter={() => {
+    clearTimeout((window as any).solutionHoverTimeout);
+    setSolutionOpen(true);
+  }}
+  onMouseLeave={() => {
+    (window as any).solutionHoverTimeout = setTimeout(() => {
+      setSolutionOpen(false);
+      setHoveredCategory(null);
+    }, 400); // 🔹 Increased timeout to give buffer while moving to submenu
+  }}
 >
   <button
-    className="flex items-center gap-1 px-4 py-2 hover:text-sky-500"
+    className="flex items-center gap-1 hover:text-sky-500 transition font-medium"
+    aria-haspopup="menu"
+    aria-expanded={solutionOpen}
+  >
+    Solutions
+    <ChevronDown
+      className={`w-4 h-4 transition-transform ${
+        solutionOpen ? "rotate-180 text-sky-400" : ""
+      }`}
+    />
+  </button>
+
+  <AnimatePresence>
+    {solutionOpen && (
+      <motion.div
+        initial={{ opacity: 0, x: -40 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -40 }}
+        transition={{ duration: 0.3, type: "spring", stiffness: 180, damping: 18 }}
+        className="absolute top-full left-0 mt-3 bg-white text-gray-800 rounded-2xl shadow-2xl 
+                   p-3 w-[350px] border border-gray-200 z-50 grid gap-1"
+        onMouseEnter={() => clearTimeout((window as any).solutionHoverTimeout)}
+        onMouseLeave={() => {
+          (window as any).solutionHoverTimeout = setTimeout(() => {
+            setSolutionOpen(false);
+            setHoveredCategory(null);
+          }, 400);
+        }}
+      >
+        {solutionMenu.map((cat, i) => (
+          <div
+            key={`${cat.title}-${i}`}
+            className="relative group/item"
+            onMouseEnter={() => {
+              clearTimeout((window as any).submenuHoverTimeout);
+              if (cat.sub) setHoveredCategory(cat.title);
+            }}
+            onMouseLeave={() => {
+              (window as any).submenuHoverTimeout = setTimeout(() => {
+                setHoveredCategory(null);
+              }, 300);
+            }}
+          >
+            {/* ---- Category with Submenu ---- */}
+            {cat.sub ? (
+              <div className="flex items-center justify-between px-3 py-1.5 
+                              rounded-md hover:bg-sky-50 cursor-pointer transition">
+              <span className="font-medium text-[15px] flex items-center gap-2">
+  {cat.icon && <cat.icon className="w-4 h-4 text-sky-500" />}
+  {cat.title}
+</span>
+
+                <ChevronRight className="w-4 h-4 text-gray-400 group-hover/item:text-sky-500" />
+              </div>
+            ) : (
+              <Link
+                href={cat.href ?? "#"}
+                className="flex items-center gap-2 px-3 py-1.5 rounded-md text-[15px] 
+                           hover:bg-sky-50 hover:text-sky-600 font-medium transition"
+                onClick={() => setSolutionOpen(false)}
+              >
+                {cat.icon && <cat.icon className="w-4 h-4 text-sky-500" />}
+                {cat.title}
+              </Link>
+            )}
+
+            {/* ---- Submenu ---- */}
+            {cat.sub && hoveredCategory === cat.title && (
+              <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 40 }}
+                transition={{ duration: 0.25, type: "spring", stiffness: 220, damping: 20 }}
+                className="absolute top-0 left-full ml-2 bg-white rounded-xl shadow-xl border 
+                           border-gray-200 w-[300px] p-2 flex flex-col gap-1 z-50"
+                onMouseEnter={() => clearTimeout((window as any).submenuHoverTimeout)}
+                onMouseLeave={() => {
+                  (window as any).submenuHoverTimeout = setTimeout(() => {
+                    setHoveredCategory(null);
+                  }, 300);
+                }}
+              >
+                {cat.sub.map((item, idx) => (
+                  <Link
+                    key={`${cat.title}-${idx}`}
+                    href={item.href}
+                    className="text-sm text-gray-700 hover:text-sky-500 hover:bg-sky-50 
+                               px-3 py-1.5 rounded-md transition"
+                    onClick={() => setSolutionOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </motion.div>
+            )}
+          </div>
+        ))}
+      </motion.div>
+    )}
+  </AnimatePresence>
+</div>
+{/* ---------------- END SOLUTIONS DROPDOWN ---------------- */}
+
+
+      {/* Project Dropdown */}
+<div
+  className="relative"
+  onMouseEnter={() => {
+    clearTimeout((window as any).projectHoverTimeout);
+    setProjectOpen(true);
+  }}
+  onMouseLeave={() => {
+    (window as any).projectHoverTimeout = setTimeout(() => {
+      setProjectOpen(false);
+    }, 200);
+  }}
+>
+  <button
+    className="flex items-center gap-1 px-4 py-2 hover:text-sky-500 transition"
     aria-haspopup="menu"
     aria-expanded={projectOpen}
   >
     Project
     <ChevronDown
       size={16}
-      className={`transition-transform ${projectOpen ? "rotate-180" : ""}`}
+      className={`transition-transform duration-200 ${projectOpen ? "rotate-180" : ""}`}
     />
   </button>
 
   <AnimatePresence>
     {projectOpen && (
       <motion.div
-        initial={{ opacity: 0, y: -8 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -8 }}
-        transition={{ duration: 0.2 }}
-        className="absolute left-0 mt-2 w-72 rounded-xl bg-white text-gray-800 shadow-xl border border-gray-200 overflow-hidden z-50"
+        initial={{ opacity: 0, scale: 0.95, x: -15 }}
+        animate={{ opacity: 1, scale: 1, x: 0 }}
+        exit={{ opacity: 0, scale: 0.95, x: -15 }}
+        transition={{ duration: 0.25, ease: "easeOut" }}
+        className="absolute left-0 mt-3 w-72 rounded-xl bg-white text-gray-800 shadow-2xl border border-gray-200 z-50 overflow-hidden"
         role="menu"
+        onMouseEnter={() => clearTimeout((window as any).projectHoverTimeout)}
+        onMouseLeave={() => {
+          (window as any).projectHoverTimeout = setTimeout(() => {
+            setProjectOpen(false);
+          }, 200);
+        }}
       >
         {[
-          { label: "Water", href: "/Nav_Project/water" },
-          { label: "Energy Management System", href: "/Nav_Project/energy-management" },
-          { label: "HVAC", href: "/Nav_Project/hvac" },
-          { label: "Solar", href: "/Nav_Project/solar" },
-          { label: "Building Management System", href: "/Nav_Project/building" },
-        ].map((item) => (
-          <Link
+          { label: "Water", href: "/Nav_Project/water", icon: "💧" },
+          { label: "Energy Management System", href: "/Nav_Project/energy-management", icon: "⚡" },
+          { label: "HVAC", href: "/Nav_Project/hvac", icon: "🌬️" },
+          { label: "Solar", href: "/Nav_Project/solar", icon: "☀️" },
+          { label: "Building Management System", href: "/Nav_Project/building", icon: "🏢" },
+        ].map((item, index) => (
+          <motion.div
             key={item.href}
-            href={item.href}
-            className="block px-5 py-3 hover:bg-sky-50 hover:text-sky-700 transition"
-            role="menuitem"
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: index * 0.05, duration: 0.2 }}
           >
-            {item.label}
-          </Link>
+            <Link
+              href={item.href}
+              className="flex items-center gap-3 px-5 py-3 hover:bg-sky-50 hover:text-sky-600 transition-all"
+              role="menuitem"
+              onClick={() => setProjectOpen(false)}
+            >
+              <span className="text-lg">{item.icon}</span>
+              <span className="font-medium">{item.label}</span>
+            </Link>
+          </motion.div>
         ))}
       </motion.div>
     )}
   </AnimatePresence>
 </div>
+
 
 
           <Link href="/case-studies" className="px-4 py-2 hover:text-sky-500">Case Studies</Link>
@@ -295,7 +522,7 @@ export default function Navbar() {
           {/* Dynamic Button (Login on home, Request Demo elsewhere) */}
           {isHomePage ? (
             <a
-              href="https://frinso.io/#/login"
+              href="https://frinso.co.in/"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-lg border border-sky-500 px-4 py-2 transition hover:bg-sky-500 hover:text-white"
@@ -322,61 +549,167 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2 }}
-            className={`md:hidden absolute top-16 left-0 w-full bg-blue-500/20 backdrop-blur-md border-t border-white/10 shadow-lg flex flex-col items-start gap-4 px-6 py-6 font-medium ${
-              scrolled ? "text-gray-800" : "text-white"
-            }`}
-          >
-            <Link href="/" onClick={() => setIsOpen(false)}>Home</Link>
+      {/* ---------------- MOBILE MENU ---------------- */}
+<AnimatePresence>
+  {isOpen && (
+    <motion.div
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -10 }}
+      transition={{ duration: 0.25 }}
+      className={`md:hidden absolute top-16 left-0 w-full bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-xl flex flex-col items-start gap-4 px-6 py-6 font-medium text-gray-800 z-[1000]`}
+    >
+      {/* --- Home --- */}
+      <Link
+        href="/"
+        onClick={() => setIsOpen(false)}
+        className="w-full px-2 py-2 hover:text-sky-600"
+      >
+        Home
+      </Link>
 
-            {/* Company (mobile collapsible) */}
-            <details className="w-full">
-              <summary className="cursor-pointer hover:text-sky-400">Company</summary>
-              <div className="ml-4 mt-2 flex flex-col gap-2 text-sm">
-                <Link href="/about" onClick={() => setIsOpen(false)}>About Us</Link>
-                <Link href="/social" onClick={() => setIsOpen(false)}>Social Impact</Link>
-                <Link href="/wall" onClick={() => setIsOpen(false)}>Media Wall</Link>
-                <Link href="/vision" onClick={() => setIsOpen(false)}>Vision & Mission</Link>
-                <Link href="/team" onClick={() => setIsOpen(false)}>Our Team</Link>
-                <Link href="/careers" onClick={() => setIsOpen(false)}>Careers</Link>
+      {/* --- Company Dropdown --- */}
+      <details className="w-full group">
+        <summary className="cursor-pointer px-2 py-2 hover:text-sky-600 flex items-center justify-between">
+          <span className="flex items-center gap-2">
+            <Building className="w-4 h-4 text-sky-500" /> Company
+          </span>
+          <ChevronDown className="w-4 h-4 text-gray-500 group-open:rotate-180 transition-transform" />
+        </summary>
+        <div className="ml-4 mt-2 flex flex-col gap-2 text-sm border-l border-gray-200 pl-3">
+          <Link href="/about" onClick={() => setIsOpen(false)}>About Us</Link>
+          <Link href="/social" onClick={() => setIsOpen(false)}>Social Impact</Link>
+          <Link href="/wall" onClick={() => setIsOpen(false)}>Media Wall</Link>
+          <Link href="/vision" onClick={() => setIsOpen(false)}>Vision & Mission</Link>
+          <Link href="/team" onClick={() => setIsOpen(false)}>Our Team</Link>
+          <Link href="/careers" onClick={() => setIsOpen(false)}>Careers</Link>
+        </div>
+      </details>
+
+      {/* --- Product Dropdown --- */}
+      <details className="w-full group">
+        <summary className="cursor-pointer px-2 py-2 hover:text-sky-600 flex items-center justify-between">
+          <span className="flex items-center gap-2">
+            <Cpu className="w-4 h-4 text-sky-500" /> Product
+          </span>
+          <ChevronDown className="w-4 h-4 text-gray-500 group-open:rotate-180 transition-transform" />
+        </summary>
+        <div className="ml-4 mt-2 flex flex-col gap-3 text-sm border-l border-gray-200 pl-3">
+          {productMenu.map((cat, i) => (
+            <details key={i} className="group">
+              <summary className="cursor-pointer py-1 hover:text-sky-600 flex items-center justify-between">
+                <span className="flex items-center gap-2 text-[14px] font-medium">
+                  {i === 0 && <Cpu className="w-4 h-4 text-sky-500" />}
+                  {i === 1 && <MonitorSmartphone className="w-4 h-4 text-sky-500" />}
+                  {i === 2 && <Activity className="w-4 h-4 text-sky-500" />}
+                  {i === 3 && <ServerCog className="w-4 h-4 text-sky-500" />}
+                  {cat.title}
+                </span>
+                {cat.sub.length > 0 && (
+                  <ChevronDown className="w-3 h-3 text-gray-500 group-open:rotate-180 transition-transform" />
+                )}
+              </summary>
+              <div className="ml-3 mt-2 flex flex-col gap-2 text-[13px] border-l border-gray-100 pl-2">
+                {cat.sub.map((item, idx) => (
+                  <Link
+                    key={idx}
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className="hover:text-sky-500"
+                  >
+                    {item.name}
+                  </Link>
+                ))}
               </div>
             </details>
+          ))}
+        </div>
+      </details>
 
-            <Link href="/product" onClick={() => setIsOpen(false)}>Product</Link>
-            <Link href="/solutions" onClick={() => setIsOpen(false)}>Solutions</Link>
-            <Link href="/projects" onClick={() => setIsOpen(false)}>Projects</Link>
-            <Link href="/case-studies" onClick={() => setIsOpen(false)}>Case Studies</Link>
-            <Link href="/contact" onClick={() => setIsOpen(false)}>Contact Us</Link>
+      {/* --- Solutions Dropdown --- */}
+      <details className="w-full group">
+        <summary className="cursor-pointer px-2 py-2 hover:text-sky-600 flex items-center justify-between">
+          <span className="flex items-center gap-2">
+            <Globe2 className="w-4 h-4 text-sky-500" /> Solutions
+          </span>
+          <ChevronDown className="w-4 h-4 text-gray-500 group-open:rotate-180 transition-transform" />
+        </summary>
+        <div className="ml-4 mt-2 flex flex-col gap-3 text-sm border-l border-gray-200 pl-3">
+          {solutionMenu.map((cat, i) => (
+            <details key={i} className="group">
+              <summary className="cursor-pointer py-1 hover:text-sky-600 flex items-center justify-between">
+                <span className="flex items-center gap-2 text-[14px] font-medium">
+                  {cat.title}
+                </span>
+                {cat.sub && (
+                  <ChevronDown className="w-3 h-3 text-gray-500 group-open:rotate-180 transition-transform" />
+                )}
+              </summary>
 
-            {/* Dynamic Button (mobile) */}
-            {isHomePage ? (
-              <a
-                href="https://frinso.io/#/login"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-lg border border-sky-500 px-4 py-2 transition hover:bg-sky-500 hover:text-white"
-              >
-                Login
-              </a>
-            ) : (
-              <Link
-                href="/contact"
-                onClick={() => setIsOpen(false)}
-                className="rounded-lg bg-sky-500 text-white px-4 py-2 transition hover:bg-sky-600 hover:scale-105"
-              >
-                Request Demo
-              </Link>
-            )}
-          </motion.div>
-        )}
-      </AnimatePresence>
+              {cat.sub && (
+                <div className="ml-3 mt-2 flex flex-col gap-2 text-[13px] border-l border-gray-100 pl-2">
+                  {cat.sub.map((item, idx) => (
+                    <Link
+                      key={idx}
+                      href={item.href}
+                      onClick={() => setIsOpen(false)}
+                      className="hover:text-sky-500"
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </details>
+          ))}
+        </div>
+      </details>
+
+      {/* --- Project Dropdown --- */}
+      <details className="w-full group">
+        <summary className="cursor-pointer px-2 py-2 hover:text-sky-600 flex items-center justify-between">
+          <span className="flex items-center gap-2">
+            <Briefcase className="w-4 h-4 text-sky-500" /> Project
+          </span>
+          <ChevronDown className="w-4 h-4 text-gray-500 group-open:rotate-180 transition-transform" />
+        </summary>
+        <div className="ml-4 mt-2 flex flex-col gap-2 text-sm border-l border-gray-200 pl-3">
+          <Link href="/Nav_Project/water" onClick={() => setIsOpen(false)}>💧 Water</Link>
+          <Link href="/Nav_Project/energy-management" onClick={() => setIsOpen(false)}>⚡ Energy Management System</Link>
+          <Link href="/Nav_Project/hvac" onClick={() => setIsOpen(false)}>🌬️ HVAC</Link>
+          <Link href="/Nav_Project/solar" onClick={() => setIsOpen(false)}>☀️ Solar</Link>
+          <Link href="/Nav_Project/building" onClick={() => setIsOpen(false)}>🏢 Building Management System</Link>
+        </div>
+      </details>
+
+      {/* --- Case Studies & Contact --- */}
+      <Link href="/case-studies" onClick={() => setIsOpen(false)} className="px-2 py-2 hover:text-sky-600">Case Studies</Link>
+      <Link href="/contact" onClick={() => setIsOpen(false)} className="px-2 py-2 hover:text-sky-600">Contact Us</Link>
+
+      {/* --- CTA Button --- */}
+      {isHomePage ? (
+        <a
+          href="https://frinso.co.in/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-3 w-full text-center rounded-lg border border-sky-500 py-2 hover:bg-sky-500 hover:text-white transition"
+        >
+          Login
+        </a>
+      ) : (
+        <Link
+          href="/contact"
+          onClick={() => setIsOpen(false)}
+          className="mt-3 w-full text-center rounded-lg bg-sky-500 text-white py-2 hover:bg-sky-600 transition"
+        >
+          Request Demo
+        </Link>
+      )}
+    </motion.div>
+  )}
+</AnimatePresence>
+{/* ---------------- END MOBILE MENU ---------------- */}
+
     </nav>
     
 

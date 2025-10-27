@@ -675,8 +675,8 @@ export default function Navbar() {
         </summary>
         <div className="ml-4 mt-2 flex flex-col gap-2 text-sm border-l border-gray-200 pl-3">
           <Link href="/Nav_Project/water" onClick={() => setIsOpen(false)}>💧 Water</Link>
-          <Link href="/Nav_Project/energy-management" onClick={() => setIsOpen(false)}>⚡ Energy Management System</Link>
-          <Link href="/Nav_Project/hvac" onClick={() => setIsOpen(false)}>🌬️ HVAC</Link>
+          <Link href="/Nav_Project/energy_manage" onClick={() => setIsOpen(false)}>⚡ Energy Management System</Link>
+          <Link href="/Nav_Project/HVAC" onClick={() => setIsOpen(false)}>🌬️ HVAC</Link>
           <Link href="/Nav_Project/solar" onClick={() => setIsOpen(false)}>☀️ Solar</Link>
           <Link href="/Nav_Project/building" onClick={() => setIsOpen(false)}>🏢 Building Management System</Link>
         </div>

@@ -8,17 +8,18 @@ import Reveal from "./Reveal";
 export default function Hero() {
   const videos = [
     {
-      src: "/video/city.mp4",
-      title: "Smart City Infrastructure",
-      desc: "IoT-powered management for utilities, water, and energy systems in urban environments — ensuring efficiency and sustainability.",
-      cta: "/contact",
-    },
-    {
       src: "/video/water.mp4",
       title: "Smart Water Management",
       desc: "Real-time monitoring for WTP, STP, and borewells with CGWA, CPCB, and JJM compliance-ready dashboards.",
       cta: "/contact",
     },
+    {
+      src: "/video/city.mp4",
+      title: "Smart City Infrastructure",
+      desc: "IoT-powered management for utilities, water, and energy systems in urban environments — ensuring efficiency and sustainability.",
+      cta: "/contact",
+    },
+  
       {
   src: "/video/retail.mp4",
   title: "Smart Retail & Commercial Spaces",

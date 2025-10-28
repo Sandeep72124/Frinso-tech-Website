@@ -181,12 +181,12 @@ export default function Navbar() {
         }}
       >
         {[
-          { label: "About Us", href: "/about", icon: "🏢" },
-          { label: "Social Impact", href: "/social", icon: "🌍" },
-          { label: "Media Wall", href: "/wall", icon: "📰" },
-          { label: "Vision & Mission", href: "/vision", icon: "🎯" },
-          { label: "Our Team", href: "/team", icon: "👥" },
-          { label: "Careers", href: "/careers", icon: "💼" },
+          { label: "About Us", href: "/Nav_Company/about", icon: "🏢" },
+          { label: "Social Impact", href: "/Nav_Company/social", icon: "🌍" },
+          { label: "Media Wall", href: "/Nav_Company/wall", icon: "📰" },
+          { label: "Vision & Mission", href: "/Nav_Company/vision", icon: "🎯" },
+          { label: "Our Team", href: "/Nav_Company/team", icon: "👥" },
+          { label: "Careers", href: "/Nav_Company/careers", icon: "💼" },
         ].map((item, index) => (
           <motion.div
             key={item.href}

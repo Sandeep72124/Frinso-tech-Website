@@ -1,91 +1,176 @@
+"use client";
+
+import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+
 export default function SolutionsSection() {
   const items = [
     {
       title: "Smart Water Management",
-      desc: "Monitor and optimize STP, WTP, and borewell operations with IoT integration.",
+      desc: "End-to-end monitoring for WTP, STP, borewells, and distribution with IoT automation and analytics.",
       icon: "💧",
       img: "/water.png",
+      href: "/nav_solutions/water/smart-flow",
     },
     {
       title: "Smart Energy Management",
-      desc: "Track energy usage, detect inefficiencies, and reduce T&D losses through analytics.",
+      desc: "Monitor energy, power quality, and asset performance — optimize consumption and improve efficiency.",
       icon: "⚡",
       img: "/energy.jpg",
+      href: "/nav_solutions/energy-power",
     },
     {
       title: "Smart HVAC Monitoring",
-      desc: "Monitor chillers, compressors, and sensors for predictive maintenance.",
+      desc: "Ensure thermal comfort and energy savings with chiller and AHU analytics using IoT sensors.",
       icon: "❄️",
       img: "/hvac.jpg",
+      href: "/nav_solutions/hvac/smart-hvac-automation",
     },
     {
       title: "Smart DG Monitoring",
-      desc: "Monitor fuel usage, detect theft, and optimize generator performance.",
+      desc: "Fuel level, runtime, load, and performance tracking with theft detection and maintenance alerts.",
       icon: "⛽",
       img: "/dg.jpg",
+      href: "/nav_solutions/dg-monitoring",
     },
     {
       title: "Smart Rail Water Monitoring",
-      desc: "IoT-enabled water management for trains — ensuring efficient refilling and tracking.",
+      desc: "IoT-enabled refilling and flow monitoring system ensuring timely and efficient water supply to trains.",
       icon: "🚉",
       img: "/rail.jpg",
+      href: "/nav_solutions/water/railway",
+    },
+    {
+      title: "Smart City SCADA",
+      desc: "Centralized dashboard for utilities — real-time data integration from multiple city assets and sites.",
+      icon: "🌆",
+      img: "/city.jpg",
+      href: "/nav_solutions/smart-city/smart-water-network",
+    },
+    {
+      title: "Industrial IoT Telemetry",
+      desc: "Connect PLCs, RTUs, and sensors across plants — track uptime, alarms, and machine efficiency.",
+      icon: "🏭",
+      img: "/industrial.jpg",
+      href: "/nav_solutions/industrial-infra",
+    },
+    {
+      title: "Water Quality Analytics",
+      desc: "Monitor pH, TDS, turbidity, and chlorine in real-time to ensure safe and compliant supply.",
+      icon: "🧪",
+      img: "/quality.jpg",
+      href: "/nav_solutions/water/smart-quality",
+    },
+    {
+      title: "Remote Pump Automation",
+      desc: "Automate pump operations and tank levels with remote control and scheduling logic.",
+      icon: "🚰",
+      img: "/pump.jpg",
+      href: "/nav_solutions/water/smart-level",
     },
   ];
 
+  const fadeUp = {
+    hidden: { opacity: 0, y: 40 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
+
+  const container = {
+    hidden: {},
+    show: {
+      transition: { staggerChildren: 0.15 },
+    },
+  };
+
   return (
-    <section className="relative py-20 bg-gradient-to-b from-[#031625] via-[#0a2540] to-[#1e3a8a] text-white overflow-hidden">
-      <div className="max-w-6xl mx-auto text-center px-6 relative z-10">
-        <h2 className="text-4xl font-bold text-sky-300 mb-12">Our Smart Solutions</h2>
+    <section className="relative py-24 bg-gradient-to-b from-[#031625] via-[#0a2540] to-[#06284a] text-white overflow-hidden">
+      {/* Animated background lights */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,rgba(56,189,248,0.1),transparent)]" />
+        <div className="absolute -top-40 left-0 w-[140%] h-[120%] bg-[url('/wave-bg.svg')] bg-cover opacity-5 animate-[waveMove_15s_linear_infinite]" />
+        <style jsx global>{`
+          @keyframes waveMove {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(-50%);
+            }
+          }
+        `}</style>
+      </div>
 
-      {/* Water ripple background animation */}
-      <div className="absolute inset-0  opacity-10 mix-blend-soft-light bg-cover bg-center animate-slowPulse"></div>
+      <div className="max-w-7xl mx-auto text-center relative z-10 px-6">
+        <motion.h2
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          className="text-4xl md:text-5xl font-bold text-sky-300 mb-4"
+        >
+          Our Smart Solutions
+        </motion.h2>
+        <motion.p
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          className="text-lg text-white/80 mb-16 max-w-3xl mx-auto"
+        >
+          Explore how Frinso Tech’s IoT + Automation platforms empower water, energy, and
+          infrastructure management with real-time visibility and smart control.
+        </motion.p>
 
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-10 px-6 relative z-10">
-        {/* Left side - solution cards */}
-        <div className="flex-1 grid sm:grid-cols-2 gap-8">
+        {/* Grid with clickable solution cards */}
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.15 }}
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10"
+        >
           {items.map((item, i) => (
-            <div
-              key={i}
-              className="relative overflow-hidden rounded-2xl shadow-lg group backdrop-blur-sm"
-            >
-              {/* Background Image */}
-              <img
-                src={item.img}
-                alt={item.title}
-                className="w-full h-64 object-cover transform group-hover:scale-110 transition-all duration-700 ease-out"
-              />
+            <Link key={i} href={item.href} className="group">
+              <motion.div
+                variants={fadeUp}
+                whileHover={{ scale: 1.05, rotateX: 4, rotateY: -3 }}
+                transition={{ type: "spring", stiffness: 180, damping: 12 }}
+                className="relative overflow-hidden rounded-2xl shadow-lg bg-white/5 border border-white/10 
+                           hover:border-sky-400/30 backdrop-blur-xl hover:shadow-[0_0_25px_rgba(56,189,248,0.25)] 
+                           transition-all duration-500"
+              >
+                {/* Image */}
+                <div className="relative h-64 w-full overflow-hidden">
+                  <Image
+                    src={item.img}
+                    alt={item.title}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0ea5e9]/70 via-[#1e3a8a]/30 to-transparent opacity-80 group-hover:opacity-90 transition-all duration-700" />
+                </div>
 
-              {/* Blue overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0ea5e9]/70 via-[#1e3a8a]/30 to-transparent group-hover:opacity-90 transition-all duration-700"></div>
+                {/* Text content */}
+                <div className="relative z-10 p-6">
+                  <div className="text-4xl mb-3 drop-shadow-lg">{item.icon}</div>
+                  <h3 className="text-xl font-semibold text-white group-hover:text-sky-300 transition">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-white/80 text-sm leading-relaxed">{item.desc}</p>
+                </div>
 
-              {/* Card content */}
-              <div className="absolute inset-0 flex flex-col justify-end p-6">
-                <div className="text-5xl mb-3 drop-shadow-lg">{item.icon}</div>
-                <h3 className="text-lg font-semibold tracking-wide mb-1">{item.title}</h3>
-                <p className="text-gray-200 text-sm leading-snug">{item.desc}</p>
-              </div>
-
-              {/* Ripple-like blue line on hover */}
-              <div className="absolute bottom-0 left-0 w-0 h-[3px] bg-gradient-to-r from-sky-400 to-cyan-300 group-hover:w-full transition-all duration-700 ease-out"></div>
-            </div>
+                {/* Glow line bottom */}
+                <div className="absolute bottom-0 left-0 w-0 h-[3px] bg-gradient-to-r from-sky-400 to-cyan-300 group-hover:w-full transition-all duration-700 ease-out"></div>
+              </motion.div>
+            </Link>
           ))}
-        </div>
-
-        {/* Right side - floating 3D human */}
-        <div className="flex-1 flex justify-center items-center relative">
-          <img
-            src="/human-3d.jpg"
-            alt="Frinso Tech 3D Human"
-            className="h-[650px] lg:h-[750px] object-contain animate-float drop-shadow-[0_0_25px_rgba(56,189,248,0.4)]"
-          />
-          {/* glowing reflection behind human */}
-          <div className="absolute inset-0 bg-gradient-radial from-sky-400/30 via-transparent to-transparent blur-3xl pointer-events-none"></div>
-        </div>
+        </motion.div>
       </div>
 
-      {/* Soft water reflection at bottom */}
-      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-sky-300/20 to-transparent blur-md"></div>
-      </div>
+      {/* Bottom reflection effect */}
+      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-sky-400/20 via-transparent to-transparent blur-xl pointer-events-none" />
     </section>
   );
 }

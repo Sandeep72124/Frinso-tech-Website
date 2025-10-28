@@ -10,7 +10,10 @@ import {
   BarChart3,
   SignalHigh,
   CloudLightning,
+  Zap,
+  Cloud,
 } from "lucide-react";
+
 export default function Footer() {
   return (
     <footer className="relative text-white overflow-hidden">
@@ -43,34 +46,74 @@ export default function Footer() {
         </div>
 
         {/* Services */}
-      {/* Services */}
+     {/* Services */}
 <div>
   <h3 className="text-xl font-semibold mb-4 text-sky-400 flex items-center gap-2">
     <Cpu className="text-sky-400 w-5 h-5" /> Services
   </h3>
   <ul className="space-y-3 text-gray-300">
-    <li className="flex items-center gap-3 hover:text-sky-400 transition">
-      <Cpu size={18} className="text-sky-400" />
-      IoT Product Design & Engineering
+    <li>
+      <a
+        href="/Nav_Product/IOT_Gatway/f1"
+        className="flex items-center gap-3 group transition"
+      >
+        <Cpu size={18} className="text-sky-400 group-hover:animate-pulse" />
+        <span className="group-hover:text-sky-400 transition">
+          IoT Product Design & Engineering
+        </span>
+      </a>
     </li>
-    <li className="flex items-center gap-3 hover:text-sky-400 transition">
-      <Droplets size={18} className="text-sky-400" />
-      Smart Water Management
+
+    <li>
+      <a
+        href="/nav_solutions/water/smart-flow"
+        className="flex items-center gap-3 group transition"
+      >
+        <Droplets size={18} className="text-sky-400 group-hover:animate-pulse" />
+        <span className="group-hover:text-sky-400 transition">
+          Smart Water Management
+        </span>
+      </a>
     </li>
-    <li className="flex items-center gap-3 hover:text-sky-400 transition">
-      <Gauge size={18} className="text-sky-400" />
-      Energy & DG Monitoring
+
+    <li>
+      <a
+        href="/nav_solutions/energy-power"
+        className="flex items-center gap-3 group transition"
+      >
+        <Gauge size={18} className="text-sky-400 group-hover:animate-pulse" />
+        <span className="group-hover:text-sky-400 transition">
+          Energy & DG Monitoring
+        </span>
+      </a>
     </li>
-    <li className="flex items-center gap-3 hover:text-sky-400 transition">
-      <ThermometerSun size={18} className="text-sky-400" />
-      Smart HVAC Automation
+
+    <li>
+      <a
+        href="/nav_solutions/hvac/smart-hvac-automation"
+        className="flex items-center gap-3 group transition"
+      >
+        <ThermometerSun size={18} className="text-sky-400 group-hover:animate-pulse" />
+        <span className="group-hover:text-sky-400 transition">
+          Smart HVAC Automation
+        </span>
+      </a>
     </li>
-    <li className="flex items-center gap-3 hover:text-sky-400 transition">
-      <MonitorSmartphone size={18} className="text-sky-400" />
-      IoT Dashboard Development
+
+    <li>
+      <a
+        href="/Nav_Product/IOT_Dashboard/scada-jjm"
+        className="flex items-center gap-3 group transition"
+      >
+        <MonitorSmartphone size={18} className="text-sky-400 group-hover:animate-pulse" />
+        <span className="group-hover:text-sky-400 transition">
+          IoT Dashboard Development
+        </span>
+      </a>
     </li>
   </ul>
 </div>
+
 
 {/* Solutions */}
 <div>
@@ -78,25 +121,115 @@ export default function Footer() {
     <Factory className="text-sky-400 w-5 h-5" /> Solutions
   </h3>
   <ul className="space-y-3 text-gray-300">
-    <li className="flex items-center gap-3 hover:text-sky-400 transition">
-      <Factory size={18} className="text-sky-400" />
-      Industrial IoT
+
+    {/* Water Solutions */}
+    <li>
+      <a
+        href="/nav_solutions/water/smart-flow"
+        className="flex items-center gap-3 hover:text-sky-400 transition"
+      >
+        <Droplets size={18} className="text-sky-400" />
+        Smart Water Management
+      </a>
     </li>
-    <li className="flex items-center gap-3 hover:text-sky-400 transition">
-      <Building2 size={18} className="text-sky-400" />
-      Smart City & Utilities
+
+    {/* Energy & Power */}
+    <li>
+      <a
+        href="/nav_solutions/ems"
+        className="flex items-center gap-3 hover:text-sky-400 transition"
+      >
+        <Zap size={18} className="text-sky-400" />
+        Energy & Power Solutions
+      </a>
     </li>
-    <li className="flex items-center gap-3 hover:text-sky-400 transition">
-      <SignalHigh size={18} className="text-sky-400" />
-      Smart Infrastructure
+
+    {/* HVAC */}
+    <li>
+      <a
+        href="/nav_solutions/hvac/smart-hvac-automation"
+        className="flex items-center gap-3 hover:text-sky-400 transition"
+      >
+        <ThermometerSun size={18} className="text-sky-400" />
+        HVAC Automation
+      </a>
     </li>
-    <li className="flex items-center gap-3 hover:text-sky-400 transition">
-      <BarChart3 size={18} className="text-sky-400" />
-      Data Analytics Platform
+
+    {/* Smart City */}
+    <li>
+      <a
+        href="/nav_solutions/smart-city/smart-water-network"
+        className="flex items-center gap-3 hover:text-sky-400 transition"
+      >
+        <Building2 size={18} className="text-sky-400" />
+        Smart City Solutions
+      </a>
     </li>
-    <li className="flex items-center gap-3 hover:text-sky-400 transition">
-      <CloudLightning size={18} className="text-sky-400" />
-      Real-time Monitoring
+
+    {/* DG Monitoring */}
+    <li>
+      <a
+        href="/nav_solutions/dg-monitoring"
+        className="flex items-center gap-3 hover:text-sky-400 transition"
+      >
+        <Factory size={18} className="text-sky-400" />
+        DG Monitoring & Fuel Management
+      </a>
+    </li>
+
+    {/* Smart Energy Management */}
+    <li>
+      <a
+        href="/nav_solutions/ems"
+        className="flex items-center gap-3 hover:text-sky-400 transition"
+      >
+        <BarChart3 size={18} className="text-sky-400" />
+        Smart Energy Management System
+      </a>
+    </li>
+
+    {/* Environmental & Compliance */}
+    <li>
+      <a
+        href="/nav_solutions/environmental-compliance"
+        className="flex items-center gap-3 hover:text-sky-400 transition"
+      >
+        <CloudLightning size={18} className="text-sky-400" />
+        Environmental Compliance & OLEMS
+      </a>
+    </li>
+
+    {/* Predictive AI */}
+    <li>
+      <a
+        href="/nav_solutions/predictive-ai"
+        className="flex items-center gap-3 hover:text-sky-400 transition"
+      >
+        <Cpu size={18} className="text-sky-400" />
+        Predictive Maintenance AI
+      </a>
+    </li>
+
+    {/* IoT Edge */}
+    <li>
+      <a
+        href="/nav_solutions/iot-edge"
+        className="flex items-center gap-3 hover:text-sky-400 transition"
+      >
+        <SignalHigh size={18} className="text-sky-400" />
+        IoT Edge / Gateway Devices
+      </a>
+    </li>
+
+    {/* Custom EMS */}
+    <li>
+      <a
+        href="/nav_solutions/custom-ems"
+        className="flex items-center gap-3 hover:text-sky-400 transition"
+      >
+        <Cloud size={18} className="text-sky-400" />
+        Custom EMS / SCADA Software
+      </a>
     </li>
   </ul>
 </div>

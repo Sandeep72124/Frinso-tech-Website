@@ -1,30 +1,56 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function ProjectsSection() {
   const projects = [
     {
-      title: "JJM – Jal Jeevan Mission Projects",
-      desc: "Automation of state water systems in Himachal, Rajasthan, Odisha & Gujarat with real-time water quality and flow monitoring.",
+      title: "💧 Water Management Projects",
+      desc: "Smart automation for WTP, STP, Borewells & Distribution — compliant with JJM, AMRUT 2.0, and CGWA norms.",
+      href: "/Nav_Project/water",
+      img: "/water.png",
     },
     {
-      title: "AMRUT 2.0 – Smart City Projects",
-      desc: "Smart prepaid water meter deployment in Mira-Bhayandar under Ministry of Housing Affairs, GOI.",
+      title: "⚡ Energy Management System (EMS)",
+      desc: "Comprehensive energy analytics for industries, smart buildings, and water utilities — monitor, optimize, save.",
+      href: "/Nav_Project/energy_manage",
+      img: "/energy.jpg",
     },
     {
-      title: "CGWA/CPCB Monitoring",
-      desc: "10,000+ flow and level sensors integrated for borewell and water body monitoring across India.",
+      title: "🌬️ HVAC Monitoring & Automation",
+      desc: "IoT-based HVAC monitoring for chillers, AHUs, and cooling systems — predictive maintenance & energy efficiency.",
+      href: "/Nav_Project/hvac",
+      img: "/hvac.jpg",
     },
     {
-      title: "Corporate Water Management",
-      desc: "IoT-enabled systems for AWFIS, DLF, Kalpataru — real-time usage tracking, leak detection, and automation.",
+      title: "☀️ Solar SCADA & Remote Monitoring",
+      desc: "Smart solar dashboards for plant efficiency, inverter control, and energy yield analytics in real time.",
+      href: "/Nav_Project/solar",
+      img: "/solar.png",
+    },
+    {
+      title: "🏢 Building Management System (BMS)",
+      desc: "Unified monitoring of lighting, DGs, HVAC, and utilities for smart buildings and corporate infrastructures.",
+      href: "/Nav_Project/building",
+      img: "/building.jpg",
     },
   ];
 
+  const fadeUp = {
+    hidden: { opacity: 0, y: 40 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  };
+
+  const container = {
+    hidden: {},
+    show: { transition: { staggerChildren: 0.15 } },
+  };
+
   return (
     <section
-      className="relative py-32 overflow-hidden text-gray-900"
+      className="relative py-28 bg-white text-gray-800 overflow-hidden"
       style={{
         backgroundImage: "url('/bg1.jpg')",
         backgroundSize: "cover",
@@ -32,64 +58,85 @@ export default function ProjectsSection() {
         backgroundRepeat: "no-repeat",
       }}
     >
-      {/* Overlay for readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-sky-50/60 to-white/80 backdrop-blur-[2px]"></div>
+      {/* Light overlay */}
+      <div className="absolute inset-0 bg-white/85 backdrop-blur-[2px]" />
 
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 px-6 relative z-10">
-        {/* Left side - Floating image */}
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        {/* Section Header */}
         <motion.div
-          className="flex-1 flex justify-center items-center relative"
-          initial={{ opacity: 0, x: -100 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true, amount: 0.3 }}
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: -40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
         >
-          <motion.img
-            src="/hand.png" 
-            alt="Frinso Smart Project Visualization"
-            className="h-[500px] lg:h-[600px] object-contain drop-shadow-[0_0_25px_rgba(56,189,248,0.4)]"
-            animate={{ x: [0, -15, 0] }}
-            transition={{
-              duration: 5,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-radial from-sky-400/25 via-transparent to-transparent blur-3xl"></div>
+          <h2 className="text-4xl font-bold text-sky-700">
+            Our Key Projects & Deployments
+          </h2>
+          <p className="mt-3 text-gray-600 max-w-2xl mx-auto">
+            Explore Frinso’s smart automation projects — integrating IoT, SCADA,
+            and analytics across water, energy, HVAC, solar, and building sectors.
+          </p>
         </motion.div>
 
-        {/* Right side - Project cards */}
+        {/* Project Cards Grid */}
         <motion.div
-          className="flex-1 grid md:grid-cols-1 gap-8"
-          initial={{ opacity: 0, x: 100 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true, amount: 0.3 }}
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10"
         >
-          <h2 className="text-4xl font-bold text-sky-700 mb-8 text-left">
-            Key Projects & Deployments
-          </h2>
-
           {projects.map((p, i) => (
             <motion.div
               key={i}
-              className="relative p-6 bg-white/70 backdrop-blur-md rounded-2xl shadow-lg hover:shadow-2xl transition-all hover:-translate-y-1"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: i * 0.2 }}
-              viewport={{ once: true }}
+              variants={fadeUp}
+              whileHover={{
+                scale: 1.04,
+                y: -6,
+                boxShadow:
+                  "0 12px 28px rgba(56,189,248,0.25), 0 4px 10px rgba(0,0,0,0.1)",
+              }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="group relative overflow-hidden rounded-2xl bg-white border border-sky-100 shadow-lg hover:shadow-2xl cursor-pointer"
             >
-              {/* Accent line */}
-              <div className="absolute left-0 top-0 h-full w-[5px] bg-gradient-to-b from-sky-400 to-cyan-400 rounded-l-xl"></div>
+              {/* Image */}
+              <div className="relative h-52 overflow-hidden">
+                <Image
+                  src={p.img}
+                  alt={p.title}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-sky-900/40 via-sky-600/10 to-transparent opacity-70"></div>
+              </div>
 
-              <h3 className="text-xl font-semibold text-gray-800 mb-2 ml-4">
-                {p.title}
-              </h3>
-              <p className="text-gray-600 ml-4">{p.desc}</p>
+              {/* Content */}
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-sky-700 mb-2">
+                  {p.title}
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                  {p.desc}
+                </p>
+
+                <Link
+                  href={p.href}
+                  className="inline-flex items-center gap-2 text-sky-600 font-medium hover:text-sky-500 transition"
+                >
+                  View Project →
+                </Link>
+              </div>
+
+              {/* Hover Accent Line */}
+              <div className="absolute bottom-0 left-0 h-[4px] w-0 bg-gradient-to-r from-sky-500 to-cyan-400 group-hover:w-full transition-all duration-700 ease-out"></div>
             </motion.div>
           ))}
         </motion.div>
       </div>
+
+      {/* bottom fade */}
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-sky-200/30 to-transparent blur-md"></div>
     </section>
   );
 }

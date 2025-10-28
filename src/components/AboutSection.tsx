@@ -86,7 +86,7 @@ export default function AboutSection() {
 
             {/* Button */}
             <Link
-              href="/about"
+              href="/Nav_Company/about"
               className="flex items-center gap-2 rounded-full bg-[#0047BB] px-6 py-3 text-white font-semibold shadow-lg hover:bg-[#005CE6] hover:scale-105 transition-all"
             >
               More About Us

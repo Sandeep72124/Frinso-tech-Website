@@ -179,7 +179,7 @@ export default function TeamPage() {
             for passionate minds to join our mission.
           </p>
           <a
-            href="/careers"
+            href="/Nav_Company/careers"
             className="inline-block bg-sky-600 hover:bg-sky-500 text-white px-6 py-3 rounded-xl transition shadow-lg hover:scale-105"
           >
             Join Our Team

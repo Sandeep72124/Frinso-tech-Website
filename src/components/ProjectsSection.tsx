@@ -36,12 +36,12 @@ export default function ProjectsSection() {
       href: "/Nav_Project/building",
       img: "/building.jpg",
     },
-   {
+    {
     title: "🚉 Railway Water Monitoring Projects",
     desc: "IoT-enabled railway water management for automated tank refilling, leak detection, and real-time SCADA integration across depots and stations.",
     href: "/Nav_Project/railway",
     img: "/rail.jpg",
-  },  
+  },
   ];
 
   const fadeUp = {

@@ -1,81 +1,161 @@
 "use client";
 
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { FileText, Droplets, Gauge, Zap, Factory, Building2 } from "lucide-react";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 
-export default function CaseStudiesPage() {
+export default function CaseStudiesPreview() {
   const cases = [
     {
-      title: "Smart Water Analytics – Himachal Pradesh",
-      desc: "Real-time water quality and flow analytics reduced manual sampling by 90%, improving transparency in rural water schemes.",
-      img: "/case-studies/himachal.jpg",
-      impact: "90% reduction in manual reporting",
+      icon: <Droplets className="text-sky-400 w-6 h-6" />,
+      title: "Smart Water Utility – Jal Jeevan Mission",
+      result: "30% reduction in NRW & 99.5% uptime achieved",
+      desc: "Deployed IoT-based flow and level monitoring across multiple DMAs with real-time dashboards, CGWA-compliant auto reporting, and AI-based leakage alerts. Integrated with WTP, STP, and OHSR automation systems.",
+      location: "Himachal Pradesh, Rajasthan, Odisha",
+      href: "/case-studies/water-utility",
+      image: "/case/water_case.jpg",
     },
     {
-      title: "DLF Corporate Smart Water Monitoring",
-      desc: "IoT water metering across 20+ buildings enabled leak detection and predictive maintenance, saving 15% water annually.",
-      img: "/case-studies/dlf.jpg",
-      impact: "15% annual water savings",
+      icon: <Gauge className="text-sky-400 w-6 h-6" />,
+      title: "Industrial EMS Deployment – Automotive Sector",
+      result: "15% reduction in monthly energy bills",
+      desc: "End-to-end EMS solution integrating energy meters, DG sets, and HVAC systems into a unified SCADA dashboard. Achieved power factor improvement and peak load optimization through automated alerts and reports.",
+      location: "Pune, Maharashtra",
+      href: "/case-studies/ems-industrial",
+      image: "/case/ems_case.jpg",
     },
     {
-      title: "AMRUT 2.0 – Smart City Prepaid Meters",
-      desc: "Automated water billing and flow monitoring for 30,000+ consumers with instant recharge and app-based control.",
-      img: "/case-studies/amrut.jpg",
-      impact: "Automated consumer billing system",
+      icon: <Zap className="text-sky-400 w-6 h-6" />,
+      title: "Smart DG Monitoring – Corporate Tower",
+      result: "Fuel theft reduced by 90% with real-time visibility",
+      desc: "IoT-based fuel sensors, DG runtime tracking, and SMS/email alerts implemented for multi-tower infrastructure. Cloud dashboard enabled predictive maintenance and daily consumption insights.",
+      location: "Gurgaon, Haryana",
+      href: "/case-studies/dg-monitoring",
+      image: "/case/dg_case.jpg",
+    },
+    {
+      icon: <Factory className="text-sky-400 w-6 h-6" />,
+      title: "Smart STP Monitoring – Industrial Estate",
+      result: "Achieved CPCB compliance automation",
+      desc: "Real-time monitoring of DO, pH, turbidity, and flow with automated data submission to the CPCB portal. Included remote SCADA control and maintenance scheduling using Frinso Cloud AI module.",
+      location: "Vadodara, Gujarat",
+      href: "/case-studies/stp-monitoring",
+      image: "/case/stp_case.jpg",
+    },
+    {
+      icon: <Building2 className="text-sky-400 w-6 h-6" />,
+      title: "Smart Building BMS Integration",
+      result: "40% reduction in manual monitoring costs",
+      desc: "Combined lighting, HVAC, water, and DG data streams into a single dashboard for real-time decision-making. Implemented predictive alerts and energy benchmarking across corporate campuses.",
+      location: "Mumbai, Maharashtra",
+      href: "/case-studies/bms",
+      image: "/case/bms_case.jpg",
     },
   ];
 
+  const fadeUp = {
+    hidden: { opacity: 0, y: 40 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
+
   return (
-    <main className="min-h-screen flex flex-col bg-gradient-to-b from-[#031625] via-[#0a2540] to-[#1e3a8a] text-white">
-      <Navbar />
-
-      {/* Hero Section */}
-      <section className="relative h-[60vh] flex flex-col justify-center items-center text-center">
-        <motion.img
-          src="/case-bg.jpg"
-          alt="Case Studies Background"
-          className="absolute inset-0 w-full h-full object-cover opacity-40"
+    <>
+    <Navbar/>
+    <section className="relative py-24 bg-[#071827] text-white overflow-hidden">
+      {/* Animated gradient & grid background */}
+      <div className="absolute inset-0">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)",
+            backgroundSize: "40px 40px",
+            opacity: 0.15,
+          }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-[#0a2540]/80"></div>
-        <motion.h1
-          className="text-5xl md:text-6xl font-bold relative z-10"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-        >
-          Case <span className="text-sky-400">Studies</span>
-        </motion.h1>
-        <p className="text-white/90 mt-4 max-w-2xl relative z-10">
-          Real-world impact of Frinso’s IoT innovation across India.
-        </p>
-      </section>
+        <div className="absolute -inset-[20%] animate-[spin_25s_linear_infinite] rounded-full"
+          style={{
+            background:
+              "conic-gradient(from 180deg at 50% 50%, rgba(56,189,248,0.1), rgba(2,132,199,0.15), transparent 40%)",
+            filter: "blur(50px)",
+          }}
+        />
+      </div>
 
-      {/* Case Studies */}
-      <section className="py-20 max-w-7xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+      {/* Header */}
+      <div className="max-w-7xl mx-auto text-center relative z-10 px-6">
+        <motion.h2
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-4xl md:text-5xl font-bold text-sky-300"
+        >
+          Case Studies & Success Stories
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          viewport={{ once: true }}
+          className="mt-4 text-white/80 max-w-2xl mx-auto"
+        >
+          Explore how Frinso Tech has empowered utilities, industries, and smart cities with 
+          connected IoT and SCADA solutions — improving efficiency, compliance, and sustainability.
+        </motion.p>
+      </div>
+
+      {/* Case Study Cards */}
+      <div className="relative z-10 mt-16 max-w-7xl mx-auto px-6 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
         {cases.map((c, i) => (
           <motion.div
             key={i}
-            className="relative bg-white/10 rounded-2xl overflow-hidden backdrop-blur-md shadow-lg hover:shadow-sky-400/30 transition-all duration-500"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={fadeUp}
+            transition={{ delay: i * 0.2 }}
+            className="group relative rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm overflow-hidden shadow-lg hover:shadow-sky-500/30 hover:scale-[1.03] transition-all"
           >
-            <img
-              src={c.img}
-              alt={c.title}
-              className="w-full h-56 object-cover hover:scale-105 transition-transform duration-700"
-            />
+            {/* Background Image */}
+            <div className="relative h-52 overflow-hidden">
+              <img
+                src={c.image}
+                alt={c.title}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+            </div>
+
+            {/* Content */}
             <div className="p-6">
-              <h3 className="text-xl font-semibold text-sky-300 mb-2">{c.title}</h3>
-              <p className="text-gray-200 text-sm mb-3">{c.desc}</p>
-              <div className="text-sm text-sky-400 font-medium">
-                🌟 {c.impact}
+              <div className="flex items-center gap-2 mb-3">
+                {c.icon}
+                <h3 className="text-lg font-semibold">{c.title}</h3>
               </div>
+              <p className="text-sm text-white/80 mb-3">{c.desc}</p>
+              <p className="text-sm text-sky-400 font-medium">{c.result}</p>
+              <p className="text-xs text-gray-400 mt-1">{c.location}</p>
+
+              {/* CTA */}
+              <Link
+                href={c.href}
+                className="mt-4 inline-flex items-center gap-2 text-sky-400 text-sm font-medium hover:text-sky-300 transition"
+              >
+                <FileText size={16} />
+                Read Full Case Study
+              </Link>
             </div>
           </motion.div>
         ))}
-      </section>
+      </div>
 
-      <Footer />
-    </main>
+      {/* Bottom Accent */}
+      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-sky-500/10 to-transparent blur-3xl"></div>
+    </section>
+    <Footer/>
+    </>
   );
 }

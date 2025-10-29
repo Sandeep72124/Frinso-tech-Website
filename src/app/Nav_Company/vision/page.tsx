@@ -1,17 +1,22 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Target, Globe2, Zap, HeartHandshake, Lightbulb } from "lucide-react";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const fadeUp = {
+// ✅ Framer Motion Variants (TypeScript-safe)
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }, // fixed ease array
+  },
 };
 
-const stagger = {
+const stagger: Variants = {
   hidden: {},
   show: { transition: { staggerChildren: 0.15 } },
 };
@@ -48,7 +53,8 @@ export default function VisionMissionPage() {
             variants={fadeUp}
             className="mt-5 text-lg text-white/85 leading-relaxed"
           >
-            Empowering sustainable infrastructure through connected intelligence — bridging technology, environment, and communities.
+            Empowering sustainable infrastructure through connected intelligence — 
+            bridging technology, environment, and communities.
           </motion.p>
         </motion.div>
       </section>
@@ -92,7 +98,7 @@ export default function VisionMissionPage() {
             className="relative"
             initial={{ opacity: 0, x: 80 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             viewport={{ once: true }}
           >
             <div className="absolute inset-0 bg-gradient-radial from-sky-400/20 via-transparent to-transparent blur-3xl" />
@@ -114,7 +120,7 @@ export default function VisionMissionPage() {
             className="order-2 md:order-1 relative"
             initial={{ opacity: 0, x: -80 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             viewport={{ once: true }}
           >
             <div className="absolute inset-0 bg-gradient-radial from-sky-400/25 via-transparent to-transparent blur-3xl" />
@@ -175,7 +181,7 @@ export default function VisionMissionPage() {
             Building the Future, Sustainably
           </h2>
           <p className="text-white/85 mb-8">
-            Every line of code, every deployed sensor, and every dashboard we create —
+            Every line of code, every deployed sensor, and every dashboard we create — 
             brings us one step closer to a connected and sustainable tomorrow.
           </p>
         </motion.div>

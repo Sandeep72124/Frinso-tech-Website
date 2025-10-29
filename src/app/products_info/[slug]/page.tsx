@@ -1,14 +1,22 @@
+"use client";
+
+import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
-const productData = {
+// ✅ Product data map
+const productData: Record<
+  string,
+  { title: string; image: string; description: string }
+> = {
   "Edge_Device": {
     title: "Frinso V1 IoT Edge Device",
     image: "/product-edge.png",
     description:
       "Battery-based 4G IoT Gateway and Controller for Industrial IoT applications — enabling Industry 4.0 integration with Modbus, LoRa, and MQTT.",
   },
-  "prepared water meter": {
+  "prepared-water-meter": {
     title: "Smart Ultrasonic Water Meter",
     image: "/prepared_watermeter.png",
     description:
@@ -26,7 +34,7 @@ const productData = {
     description:
       "Energy-efficient HVAC control system with IoT-based remote monitoring and analytics for smart buildings.",
   },
-  "ultrasonic": {
+  ultrasonic: {
     title: "Smart Ultrasonic IoT Level Sensor",
     image: "/ultra.jpg",
     description:
@@ -38,51 +46,90 @@ const productData = {
     description:
       "Rugged industrial-grade device for seamless connection of field instruments, sensors, and actuators to the cloud.",
   },
-  "air": {
+  air: {
     title: "Air Quality & Noise Monitoring Device",
     image: "/air.png",
     description:
-      "Rugged industrial-grade device for seamless connection of field instruments, sensors, and actuators to the cloud.",
+      "Advanced IoT-based system for real-time monitoring of air pollutants and noise levels in urban and industrial environments.",
   },
-
 };
 
-export default function ProductPage({ params }) {
+// ✅ Framer Motion variants
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
+
+// ✅ Page Component
+export default function ProductPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const product = productData[params.slug];
 
   if (!product) {
-    return (
-      <div className="text-center py-20 text-white">
-        <h2 className="text-2xl font-semibold">Product not found</h2>
-        <Link href="/" className="text-sky-400 underline mt-4 block">
-          Go Back
-        </Link>
-      </div>
-    );
+    notFound();
   }
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-[#0f2027] via-[#203a43] to-[#2c5364] text-white flex flex-col items-center py-16 px-6">
-      <div className="max-w-3xl text-center">
-        <h1 className="text-4xl font-bold text-sky-300 mb-6">{product.title}</h1>
-        <Image
-          src={product.image}
-          alt={product.title}
-          width={600}
-          height={400}
-          className="rounded-2xl shadow-lg mb-8"
-        />
-        <p className="text-gray-200 text-lg leading-relaxed mb-8">
+    <motion.section
+      initial="hidden"
+      animate="show"
+      variants={fadeUp}
+      className="relative min-h-screen flex flex-col items-center justify-center py-20 px-6 text-white bg-gradient-to-br from-[#0f2027] via-[#203a43] to-[#2c5364] overflow-hidden"
+    >
+      {/* Subtle background gradient glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.08),transparent_70%)] pointer-events-none"></div>
+
+      {/* Product Card */}
+      <motion.div
+        variants={fadeUp}
+        className="relative z-10 max-w-3xl w-full text-center rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md shadow-2xl p-10"
+      >
+        <motion.h1
+          variants={fadeUp}
+          className="text-4xl md:text-5xl font-bold text-sky-300 mb-8"
+        >
+          {product.title}
+        </motion.h1>
+
+        {/* Image */}
+        <motion.div
+          variants={fadeUp}
+          className="relative w-full h-[350px] md:h-[400px] mb-8"
+        >
+          <Image
+            src={product.image}
+            alt={product.title}
+            fill
+            className="object-contain rounded-2xl border border-sky-300/20 shadow-lg"
+          />
+        </motion.div>
+
+        {/* Description */}
+        <motion.p
+          variants={fadeUp}
+          className="text-gray-200 text-lg leading-relaxed mb-10"
+        >
           {product.description}
-        </p>
+        </motion.p>
+
+        {/* Back button */}
         <Link
-          href="/"
-          className="inline-block bg-sky-500/20 hover:bg-sky-500/40 text-sky-300 rounded-full px-6 py-2 transition"
+          href="/Nav_Product"
+          className="inline-block bg-sky-600 hover:bg-sky-500 text-white rounded-full px-8 py-3 font-medium tracking-wide transition-transform hover:scale-105 shadow-md"
         >
           ← Back to Products
         </Link>
-      </div>
-    </section>
-    
+      </motion.div>
+
+      {/* Bottom reflection */}
+      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-sky-300/20 to-transparent blur-md"></div>
+    </motion.section>
   );
 }

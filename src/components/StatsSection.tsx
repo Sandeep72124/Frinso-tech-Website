@@ -5,8 +5,23 @@ import { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { Users, Building2, Activity, Cpu } from "lucide-react";
 
+// ✅ Define TypeScript interfaces
+interface Stat {
+  id: string;
+  icon: React.ReactNode;
+  number: number;
+  label: string;
+  color: string;
+  suffix: string;
+}
+
+interface AnimatedCardProps {
+  stat: Stat;
+  index: number;
+}
+
 export default function StatsSection() {
-  const stats = [
+  const stats: Stat[] = [
     {
       id: "01",
       icon: <Users className="w-8 h-8 text-white" />,
@@ -55,14 +70,15 @@ export default function StatsSection() {
   );
 }
 
-function AnimatedCard({ stat, index }) {
+// ✅ Typed AnimatedCard Component
+function AnimatedCard({ stat, index }: AnimatedCardProps) {
   const controls = useAnimation();
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement | null>(null);
   const { ref: inViewRef, inView } = useInView({ triggerOnce: true });
   const [count, setCount] = useState(0);
 
-  // Merge both refs
-  const setRefs = (node) => {
+  // Merge refs
+  const setRefs = (node: HTMLDivElement | null) => {
     ref.current = node;
     inViewRef(node);
   };
@@ -73,11 +89,13 @@ function AnimatedCard({ stat, index }) {
       const end = stat.number;
       const duration = 2000;
       const stepTime = Math.abs(Math.floor(duration / end));
+
       const timer = setInterval(() => {
         start += 1;
         setCount(start);
         if (start === end) clearInterval(timer);
       }, stepTime);
+
       return () => clearInterval(timer);
     }
   }, [inView, stat.number]);
@@ -109,7 +127,7 @@ function AnimatedCard({ stat, index }) {
         </p>
       </div>
 
-      {/* Small Badge */}
+      {/* Badge */}
       <span className="absolute top-3 right-3 bg-sky-500 text-white text-xs font-semibold px-2 py-1 rounded-full shadow-sm">
         {stat.id}
       </span>

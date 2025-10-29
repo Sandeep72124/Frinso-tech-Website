@@ -69,7 +69,7 @@ export default function ProductsSection() {
     products[(index + 2) % products.length],
   ];
 
-  const goToProductPage = (slug) => {
+  const goToProductPage = (slug:String) => {
     router.push(`/products_info/${slug}`);
   };
 

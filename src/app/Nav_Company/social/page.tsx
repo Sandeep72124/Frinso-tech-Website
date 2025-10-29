@@ -1,19 +1,23 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { HeartHandshake, Leaf, Globe2, Droplets, Recycle, Users } from "lucide-react";
 
-// Animations
-const fadeUp = {
+// ✅ Define proper typed animations
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }, // fixed easing
+  },
 };
 
-const stagger = {
+const stagger: Variants = {
   hidden: {},
   show: { transition: { staggerChildren: 0.15 } },
 };

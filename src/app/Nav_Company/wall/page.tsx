@@ -1,18 +1,23 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Newspaper, Trophy, Star, Camera, Youtube, Globe2 } from "lucide-react";
 
-const fadeUp = {
+// ✅ Framer Motion Variants (TypeScript safe)
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] },
+  },
 };
 
-const stagger = {
+const stagger: Variants = {
   hidden: {},
   show: { transition: { staggerChildren: 0.15 } },
 };
@@ -31,7 +36,7 @@ export default function MediaWallPage() {
           className="object-cover opacity-70"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-[#081420]/90"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-[#081420]/90" />
 
         <motion.div
           initial="hidden"
@@ -125,15 +130,16 @@ export default function MediaWallPage() {
                 variants={fadeUp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-sky-400/10 hover:border-sky-400/40 transition-all"
+                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-sky-400/10 hover:border-sky-400/40 transition-all duration-500"
               >
-                <Image
-                  src={img}
-                  alt={title}
-                  width={800}
-                  height={600}
-                  className="h-52 w-full object-cover opacity-80 group-hover:opacity-100 transition"
-                />
+                <div className="relative h-52 overflow-hidden">
+                  <Image
+                    src={img}
+                    alt={title}
+                    fill
+                    className="object-cover opacity-80 group-hover:opacity-100 transition-transform duration-700 group-hover:scale-110"
+                  />
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0b1e32]/90 via-[#0b1e32]/50 to-transparent"></div>
                 <div className="absolute bottom-0 p-5">
                   <Icon className="h-6 w-6 text-sky-300 mb-2" />

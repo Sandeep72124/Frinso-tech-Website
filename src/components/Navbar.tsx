@@ -26,6 +26,18 @@ export default function Navbar() {
   }, []);
 
   const isHomePage = pathname === "/";
+  type SubItem = {
+  name: string;
+  href: string;
+};
+
+type MenuCategory = {
+  title: string;
+  href?: string;
+  icon?: React.ElementType; 
+  sub?: SubItem[];
+};
+
   const productMenu = [
     {
       title: "IoT Gateway / Modems / RTU / Telemetry / Data Loggers",
@@ -336,7 +348,7 @@ export default function Navbar() {
     (window as any).solutionHoverTimeout = setTimeout(() => {
       setSolutionOpen(false);
       setHoveredCategory(null);
-    }, 400); // 🔹 Increased timeout to give buffer while moving to submenu
+    }, 400); // buffer for submenu hover
   }}
 >
   <button
@@ -369,7 +381,7 @@ export default function Navbar() {
           }, 400);
         }}
       >
-        {solutionMenu.map((cat, i) => (
+        {solutionMenu.map((cat: any, i: number) => (
           <div
             key={`${cat.title}-${i}`}
             className="relative group/item"
@@ -385,12 +397,17 @@ export default function Navbar() {
           >
             {/* ---- Category with Submenu ---- */}
             {cat.sub ? (
-              <div className="flex items-center justify-between px-3 py-1.5 
-                              rounded-md hover:bg-sky-50 cursor-pointer transition">
-              <span className="font-medium text-[15px] flex items-center gap-2">
-  {cat.icon && <cat.icon className="w-4 h-4 text-sky-500" />}
-  {cat.title}
-</span>
+              <div
+                className="flex items-center justify-between px-3 py-1.5 
+                            rounded-md hover:bg-sky-50 cursor-pointer transition"
+              >
+                <span className="font-medium text-[15px] flex items-center gap-2">
+                  {/* Safe icon rendering — works even if icon undefined */}
+                  {cat.icon && typeof cat.icon === "function" && (
+                    <cat.icon className="w-4 h-4 text-sky-500" />
+                  )}
+                  {cat.title}
+                </span>
 
                 <ChevronRight className="w-4 h-4 text-gray-400 group-hover/item:text-sky-500" />
               </div>
@@ -401,7 +418,9 @@ export default function Navbar() {
                            hover:bg-sky-50 hover:text-sky-600 font-medium transition"
                 onClick={() => setSolutionOpen(false)}
               >
-                {cat.icon && <cat.icon className="w-4 h-4 text-sky-500" />}
+                {cat.icon && typeof cat.icon === "function" && (
+                  <cat.icon className="w-4 h-4 text-sky-500" />
+                )}
                 {cat.title}
               </Link>
             )}
@@ -422,7 +441,7 @@ export default function Navbar() {
                   }, 300);
                 }}
               >
-                {cat.sub.map((item, idx) => (
+                {cat.sub.map((item: any, idx: number) => (
                   <Link
                     key={`${cat.title}-${idx}`}
                     href={item.href}
@@ -442,7 +461,6 @@ export default function Navbar() {
   </AnimatePresence>
 </div>
 {/* ---------------- END SOLUTIONS DROPDOWN ---------------- */}
-
 
       {/* Project Dropdown */}
 <div

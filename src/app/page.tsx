@@ -21,13 +21,13 @@ export default function HomePage() {
       <Hero />
       <StatsSection />
       <PartnersSection /> 
-     <AboutSection/>
+      <AboutSection/>
       <ProductsSection />
       <ProjectsSection />
       <SolutionsSection />
       <DashboardShowcase/>
-       <AwardsSection />
-       <VisionMissionSection/>
+      <AwardsSection />
+      <VisionMissionSection/>
       <ClientsSection />
       <WhyUs />
       <CTA />

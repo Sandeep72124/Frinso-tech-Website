@@ -162,7 +162,7 @@ export default function ScadaSolarPage() {
           Get complete control and visibility of your solar plant performance — anytime, anywhere.
         </p>
         <Link
-          href="/contact"
+          href="/demo"
           className="inline-block rounded-lg bg-white text-sky-700 px-6 py-3 font-medium hover:bg-sky-100 hover:scale-105 transition"
         >
           Request Demo

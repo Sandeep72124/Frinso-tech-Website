@@ -13,6 +13,75 @@ export default function ProjectsSection() {
   };
 
   const projects = [
+     {
+      title: "🚰 24×7 Drinking Water Supply Projects",
+      desc: "Real-time flow, pressure, and level automation ensuring uninterrupted water supply under Jal Jeevan Mission & AMRUT 2.0 initiatives.",
+      slug: "drinking_water_24x7",
+      img: "/water24.png",
+    },
+    
+    {
+      title: "🚜 Smart Irrigation & Agricultural Water Systems",
+      desc: "IoT-enabled irrigation automation for optimizing water use, conserving energy, and improving agricultural productivity in rural and urban areas.",
+      slug: "smart_irrigation",
+      img: "/smart_irrigation.png",
+    },
+    
+    {
+      title: "🏗️ Smart Urban Infrastructure",
+      desc: "End-to-end IoT automation for municipal infrastructure — smart drainage, pipeline SCADA, and streetlight management systems.",
+      slug: "urban_infrastructure",
+      img: "/urban_infra.jpg",
+    },
+     {
+      title: "⚙️ WTP/STP/ETP Automation",
+      desc: "Advanced PLC/SCADA-based automation for water and wastewater treatment plants with real-time monitoring and remote control.",
+      slug: "wtp_stp_etp",
+      img: "/wtp_stp_etp.jpg",
+    },
+     {
+      title: "🚉 Railway Water Monitoring Projects",
+      desc: "IoT-enabled railway water management for automated tank refilling, leak detection, and real-time SCADA integration across depots and stations.",
+      slug: "railway",
+      img: "/rail.jpg",
+    },
+    {
+      title: "📜 Regulatory-Compliant CGWA/CPCB Projects",
+      desc: "Automated reporting systems and water abstraction monitoring ensuring compliance with CGWA and CPCB standards.",
+      slug: "cgwa_cpcb",
+      img: "/cgwa_cpcb.jpg",
+    },
+    {
+      title: "🏪 Smart Retail & Food Outlets",
+      desc: "Real-time monitoring of refrigeration, energy, and environmental parameters for retail chains and food businesses.",
+      slug: "retail_food",
+      img: "/smart_retail.jpg",
+    }, 
+    {
+      title: "🏙️ Smart City Ecosystems",
+      desc: "Integrated IoT and SCADA-based infrastructure enabling efficient water, energy, lighting, and waste management in Smart Cities across India.",
+      slug: "smart_city",
+      img: "/smart_city.jpg",
+    }, 
+   
+    {
+      title: "🌫️ Air Quality & Ambient Monitoring",
+      desc: "IoT sensors and AI-based analytics for air quality and ambient environment monitoring — real-time AQI dashboards.",
+      slug: "air_quality",
+      img: "/air_quality.jpg",
+    },
+    {
+      title: "💡 Smart Lighting & Streetlight Automation",
+      desc: "Smart CCMS streetlight control and real-time fault detection for cities, campuses, and industrial zones.",
+      slug: "smart_lighting",
+      img: "/smart_lighting.png",
+    },
+    {
+      title: "⚡ Smart Grids & Energy Automation",
+      desc: "IoT and SCADA-powered smart grid management — enabling energy balancing, fault detection, and predictive maintenance.",
+      slug: "smart_grids",
+      img: "/smart_grid.jpg",
+    },
     {
       title: "💧 Water Management Projects",
       desc: "Smart automation for WTP, STP, Borewells & Distribution — compliant with JJM, AMRUT 2.0, and CGWA norms.",
@@ -43,12 +112,7 @@ export default function ProjectsSection() {
       slug: "building",
       img: "/building.jpg",
     },
-    {
-      title: "🚉 Railway Water Monitoring Projects",
-      desc: "IoT-enabled railway water management for automated tank refilling, leak detection, and real-time SCADA integration across depots and stations.",
-      slug: "railway",
-      img: "/rail.jpg",
-    },
+   
   ];
 
   // ✅ Framer motion variants
@@ -103,7 +167,7 @@ export default function ProjectsSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10"
+          className="grid sm:grid-cols-3 lg:grid-cols-4 gap-10"
         >
           {projects.map((p, i) => (
             <motion.div
@@ -113,7 +177,7 @@ export default function ProjectsSection() {
                 scale: 1.04,
                 y: -6,
                 boxShadow:
-                  "0 12px 28px rgba(56,189,248,0.25), 0 4px 10px rgba(0,0,0,0.1)",
+                  "0 1px 28px rgba(56,189,248,0.25), 0 4px 10px rgba(0,0,0,0.1)",
               }}
               transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
               className="group relative overflow-hidden rounded-2xl bg-white border border-sky-100 shadow-lg hover:shadow-2xl cursor-pointer"
@@ -131,7 +195,7 @@ export default function ProjectsSection() {
               </div>
 
               {/* Text Content */}
-              <div className="p-6">
+              <div className="p-1">
                 <h3 className="text-xl font-semibold text-sky-700 mb-2">
                   {p.title}
                 </h3>

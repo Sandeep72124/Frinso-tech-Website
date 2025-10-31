@@ -13,6 +13,14 @@ import {
   Zap,
   Cloud,
 } from "lucide-react";
+import {
+
+  Server,
+  BrainCircuit,
+  BellRing,
+  Waves,
+ 
+} from "lucide-react";
 
 export default function Footer() {
   return (
@@ -45,13 +53,85 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Services */}
-     {/* Services */}
+    {/* Services */}
 <div>
   <h3 className="text-xl font-semibold mb-4 text-sky-400 flex items-center gap-2">
     <Cpu className="text-sky-400 w-5 h-5" /> Services
   </h3>
   <ul className="space-y-3 text-gray-300">
+    {/* Existing Services (Kept as-is) */}
+     {/* ✅ Newly Added Services */}
+    <li>
+      <a
+        href="/nav_solutions/scada"
+        className="flex items-center gap-3 group transition"
+      >
+        <Server size={18} className="text-sky-400 group-hover:animate-pulse" />
+        <span className="group-hover:text-sky-400 transition">
+          SCADA System Integration
+        </span>
+      </a>
+    </li>
+
+    <li>
+      <a
+        href="/nav_solutions/ai-realtime-water"
+        className="flex items-center gap-3 group transition"
+      >
+        <BrainCircuit size={18} className="text-sky-400 group-hover:animate-pulse" />
+        <span className="group-hover:text-sky-400 transition">
+          IoT & AI-Powered Real-Time Water Monitoring
+        </span>
+      </a>
+    </li>
+
+    <li>
+      <a
+        href="/nav_solutions/railway-warning-system"
+        className="flex items-center gap-3 group transition"
+      >
+        <BellRing size={18} className="text-sky-400 group-hover:animate-pulse" />
+        <span className="group-hover:text-sky-400 transition">
+          Advance Warning System for Railway Staff
+        </span>
+      </a>
+    </li>
+
+    <li>
+      <a
+        href="/nav_solutions/level-monitoring"
+        className="flex items-center gap-3 group transition"
+      >
+        <Waves size={18} className="text-sky-400 group-hover:animate-pulse" />
+        <span className="group-hover:text-sky-400 transition">
+          Smart Level Monitoring (Ultrasonic/Radar/Hydrostatic)
+        </span>
+      </a>
+    </li>
+
+    <li>
+      <a
+        href="/nav_solutions/energy/smart-energy"
+        className="flex items-center gap-3 group transition"
+      >
+        <Zap size={18} className="text-sky-400 group-hover:animate-pulse" />
+        <span className="group-hover:text-sky-400 transition">
+          Smart Energy Management
+        </span>
+      </a>
+    </li>
+
+    <li>
+      <a
+        href="/nav_solutions/infrastructure/automation"
+        className="flex items-center gap-3 group transition"
+      >
+        <Factory size={18} className="text-sky-400 group-hover:animate-pulse" />
+        <span className="group-hover:text-sky-400 transition">
+          Infrastructure Automation & Control
+        </span>
+      </a>
+    </li>
     <li>
       <a
         href="/Nav_Product/IOT_Gatway/f1"
@@ -111,6 +191,8 @@ export default function Footer() {
         </span>
       </a>
     </li>
+
+   
   </ul>
 </div>
 

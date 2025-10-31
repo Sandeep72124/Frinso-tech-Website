@@ -14,14 +14,18 @@ import DashboardShowcase from "@/components/DashboardShowcase";
 import VisionMissionSection from "@/components/VisionMissionSection";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import StatsSection from "@/components/StatsSection";
+import StatsSection2 from "@/components/StatsSection2";
+
 export default function HomePage() {
   return (
     <main>
       <Navbar />
       <Hero />
-      <StatsSection />
+      <StatsSection2 />
       <PartnersSection /> 
       <AboutSection/>
+      <StatsSection/>
+      <WhyUs />
       <ProductsSection />
       <ProjectsSection />
       <SolutionsSection />
@@ -29,7 +33,6 @@ export default function HomePage() {
       <AwardsSection />
       <VisionMissionSection/>
       <ClientsSection />
-      <WhyUs />
       <CTA />
       <Footer />
       <ScrollToTopButton/>

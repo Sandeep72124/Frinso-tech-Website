@@ -8,11 +8,47 @@ import React from "react";
 export default function SolutionsSection() {
   const items = [
     {
+      title: "Smart City SCADA",
+      desc: "Centralized dashboard for utilities — real-time data integration from multiple city assets and sites.",
+      icon: "🌆",
+      img: "/city.jpg",
+      href: "/nav_solutions/smart-city/smart-water-network",
+    },
+    {
+      title: " Solar Plant SCADA System",
+      desc: "Empowering solar power generation with real-time IoT data, SCADA control,  and predictive maintenance.",
+      icon: "☀️",
+      img: "/solar.png",
+      href: "/nav_solutions/solar-scada",
+    },
+
+    {
       title: "Smart Water Management",
-      desc: "End-to-end monitoring for WTP, STP, borewells, and distribution with IoT automation and analytics.",
+      desc: "End-to-end monitoring for WTP, STP, and distribution with IoT automation and analytics.",
       icon: "💧",
       img: "/water.png",
       href: "/nav_solutions/water/smart-flow",
+    },
+    {
+      title: "Smart Rail Water Monitoring",
+      desc: "IoT-enabled refilling and flow monitoring system ensuring timely and efficient water supply to trains.",
+      icon: "🚉",
+      img: "/rail.jpg",
+      href: "/nav_solutions/water/railway",
+    },
+    {
+      title: "Industrial IoT Telemetry",
+      desc: "Connect PLCs, RTUs, and sensors across plants — track uptime, alarms, and machine efficiency.",
+      icon: "🏭",
+      img: "/industrial.jpg",
+      href: "/nav_solutions/industrial-infra",
+    },
+    {
+      title: "CGWA Compliance IoT Solution",
+      desc: "A turnkey IoT-based platform to automate data logging, reporting, and compliance for groundwater extraction as per CGWA norms.",
+      icon: "🏭",
+      img: "/cgwa_cpcb.jpg",
+      href: "/nav_solutions/water/cgwa-solution",
     },
     {
       title: "Smart Energy Management",
@@ -35,27 +71,7 @@ export default function SolutionsSection() {
       img: "/dg.jpg",
       href: "/nav_solutions/dg-monitoring",
     },
-    {
-      title: "Smart Rail Water Monitoring",
-      desc: "IoT-enabled refilling and flow monitoring system ensuring timely and efficient water supply to trains.",
-      icon: "🚉",
-      img: "/rail.jpg",
-      href: "/nav_solutions/water/railway",
-    },
-    {
-      title: "Smart City SCADA",
-      desc: "Centralized dashboard for utilities — real-time data integration from multiple city assets and sites.",
-      icon: "🌆",
-      img: "/city.jpg",
-      href: "/nav_solutions/smart-city/smart-water-network",
-    },
-    {
-      title: "Industrial IoT Telemetry",
-      desc: "Connect PLCs, RTUs, and sensors across plants — track uptime, alarms, and machine efficiency.",
-      icon: "🏭",
-      img: "/industrial.jpg",
-      href: "/nav_solutions/industrial-infra",
-    },
+    
     {
       title: "Water Quality Analytics",
       desc: "Monitor pH, TDS, turbidity, and chlorine in real-time to ensure safe and compliant supply.",
@@ -69,6 +85,13 @@ export default function SolutionsSection() {
       icon: "🚰",
       img: "/pump.jpg",
       href: "/nav_solutions/water/smart-level",
+    },
+     {
+      title: "OHSR / OHMBR Monitoring System",
+      desc: "Smart IoT-based monitoring  to ensure efficient water distribution, level management, and real-time analytics.",
+      icon: "🚰",
+      img: "/oshr.jpg",
+      href: "/nav_solutions/water/ohsr-monitoring",
     },
   ];
 
@@ -129,7 +152,7 @@ export default function SolutionsSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.15 }}
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10"
+          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10"
         >
           {items.map((item, i) => (
             <Link key={i} href={item.href} className="group">
@@ -142,7 +165,7 @@ export default function SolutionsSection() {
                            transition-all duration-500"
               >
                 {/* Image */}
-                <div className="relative h-64 w-full overflow-hidden">
+                <div className="relative h-52 w-full overflow-hidden">
                   <Image
                     src={item.img}
                     alt={item.title}
@@ -153,7 +176,7 @@ export default function SolutionsSection() {
                 </div>
 
                 {/* Text content */}
-                <div className="relative z-10 p-6">
+                <div className="relative z-10 p-2">
                   <div className="text-4xl mb-3 drop-shadow-lg">{item.icon}</div>
                   <h3 className="text-xl font-semibold text-white group-hover:text-sky-300 transition">
                     {item.title}

@@ -9,6 +9,69 @@ export default function ProductsSection() {
   const router = useRouter();
 
   const products = [
+     {
+      title: "Smart SCADA Automation for 24×7 Water Supply – Jal Jeevan Mission",
+      desc: "Centralized SCADA solution for complete automation and remote control of water, energy, and industrial infrastructure systems.",
+      img: "/scada.png",
+      slug: "scada_profile",
+     
+    },
+    {
+      title: "Real-Time Dashboard",
+      desc: "Live operational dashboard offering instant visualization, control, and analytics for connected IoT systems and utilities.",
+      img: "/dashboards/2.png",
+      slug: "realtime_dashboard",
+    },
+     {
+      title: "RTU – Real Time Telemetry Unit",
+      desc: "Compact field device (F6 Series) for real-time telemetry data acquisition and control with seamless cloud connectivity.",
+      img: "/rtu 2.png",
+      slug: "rtu_f6",
+    },
+     {
+      title: "Smart Energy Management Device",
+      desc: "A powerful IoT-based energy management system designed to monitor, analyze, and optimize energy usage across industrial and utility assets in real time.",
+      img: "/smart-energy.jpg",
+      slug: "smart_energy_management",
+    },
+    {
+      title: "Smart Level Monitoring System",
+      desc: "Ultrasonic, radar, and hydrostatic-based sensors for real-time water level monitoring in tanks, reservoirs, and overhead structures.",
+      img: "/level.png",
+      slug: "smart_level_monitoring",
+    },
+    {
+      title: "Advance Warning System for Railway Staff",
+      desc: "An intelligent IoT-powered safety alert system for railway maintenance teams working on tracks — ensuring proactive safety and real-time notifications.",
+      img: "/railway_warning.png",
+      slug: "railway_warning_system",
+    },
+    
+   
+    {
+      title: "PLC/SCADA Panel",
+      desc: "Industrial-grade automation panel integrating PLC and SCADA systems for process control and equipment management.",
+      img: "/rtu.png",
+      slug: "plc_scada_panel",
+    },
+    {
+      title: "Smart Water Quality Analyzer",
+      desc: "High-precision analyzer for real-time monitoring of water quality parameters like pH, turbidity, conductivity, and TDS.",
+      img: "/smart_quality_analyzer.png",
+      slug: "water_quality_analyzer",
+    },
+    {
+      title: "Bulk Flowmeter",
+      desc: "Robust and accurate bulk flowmeter designed for high-capacity water and industrial flow applications.",
+      img: "/bulk_flowmeter.png",
+      slug: "bulk_flowmeter",
+    },
+    {
+      title: "Ultrasonic Flowmeter",
+      desc: "Non-intrusive ultrasonic flowmeter for high-accuracy flow measurement in large pipes without cutting or pressure loss.",
+      img: "/ultra.jpg",
+      slug: "ultrasonic_flowmeter",
+    },
     {
       title: "Frinso V1 IoT Edge Device",
       desc: "Next-gen Industry 4.0 gateway supporting 5G, LoRa, NB-IoT, Satellite. Connects any sensor, meter, or valve with real-time analytics.",
@@ -27,12 +90,7 @@ export default function ProductsSection() {
       img: "/hvac.png",
       slug: "smart-hvac",
     },
-    {
-      title: "Smart Ultrasonic IoT Level Sensor",
-      desc: "An intelligent ultrasonic level monitoring device designed for real-time water tank and sump management.",
-      img: "/ultra.jpg",
-      slug: "ultrasonic",
-    },
+   
     {
       title: "Smart Electromagnetic Flow Meter",
       desc: "Advanced precision instrument for monitoring water flow in pipelines with high accuracy.",
@@ -51,6 +109,7 @@ export default function ProductsSection() {
       img: "/iot-gateway-controller.png",
       slug: "gateway_control",
     },
+    
   ];
 
   const [index, setIndex] = useState(0);

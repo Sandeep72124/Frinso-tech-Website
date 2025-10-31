@@ -168,7 +168,7 @@ export default function MeterMechanicalPage() {
           Enable real-time pulse data capture and cloud-based water analytics with Frinso IoT integration.
         </p>
         <Link
-          href="/contact"
+          href="/demo"
           className="inline-block rounded-lg bg-white text-sky-700 px-6 py-3 font-medium hover:bg-sky-100 hover:scale-105 transition"
         >
           Request Demo

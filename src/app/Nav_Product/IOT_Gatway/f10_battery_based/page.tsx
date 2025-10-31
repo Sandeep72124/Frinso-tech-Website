@@ -1,180 +1,377 @@
 "use client";
 
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import {
+  BadgeCheck,
+  BatteryCharging,
+  Antenna,
+  Network,
+  CircuitBoard,
+  ShieldCheck,
+  Cloud,
+  Gauge,
+  Cpu,
+  Zap,
+  Boxes,
+  Wrench,
+  BarChart,
+  Download,
+  Info,
+} from "lucide-react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
-export default function F10BatteryPage() {
+/* ---------- Animations ---------- */
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 28 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+const stagger: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.12 } },
+};
+
+/* ---------- Section Wrapper ---------- */
+const Section = ({
+  id,
+  bg,
+  children,
+}: {
+  id: string;
+  bg: string;
+  children: React.ReactNode;
+}) => (
+  <section id={id} className={`${bg} py-20 border-t border-white/10`}>
+    <div className="max-w-7xl mx-auto px-6">{children}</div>
+  </section>
+);
+
+export default function FrinsoF10Page() {
+  const highlights = [
+    {
+      Icon: BatteryCharging,
+      title: "Battery-Powered Edge",
+      desc: "Ultra-low-power design with smart power modes for long-field life.",
+    },
+    {
+      Icon: Antenna,
+      title: "Multi-Network Connectivity",
+      desc: "4G/LTE, GSM, Wi-Fi, LoRa, NB-IoT — connect anywhere.",
+    },
+    {
+      Icon: Network,
+      title: "Open Integrations",
+      desc: "Modbus RTU/TCP, MQTT/HTTPS for SCADA and cloud bridges.",
+    },
+    {
+      Icon: CircuitBoard,
+      title: "Built-in I/O",
+      desc: "Analog/Digital inputs & relay outputs for direct sensor control.",
+    },
+    {
+      Icon: Cloud,
+      title: "Cloud Agnostic",
+      desc: "Works with Frinso Cloud, AWS, Azure, or custom MQTT/REST APIs.",
+    },
+    {
+      Icon: ShieldCheck,
+      title: "Secure by Design",
+      desc: "TLS/SSL, signed OTA, role-based access, and audit logs.",
+    },
+  ];
+
+  const features = [
+    "Real-time monitoring of electrical, environmental and asset parameters.",
+    "Edge rules & analytics for event-based control and bandwidth savings.",
+    "Offline buffering with encrypted local storage and auto-sync.",
+    "Secure FOTA updates — no site visits required.",
+    "Battery health telemetry, charge/discharge profiling and alarms.",
+  ];
+
+  const specs = [
+    { label: "Power Profile", value: "Battery-optimized; ultra-low idle; scheduled wake" },
+    { label: "Connectivity", value: "4G/LTE, 2G, Wi-Fi 2.4 GHz, LoRa, NB-IoT, GNSS" },
+    { label: "Interfaces", value: "RS-485 / RS-232, 2× AI, 4× DI, 1× DO (relay)" },
+    { label: "Protocols", value: "Modbus RTU/TCP, MQTT (TLS), HTTPS/REST, NTP" },
+    { label: "Processing", value: "ARM edge MCU with on-device filtering & rules engine" },
+    { label: "Storage", value: "Encrypted local buffer (16 GB typ., expandable)" },
+    { label: "Security", value: "TLS/SSL, X.509 certs, signed OTA, RBAC" },
+    { label: "Enclosure", value: "Rugged ABS / metal, DIN / wall mount" },
+    { label: "Environment", value: "−20 °C to +70 °C, 95 % RH (non-condensing)" },
+  ];
+
+  const applications = [
+    {
+      Icon: Wrench,
+      title: "Industrial IoT",
+      desc: "Remote assets where mains power is unavailable or intermittent.",
+    },
+    {
+      Icon: Boxes,
+      title: "Smart Infrastructure",
+      desc: "BMS sub-meters, utility kiosks, remote valve chambers.",
+    },
+    {
+      Icon: Zap,
+      title: "Energy & Solar",
+      desc: "PV strings, off-grid systems, DG telemetry with battery insights.",
+    },
+    {
+      Icon: BarChart,
+      title: "Agriculture",
+      desc: "Field sensors, pumps, and irrigation controllers via LoRa/NB-IoT.",
+    },
+    {
+      Icon: Gauge,
+      title: "Environment",
+      desc: "Air/water quality nodes, leak detection, pressure probes.",
+    },
+    {
+      Icon: Cpu,
+      title: "Healthcare & Logistics",
+      desc: "Cold-chain monitoring and compliance logging.",
+    },
+  ];
+
   return (
     <>
-    <Navbar/>
-    <main className="relative min-h-screen bg-gradient-to-b from-sky-50 to-white text-gray-800">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden py-20">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center max-w-5xl mx-auto px-6"
-        >
-          <h1 className="text-5xl md:text-6xl font-bold text-sky-700">
-            F10 Battery-Based IoT Gateway
-          </h1>
-          <p className="mt-4 text-lg text-gray-600 leading-relaxed">
-            A self-powered IoT gateway built for <span className="font-semibold">remote data logging</span> and 
-            <span className="font-semibold"> telemetry applications</span> — designed for locations without 
-            continuous power supply, ensuring long-term field operation.
-          </p>
-        </motion.div>
+      <Navbar />
+      <main className="bg-[#030a12] text-white">
+        {/* ---------- HERO ---------- */}
+        <section className="relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-[#021a2a] via-[#041f33] to-[#030a12]" />
+          <div className="max-w-7xl mx-auto px-6 pt-20 pb-12 relative grid md:grid-cols-2 gap-10 items-center">
+            <motion.div variants={stagger} initial="hidden" animate="show">
+              <motion.div
+                variants={fadeUp}
+                className="inline-flex items-center gap-2 bg-sky-500/15 text-sky-200 border border-sky-400/30 px-3 py-1 rounded-full text-xs mb-4"
+              >
+                <BadgeCheck className="w-4 h-4" />
+                FRINSO TECHNOLOGIES PVT LTD
+              </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          className="mt-12 flex justify-center"
-        >
-          <Image
-            src="/product-edge.png"
-            alt="F10 Battery IoT Gateway"
-            width={600}
-            height={400}
-            className="rounded-2xl shadow-xl"
-          />
-        </motion.div>
-      </section>
+              <motion.h1
+                variants={fadeUp}
+                className="text-5xl md:text-6xl font-extrabold leading-tight text-sky-300"
+              >
+                FRINSO F10
+              </motion.h1>
+              <motion.h2
+                variants={fadeUp}
+                className="text-2xl md:text-3xl font-semibold text-white mt-2"
+              >
+                Smart Battery IoT Edge Device
+              </motion.h2>
+              <motion.p
+                variants={fadeUp}
+                className="mt-4 text-white/85 text-lg leading-relaxed"
+              >
+                Battery-optimized Industry 4.0 edge device for remote telemetry and control — designed to run lean,
+                connect anywhere and deliver secure data to any cloud.
+              </motion.p>
 
-      {/* Features Section */}
-      <section className="py-20 bg-white/60">
-        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-3xl font-bold text-sky-700 mb-4">Key Features</h2>
-            <ul className="space-y-3 text-gray-700 leading-relaxed">
-              <li>🔋 Long-lasting lithium battery (up to 5 years of operation).</li>
-              <li>📶 Supports 2G / 4G / NB-IoT / LoRa communication modes.</li>
-              <li>📊 Internal data logging with intelligent sleep-wake scheduling.</li>
-              <li>💧 Ideal for remote flowmeters, pressure sensors, and tank monitoring.</li>
-              <li>📦 Compact IP68-rated enclosure for harsh field conditions.</li>
-              <li>🧠 AI-optimized telemetry intervals for energy conservation.</li>
-            </ul>
-          </motion.div>
+              <motion.div variants={fadeUp} className="mt-8 flex gap-4">
+                <Link
+                  href="#overview"
+                  className="rounded-xl bg-sky-600 hover:bg-sky-500 px-6 py-3 font-medium shadow"
+                >
+                  Explore F10
+                </Link>
+                <Link
+                  href="#downloads"
+                  className="rounded-xl bg-white/10 hover:bg-white/15 px-6 py-3 font-medium border border-white/15"
+                >
+                  Download Datasheet
+                </Link>
+              </motion.div>
+            </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex justify-center"
-          >
-            <Image
-              src="/dashboards/2.png"
-              alt="Battery IoT Dashboard"
-              width={520}
-              height={350}
-              className="rounded-xl shadow-md"
-            />
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Technical Specifications */}
-      <section className="py-20 bg-gradient-to-r from-sky-100 to-sky-50">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-3xl font-bold text-sky-700 mb-8"
-          >
-            Technical Specifications
-          </motion.h2>
-
-          <div className="overflow-x-auto">
-            <table className="w-full text-left border border-gray-200 rounded-lg">
-              <tbody>
-                <tr className="border-b border-gray-200">
-                  <td className="p-4 font-medium text-gray-700">Power Source</td>
-                  <td className="p-4">Inbuilt Li-SOCl₂ Battery (3.6V / 19Ah)</td>
-                </tr>
-                <tr className="border-b border-gray-200">
-                  <td className="p-4 font-medium text-gray-700">Battery Life</td>
-                  <td className="p-4">Up to 5 years (with 1 data push/hour)</td>
-                </tr>
-                <tr className="border-b border-gray-200">
-                  <td className="p-4 font-medium text-gray-700">Communication</td>
-                  <td className="p-4">2G / 4G / NB-IoT / LoRa / BLE</td>
-                </tr>
-                <tr className="border-b border-gray-200">
-                  <td className="p-4 font-medium text-gray-700">Protocol</td>
-                  <td className="p-4">MODBUS, MQTT, HTTP</td>
-                </tr>
-                <tr className="border-b border-gray-200">
-                  <td className="p-4 font-medium text-gray-700">Data Logging</td>
-                  <td className="p-4">Local EEPROM / Flash Storage (30,000+ records)</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-gray-700">Enclosure Rating</td>
-                  <td className="p-4">IP68 – Dustproof and Waterproof</td>
-                </tr>
-              </tbody>
-            </table>
+            <motion.div variants={fadeUp} initial="hidden" animate="show" className="relative">
+              <div className="absolute -inset-6 bg-sky-400/10 blur-3xl rounded-[3rem]" />
+              <div className="relative rounded-3xl bg-gradient-to-b from-white/10 to-white/[0.05] p-4 border border-white/10">
+                <Image
+                  src="/product-edge.png" // replace with your image
+                  alt="Frinso F10 Device"
+                  width={980}
+                  height={720}
+                  className="rounded-2xl object-contain"
+                  priority
+                />
+              </div>
+            </motion.div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Applications Section */}
-      <section className="py-16 bg-white text-center">
-        <motion.h3
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          className="text-3xl font-semibold text-sky-700 mb-6"
-        >
-          Designed for Remote & Off-Grid Monitoring
-        </motion.h3>
-        <p className="max-w-3xl mx-auto text-gray-600 mb-8">
-          The F10 Battery-Based IoT Gateway is ideal for remote water flow monitoring, tank level 
-          management, and isolated field stations — enabling real-time visibility even in 
-          non-powered environments.
-        </p>
-        <div className="flex justify-center">
-          <Image
-            src="/f10-field.jpg"
-            alt="F10 Field Deployment"
-            width={800}
-            height={400}
-            className="rounded-xl shadow-lg"
-          />
-        </div>
-      </section>
+        {/* ---------- OVERVIEW ---------- */}
+        <Section id="overview" bg="bg-[#051a29]">
+          <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }}>
+            <motion.h2 variants={fadeUp} className="text-3xl font-bold text-sky-300 mb-4">
+              Product Overview
+            </motion.h2>
+            <motion.p variants={fadeUp} className="text-white/85 leading-relaxed">
+              FRINSO F10 delivers always-on telemetry for battery, solar and off-grid applications.
+              It bridges field devices to the cloud using secure wireless connectivity and intelligent edge processing.
+            </motion.p>
+          </motion.div>
+        </Section>
 
-      {/* CTA Section */}
-      <section className="py-16 text-center bg-gradient-to-r from-sky-500 to-sky-600 text-white">
-        <motion.h3
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          className="text-3xl font-semibold mb-4"
-        >
-          Bring IoT to Remote Locations with Battery Power
-        </motion.h3>
-        <p className="text-white/90 mb-6">
-          Deploy Frinso’s F10 Battery Gateway for reliable, long-term telemetry without 
-          external power — perfect for smart water and energy infrastructure.
-        </p>
-        <Link
-          href="/contact"
-          className="inline-block rounded-lg bg-white text-sky-700 px-6 py-3 font-medium hover:bg-sky-100 hover:scale-105 transition"
-        >
-          Request Demo
-        </Link>
-      </section>
-    </main>
-    <Footer/>
+        {/* ---------- HIGHLIGHTS ---------- */}
+        <Section id="highlights" bg="bg-[#072131]">
+          <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }}>
+            <motion.h2 variants={fadeUp} className="text-3xl font-semibold text-sky-200 mb-6">
+              Highlights
+            </motion.h2>
+            <motion.div variants={fadeUp} className="grid md:grid-cols-3 gap-6">
+              {highlights.map(({ Icon, title, desc }, i) => (
+                <div key={i} className="rounded-2xl bg-white/5 p-6 border border-white/10">
+                  <Icon className="w-8 h-8 text-sky-200 mb-3" />
+                  <h3 className="font-semibold mb-1">{title}</h3>
+                  <p className="text-white/75 text-sm">{desc}</p>
+                </div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </Section>
+
+        {/* ---------- FEATURES ---------- */}
+        <Section id="features" bg="bg-[#09293c]">
+          <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }}>
+            <motion.h2 variants={fadeUp} className="text-3xl font-semibold text-cyan-200 mb-6">
+              Features & Capabilities
+            </motion.h2>
+            <motion.ul variants={fadeUp} className="space-y-3 text-white/80 text-sm">
+              {features.map((f, i) => (
+                <li key={i}>• {f}</li>
+              ))}
+            </motion.ul>
+          </motion.div>
+        </Section>
+
+        {/* ---------- SPECIFICATIONS ---------- */}
+        <Section id="specs" bg="bg-[#0b3044]">
+          <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }}>
+            <motion.h2 variants={fadeUp} className="text-3xl font-semibold text-white mb-6">
+              Technical Specifications
+            </motion.h2>
+            <motion.div variants={fadeUp} className="grid md:grid-cols-2 gap-6">
+              {specs.map(({ label, value }, i) => (
+                <div key={i} className="rounded-2xl bg-white/5 p-5 border border-white/10">
+                  <h3 className="font-semibold text-lg mb-1 text-white">{label}</h3>
+                  <p className="text-white/75 text-sm">{value}</p>
+                </div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </Section>
+
+        {/* ---------- APPLICATIONS ---------- */}
+        <Section id="applications" bg="bg-[#0d3550]">
+          <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }}>
+            <motion.h2 variants={fadeUp} className="text-3xl font-semibold text-sky-200 mb-6">
+              Applications
+            </motion.h2>
+            <motion.div variants={fadeUp} className="grid md:grid-cols-3 gap-6">
+              {applications.map(({ Icon, title, desc }, i) => (
+                <div key={i} className="rounded-2xl bg-white/5 p-6 border border-white/10">
+                  <Icon className="w-8 h-8 text-sky-200 mb-3" />
+                  <h3 className="font-semibold mb-1">{title}</h3>
+                  <p className="text-white/75 text-sm">{desc}</p>
+                </div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </Section>
+
+        {/* ---------- DOWNLOADS ---------- */}
+        <Section id="downloads" bg="bg-[#103d5a]">
+          <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }}>
+            <motion.h2 variants={fadeUp} className="text-3xl font-semibold text-white mb-6">
+              Downloads & Resources
+            </motion.h2>
+            <motion.div variants={fadeUp} className="grid md:grid-cols-3 gap-6">
+              {[
+                ["FRINSO F10 Brochure (PDF)", "#"],
+                ["Technical Datasheet (PDF)", "#"],
+                ["API Integration Manual (PDF)", "#"],
+              ].map(([label, href], i) => (
+                <Link
+                  key={i}
+                  href={href as string}
+                  className="rounded-2xl bg-white/5 p-6 border border-white/10 hover:bg-white/10 flex items-center gap-3"
+                >
+                  <Download className="w-5 h-5" />
+                  <span>{label}</span>
+                </Link>
+              ))}
+            </motion.div>
+          </motion.div>
+        </Section>
+
+        {/* ---------- FAQ ---------- */}
+        <Section id="faq" bg="bg-[#124567]">
+          <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }}>
+            <motion.h2 variants={fadeUp} className="text-3xl font-semibold text-white mb-6">
+              Frequently Asked Questions
+            </motion.h2>
+            <motion.div variants={fadeUp} className="space-y-4">
+              {[
+                ["How long can F10 run on battery?", "Depends on sampling intervals and radio usage; optimized for months of autonomous operation."],
+                ["Does it support LoRa / NB-IoT?", "Yes — along with 4G/LTE, GSM and Wi-Fi for hybrid deployments."],
+                ["Is offline operation supported?", "Yes. Data is stored locally and auto-synced on network recovery."],
+                ["How secure is the device?", "TLS/SSL transport, signed firmware, role-based users and audit logs."],
+              ].map(([q, a], i) => (
+                <div key={i} className="rounded-2xl bg-white/5 p-6 border border-white/10">
+                  <div className="flex items-start gap-3">
+                    <Info className="w-5 h-5 text-white/90 flex-shrink-0 mt-1" />
+                    <div>
+                      <h3 className="font-semibold">{q}</h3>
+                      <p className="text-white/80 text-sm mt-1">{a}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </Section>
+
+        {/* ---------- CTA ---------- */}
+        <Section id="contact" bg="bg-gradient-to-br from-[#06273d] via-[#08375a] to-[#0e5591]">
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-bold text-sky-200">
+              Power Remote Sites with FRINSO F10
+            </motion.h2>
+            <motion.p variants={fadeUp} className="mt-3 text-white/85 max-w-2xl mx-auto">
+              Deploy secure, battery-optimized telemetry for energy and infrastructure projects worldwide.
+            </motion.p>
+            <motion.div variants={fadeUp} className="mt-6 flex items-center justify-center gap-3">
+              <Link
+                href="/demo"
+                className="rounded-xl bg-sky-600 hover:bg-sky-500 px-6 py-3 font-medium shadow"
+              >
+                Request a Demo
+              </Link>
+              <Link
+                href="/contact"
+                className="rounded-xl bg-white/10 hover:bg-white/15 px-6 py-3 font-medium border border-white/15"
+              >
+                Contact Us
+              </Link>
+            </motion.div>
+          </motion.div>
+        </Section>
+
+        
+      </main>
+
+      <Footer />
     </>
   );
 }

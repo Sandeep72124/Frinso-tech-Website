@@ -4,7 +4,15 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Briefcase, Users2, Rocket, HeartHandshake, Send } from "lucide-react";
+import {
+  Briefcase,
+  Users2,
+  Rocket,
+  HeartHandshake,
+  Send,
+  Building2,
+  LineChart,
+} from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -19,28 +27,20 @@ const stagger = {
 export default function CareersPage() {
   const jobs = [
     {
-      title: "Embedded Systems Engineer",
-      dept: "Hardware & IoT Design",
-      desc: "Develop firmware for our IoT gateways, RTUs, and telemetry hardware. Experience with MODBUS, RS485, and C/C++ required.",
-      location: "Mumbai / Pune / Remote",
+      title: "Founder’s Office Assistant",
+      dept: "Sales, Operations & Accounts",
+      desc: `Support the Founder’s Office in business operations, client communication, 
+      and project coordination. Manage company accounts, GST filings, documentation, 
+      and assist in business growth initiatives across departments.`,
+      location: " Mumbai (Work from Office)",
     },
     {
-      title: "Frontend Developer (React / Next.js)",
-      dept: "Software Development",
-      desc: "Build responsive dashboards, SCADA visualization, and control interfaces using React and Tailwind CSS.",
-      location: "Remote / Hybrid",
-    },
-    {
-      title: "SCADA Integration Engineer",
-      dept: "Industrial Automation",
-      desc: "Work on integrating PLCs, VFDs, and energy meters with our IoT platform. Knowledge of industrial protocols preferred.",
-      location: "Pan India",
-    },
-    {
-      title: "Data & Cloud Engineer",
-      dept: "Cloud Infrastructure",
-      desc: "Design and maintain cloud pipelines, APIs, and databases for high-frequency IoT data ingestion and analytics.",
-      location: "Bangalore / Remote",
+      title: "Sales & Business Development Executive",
+      dept: "IoT Solutions / Smart Infrastructure",
+      desc: `Identify new business opportunities, develop and maintain client relationships, 
+      and support pre-sales for IoT-based water, energy, and infrastructure projects. 
+      Drive proposals, attend client meetings, and achieve monthly sales targets.`,
+      location: " Mumbai (Work from Office)",
     },
   ];
 
@@ -48,7 +48,7 @@ export default function CareersPage() {
     <>
       <Navbar />
 
-      {/* HERO */}
+      {/* HERO SECTION */}
       <section className="relative h-[80vh] flex items-center justify-center text-white overflow-hidden">
         <Image
           src="/career-bg.jpg"
@@ -67,7 +67,7 @@ export default function CareersPage() {
         >
           <motion.h1
             variants={fadeUp}
-            className="text-4xl md:text-6xl font-bold text-sky-400"
+            className="text-4xl md:text-6xl font-bold text-sky-400 drop-shadow-lg"
           >
             Join Our Mission
           </motion.h1>
@@ -128,7 +128,7 @@ export default function CareersPage() {
                 variants={fadeUp}
                 className="group bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:border-sky-400/40 hover:bg-sky-400/10 transition"
               >
-                <Icon className="w-8 h-8 mx-auto mb-4 text-sky-300" />
+                <Icon className="w-8 h-8 mx-auto mb-4 text-sky-300 group-hover:text-sky-400 transition" />
                 <h3 className="text-xl font-semibold mb-2">{title}</h3>
                 <p className="text-white/80 text-sm leading-snug">{desc}</p>
               </motion.div>
@@ -161,7 +161,7 @@ export default function CareersPage() {
               <motion.div
                 key={i}
                 variants={fadeUp}
-                className="relative group bg-white/5 border border-white/10 rounded-2xl p-8 hover:border-sky-400/40 hover:bg-sky-400/10 transition"
+                className="relative group bg-white/5 border border-white/10 rounded-2xl p-8 hover:border-sky-400/40 hover:bg-sky-400/10 transition shadow-lg"
               >
                 <div className="absolute top-0 left-0 h-1 w-0 bg-gradient-to-r from-sky-500 to-cyan-300 group-hover:w-full transition-all duration-700" />
                 <h3 className="text-xl font-semibold text-sky-300 mb-2">
@@ -176,7 +176,7 @@ export default function CareersPage() {
 
           <div className="text-center mt-16">
             <a
-              href="mailto:careers@frinsotech.com"
+              href="/apply"
               className="inline-flex items-center gap-3 bg-sky-600 hover:bg-sky-500 px-8 py-4 rounded-xl font-medium text-white shadow-lg hover:scale-105 transition"
             >
               <Send className="w-5 h-5" />

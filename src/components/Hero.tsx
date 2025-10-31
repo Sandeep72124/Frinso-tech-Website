@@ -7,12 +7,26 @@ import Link from "next/link";
 import Reveal from "./Reveal";
 export default function Hero() {
   const videos = [
+   {
+  src: "/video/jjm.mp4",
+  title: "Smart SCADA Automation for 24×7 Water Supply – Jal Jeevan Mission",
+  desc: "End-to-end automation and monitoring solution covering WTP, ESR, and Distribution Networks under JJM.",
+  cta: "/Nav_Project/water",
+},
+
     {
       src: "/video/water.mp4",
       title: "Smart Water Management",
       desc: "Real-time monitoring for WTP, STP, and borewells with CGWA, CPCB, and JJM compliance-ready dashboards.",
       cta: "/contact",
     },
+    {
+  src: "/video/solar.mp4",
+  title: "Smart SCADA & Remote Monitoring for Solar Power Plants",
+  desc: "Comprehensive SCADA solution for solar PV plants enabling real-time inverter, string, and weather station data acquisition.",
+  cta: "/Nav_Project/solar",
+}
+,
     {
       src: "/video/city.mp4",
       title: "Smart City Infrastructure",
@@ -115,13 +129,13 @@ export default function Hero() {
         <Reveal delay={0.4}>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
-              href={videos[current].cta}
+              href="/demo"
               className="rounded-xl bg-sky-600 px-6 py-3 font-medium text-white shadow hover:scale-105 hover:bg-sky-500 transition"
             >
               Request Demo
             </Link>
             <Link
-              href="/contact"
+              href="/Nav_Project/water"
               className="rounded-xl border border-white/70 px-6 py-3 font-medium text-white hover:bg-white hover:text-sky-700 hover:scale-105 transition"
             >
               Watch Video

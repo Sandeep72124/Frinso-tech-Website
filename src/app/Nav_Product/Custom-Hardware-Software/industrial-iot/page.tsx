@@ -165,7 +165,7 @@ export default function IndustrialIoTPage() {
           designed, developed, and integrated by Frinso.
         </p>
         <Link
-          href="/contact"
+          href="/demo"
           className="inline-block rounded-lg bg-white text-sky-700 px-6 py-3 font-medium hover:bg-sky-100 hover:scale-105 transition"
         >
           Request Demo

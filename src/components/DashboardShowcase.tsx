@@ -6,6 +6,11 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function DashboardShowcase() {
   const dashboards = [
+       {
+      title: "Smart SCADA Automation",
+      desc: "End-to-end automation and monitoring solution covering WTP, ESR, and Distribution Networks under JJM.",
+      img: "/dashboards/scada.png",
+    },
     {
       title: "Smart Water Management",
       desc: "Real-time water flow, pressure, and quality analytics for efficient city networks.",
@@ -15,6 +20,25 @@ export default function DashboardShowcase() {
       title: "Smart Energy Management",
       desc: "AI-powered DG, grid, and solar energy monitoring with predictive insights.",
       img: "/dashboards/energy.jpg",
+    },
+    {
+      title: "Smart SCADA Monitoring",
+      desc: "Centralized HVAC automation with real-time performance optimization.",
+      img: "/dashboards/SI2.jpeg",
+    },
+    {
+      title: "Smart SCADA Monitoring",
+      desc: "Centralized HVAC automation with real-time performance optimization.",
+      img: "/dashboards/SI3.jpeg",
+    },{
+      title: "Smart SCADA Monitoring",
+      desc: "Centralized HVAC automation with real-time performance optimization.",
+      img: "/dashboards/SI4.jpeg",
+    },
+    {
+      title: "Smart SCADA Monitoring",
+      desc: "Centralized HVAC automation with real-time performance optimization.",
+      img: "/dashboards/SI5.jpeg",
     },
     {
       title: "Smart HVAC Monitoring",

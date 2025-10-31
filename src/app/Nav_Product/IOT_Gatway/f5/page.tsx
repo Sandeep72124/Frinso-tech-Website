@@ -1,182 +1,336 @@
 "use client";
 
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import {
+  Cpu,
+  Cloud,
+  Network,
+  ShieldCheck,
+  CircuitBoard,
+  Layers,
+  BarChart,
+  Boxes,
+  Wrench,
+  Zap,
+  Download,
+  Info,
+  BadgeCheck,
+  Cog,
+  Antenna,
+  Shield,
+  Gauge,
+  ServerCog,
+} from "lucide-react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
-export default function F5Page() {
+/* ---------- Animations ---------- */
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 32 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+const stagger: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.12 } },
+};
+
+/* ---------- Section Wrapper ---------- */
+const Section = ({
+  id,
+  bg,
+  children,
+}: {
+  id: string;
+  bg: string;
+  children: React.ReactNode;
+}) => (
+  <section id={id} className={`${bg} py-20 border-t border-white/10`}>
+    <div className="max-w-7xl mx-auto px-6">{children}</div>
+  </section>
+);
+
+/* ---------- Page ---------- */
+export default function FrinsoV5Page() {
   return (
     <>
-    <Navbar/>
-    <main className="relative min-h-screen bg-gradient-to-b from-sky-50 to-white text-gray-800">
-      {/* Hero */}
-      <section className="relative overflow-hidden py-20">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center max-w-5xl mx-auto px-6"
-        >
-          <h1 className="text-5xl md:text-6xl font-bold text-sky-700">
-            F5 Multiprotocol IoT Gateway
-          </h1>
-          <p className="mt-4 text-lg text-gray-600 leading-relaxed">
-            Compact, DIN-rail/field-mountable gateway for fast integration of{" "}
-            <span className="font-semibold">MODBUS devices, pulses, and analog I/O</span>—built for
-            water, energy, DG and building automation projects.
-          </p>
-        </motion.div>
+      <Navbar />
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.92 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
-          className="mt-12 flex justify-center"
-        >
-          <Image
-            src="/f5-device.jpg" // add your image later
-            alt="F5 IoT Gateway"
-            width={640}
-            height={420}
-            className="rounded-2xl shadow-xl"
-          />
-        </motion.div>
-      </section>
+      <main className="bg-[#051420] text-white">
+        {/* ---------- HERO ---------- */}
+        <section className="relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0b2440] via-[#081830] to-[#04101a]" />
+          <div className="max-w-7xl mx-auto px-6 pt-20 pb-12 relative grid md:grid-cols-2 gap-10 items-center">
+            <motion.div variants={stagger} initial="hidden" animate="show">
+              <motion.div
+                variants={fadeUp}
+                className="inline-flex items-center gap-2 bg-sky-500/15 text-sky-200 border border-sky-400/30 px-3 py-1 rounded-full text-xs mb-4"
+              >
+                <BadgeCheck className="w-4 h-4" />
+                FRINSO TECHNOLOGIES PVT LTD
+              </motion.div>
 
-      {/* Features */}
-      <section className="py-20 bg-white/60">
-        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -28 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-3xl font-bold text-sky-700 mb-4">Key Features</h2>
-            <ul className="space-y-3 text-gray-700 leading-relaxed">
-              <li>🌐 MODBUS RTU/TCP, MQTT, HTTPs — plug-and-play with meters & PLCs.</li>
-              <li>🔌 I/O mix: 4×DI (pulse up to 5 kHz), 2×DO (relay), 4×AI (4–20 mA / 0–10 V).</li>
-              <li>📶 Connectivity: RS485/RS232, Ethernet, 4G/LTE, optional Wi-Fi/BLE.</li>
-              <li>🧠 Edge logic, local buffering & store-and-forward to cloud/SCADA.</li>
-              <li>🛰️ Optional GPS for mobile assets and run-hour logging for DG sets.</li>
-              <li>🛡️ Industrial build: surge protection, watchdog, OTA updates.</li>
-            </ul>
-          </motion.div>
+              <motion.h1
+                variants={fadeUp}
+                className="text-5xl md:text-6xl font-bold leading-tight text-sky-300"
+              >
+                FRINSO V5.0
+              </motion.h1>
+              <motion.h2
+                variants={fadeUp}
+                className="text-2xl md:text-3xl font-semibold text-white mt-2"
+              >
+                Industry 4.0 IoT Edge Gateway
+              </motion.h2>
+              <motion.p
+                variants={fadeUp}
+                className="mt-4 text-white/85 text-lg leading-relaxed"
+              >
+                A next-generation Industrial IoT edge device built for real-time
+                control, data analytics, and remote management with multi-network
+                connectivity and advanced security.
+              </motion.p>
+              <motion.div variants={fadeUp} className="mt-8 flex gap-4">
+                <Link
+                  href="#overview"
+                  className="rounded-xl bg-sky-600 hover:bg-sky-500 px-6 py-3 font-medium shadow"
+                >
+                  Explore Features
+                </Link>
+                <Link
+                  href="#downloads"
+                  className="rounded-xl bg-white/10 hover:bg-white/15 px-6 py-3 font-medium border border-white/15"
+                >
+                  Download Datasheet
+                </Link>
+              </motion.div>
+            </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 28 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex justify-center"
-          >
-            <Image
-              src="/f5-dashboard.jpg" // add your image later
-              alt="F5 Dashboard"
-              width={520}
-              height={350}
-              className="rounded-xl shadow-md"
-            />
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Specs */}
-      <section className="py-20 bg-gradient-to-r from-sky-100 to-sky-50">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 26 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-3xl font-bold text-sky-700 mb-8"
-          >
-            Technical Specifications
-          </motion.h2>
-
-          <div className="overflow-x-auto">
-            <table className="w-full text-left border border-gray-200 rounded-lg">
-              <tbody>
-                <tr className="border-b border-gray-200">
-                  <td className="p-4 font-medium text-gray-700">CPU & Memory</td>
-                  <td className="p-4">ARM-based edge controller, 256MB RAM, 8GB Flash</td>
-                </tr>
-                <tr className="border-b border-gray-200">
-                  <td className="p-4 font-medium text-gray-700">Interfaces</td>
-                  <td className="p-4">RS485, RS232, Ethernet 10/100, USB (service)</td>
-                </tr>
-                <tr className="border-b border-gray-200">
-                  <td className="p-4 font-medium text-gray-700">I/O</td>
-                  <td className="p-4">4×DI (pulse), 2×DO (relay 30V/1A), 4×AI (4–20 mA / 0–10V)</td>
-                </tr>
-                <tr className="border-b border-gray-200">
-                  <td className="p-4 font-medium text-gray-700">Wireless</td>
-                  <td className="p-4">4G/LTE Cat-1, NB-IoT (opt.), Wi-Fi/BLE (opt.)</td>
-                </tr>
-                <tr className="border-b border-gray-200">
-                  <td className="p-4 font-medium text-gray-700">Protocols</td>
-                  <td className="p-4">MODBUS RTU/TCP, MQTT, HTTPs, NTP, TLS 1.2</td>
-                </tr>
-                <tr className="border-b border-gray-200">
-                  <td className="p-4 font-medium text-gray-700">Power</td>
-                  <td className="p-4">9–36 VDC, <span className="whitespace-nowrap">≤3 W</span>, reverse-polarity protected</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium text-gray-700">Enclosure</td>
-                  <td className="p-4">DIN-rail / IP65 field box, −20°C to +70°C</td>
-                </tr>
-              </tbody>
-            </table>
+            <motion.div variants={fadeUp} initial="hidden" animate="show" className="relative">
+              <div className="absolute -inset-6 bg-sky-400/10 blur-3xl rounded-[3rem]" />
+              <div className="relative rounded-3xl bg-gradient-to-b from-white/10 to-white/[0.05] p-4 border border-white/10">
+                <Image
+                  src="/frinso-v1-cover.png"
+                  alt="Frinso V5.0 Device"
+                  width={980}
+                  height={720}
+                  className="rounded-2xl object-contain"
+                  priority
+                />
+              </div>
+            </motion.div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Applications */}
-      <section className="py-16 bg-white text-center">
-        <motion.h3
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          className="text-3xl font-semibold text-sky-700 mb-6"
-        >
-          Built for Water, Energy & DG Monitoring
-        </motion.h3>
-        <p className="max-w-3xl mx-auto text-gray-600 mb-8">
-          Connect flow/energy meters, DG controllers, pump panels and PLCs to real-time
-          dashboards with alerts, reports and automation rules.
-        </p>
-        <div className="flex justify-center">
-          <Image
-            src="/f5-usecase.jpg" // add your image later
-            alt="F5 Use Cases"
-            width={800}
-            height={400}
-            className="rounded-xl shadow-lg"
-          />
-        </div>
-      </section>
+        {/* ---------- PRODUCT OVERVIEW ---------- */}
+        <Section id="overview" bg="bg-[#0A2238]">
+          <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }}>
+            <motion.h2 variants={fadeUp} className="text-3xl font-bold text-sky-300 mb-4">
+              Product Overview
+            </motion.h2>
+            <motion.p variants={fadeUp} className="text-white/85 leading-relaxed">
+              FRINSO V5.0 is a next-generation Industry 4.0 IoT edge node built
+              for remote control, analytics, and device management. It enables
+              real-time monitoring through iOS, Android, and web applications,
+              ensuring visibility, operational efficiency, and proactive maintenance.
+            </motion.p>
+          </motion.div>
+        </Section>
 
-      {/* CTA */}
-      <section className="py-16 text-center bg-gradient-to-r from-sky-500 to-sky-600 text-white">
-        <motion.h3
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          className="text-3xl font-semibold mb-4"
-        >
-          Deploy F5 for Fast, Reliable Integrations
-        </motion.h3>
-        <p className="text-white/90 mb-6">
-          Get your devices online with secure cloud connectivity and edge intelligence.
-        </p>
-        <Link
-          href="/contact"
-          className="inline-block rounded-lg bg-white text-sky-700 px-6 py-3 font-medium hover:bg-sky-100 hover:scale-105 transition"
-        >
-          Request Demo
-        </Link>
-      </section>
-    </main>
-    <Footer/>
+        {/* ---------- HIGHLIGHTS ---------- */}
+        <Section id="highlights" bg="bg-[#14385A]">
+          <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }}>
+            <motion.h2 variants={fadeUp} className="text-3xl font-semibold text-cyan-300 mb-6">
+              Product Highlights
+            </motion.h2>
+            <motion.div variants={fadeUp} className="grid md:grid-cols-3 gap-6">
+              {[
+                { Icon: Antenna, title: "Built-in Connectivity", desc: "Supports GSM (2G/4G/LTE), Wi-Fi, Bluetooth, LoRa, and NB-IoT." },
+                { Icon: Network, title: "Open Platform", desc: "Easily integrates via Modbus RTU, Serial, and MQTT protocols." },
+                { Icon: CircuitBoard, title: "Built-in I/O", desc: "Analog and Digital I/O ports for direct device control." },
+                { Icon: Gauge, title: "Compact Design", desc: "Space-efficient, rugged, and suitable for industrial environments." },
+                { Icon: Cloud, title: "Cloud Ready", desc: "Compatible with Azure, AWS, Frinso Cloud, and other platforms." },
+                { Icon: ShieldCheck, title: "Data Continuity", desc: "Built-in storage ensures data integrity during network outages." },
+              ].map(({ Icon, title, desc }, i) => (
+                <div key={i} className="rounded-2xl bg-white/5 p-6 border border-white/10">
+                  <Icon className="w-8 h-8 text-cyan-300 mb-3" />
+                  <h3 className="font-semibold mb-1">{title}</h3>
+                  <p className="text-white/75 text-sm">{desc}</p>
+                </div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </Section>
+
+        {/* ---------- APPLICATION AREAS ---------- */}
+        <Section id="applications" bg="bg-[#1D4C7A]">
+          <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }}>
+            <motion.h2 variants={fadeUp} className="text-3xl font-semibold text-amber-200 mb-6">
+              Application Areas
+            </motion.h2>
+            <motion.div variants={fadeUp} className="grid md:grid-cols-3 gap-6">
+              {[
+                { Icon: Wrench, title: "Industrial IoT", desc: "Automation, predictive maintenance, and asset optimization." },
+                { Icon: Boxes, title: "Smart Infrastructure", desc: "Building, energy, and water management systems." },
+                { Icon: Cloud, title: "Smart City", desc: "Utility metering, street lighting, and connected city grids." },
+                { Icon: BarChart, title: "Agriculture", desc: "Irrigation automation, soil moisture monitoring, and crop analytics." },
+                { Icon: Zap, title: "Energy & Solar", desc: "Solar PV management, power auditing, and efficiency tracking." },
+                { Icon: Cpu, title: "Healthcare IoT", desc: "Smart medical devices, asset tracking, and environmental sensors." },
+              ].map(({ Icon, title, desc }, i) => (
+                <div key={i} className="rounded-2xl bg-white/5 p-6 border border-white/10">
+                  <Icon className="w-8 h-8 text-amber-200 mb-3" />
+                  <h3 className="font-semibold mb-1">{title}</h3>
+                  <p className="text-white/75 text-sm">{desc}</p>
+                </div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </Section>
+
+        {/* ---------- FEATURES & CAPABILITIES ---------- */}
+        <Section id="features" bg="bg-[#27619E]">
+          <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }}>
+            <motion.h2 variants={fadeUp} className="text-3xl font-semibold text-emerald-200 mb-6">
+              Features & Capabilities
+            </motion.h2>
+            <motion.ul variants={fadeUp} className="space-y-4 text-white/80 text-sm">
+              <li>• Easy deployment — no servers, no complex setup.</li>
+              <li>• Real-time operational insights accessible anywhere.</li>
+              <li>• Advanced cyber-security with OTA firmware updates.</li>
+              <li>• Edge computing for local decision-making.</li>
+              <li>• Works online/offline with onboard storage.</li>
+            </motion.ul>
+          </motion.div>
+        </Section>
+
+        {/* ---------- TECHNICAL SPECIFICATIONS ---------- */}
+        <Section id="specs" bg="bg-[#3172B3]">
+          <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }}>
+            <motion.h2 variants={fadeUp} className="text-3xl font-semibold text-white mb-6">
+              Technical Specifications
+            </motion.h2>
+            <motion.div variants={fadeUp} className="grid md:grid-cols-2 gap-6">
+              <div className="rounded-2xl bg-white/5 p-6 border border-white/10">
+                <h3 className="font-semibold text-lg mb-2">Connectivity</h3>
+                <p className="text-white/80 text-sm">
+                  RS-485, RS-232, Ethernet, Wi-Fi, Bluetooth v4.2, GSM, 4G LTE, LoRa, NB-IoT, GNSS.
+                </p>
+              </div>
+              <div className="rounded-2xl bg-white/5 p-6 border border-white/10">
+                <h3 className="font-semibold text-lg mb-2">Processing & Storage</h3>
+                <p className="text-white/80 text-sm">
+                  Edge processor with 16 GB storage (expandable to 256 GB), SSL 256-bit encryption.
+                </p>
+              </div>
+              <div className="rounded-2xl bg-white/5 p-6 border border-white/10">
+                <h3 className="font-semibold text-lg mb-2">Power & Environment</h3>
+                <p className="text-white/80 text-sm">
+                  5W max, 9–36V DC input, -30°C to +80°C operation, IP65 rated, 0.1kg weight.
+                </p>
+              </div>
+              <div className="rounded-2xl bg-white/5 p-6 border border-white/10">
+                <h3 className="font-semibold text-lg mb-2">Mounting & Protection</h3>
+                <p className="text-white/80 text-sm">
+                  DIN/panel/tabletop mounting, surge, ESD, reverse polarity and overvoltage protection.
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        </Section>
+
+        {/* ---------- DOWNLOADS ---------- */}
+        <Section id="downloads" bg="bg-[#3A7CCB]">
+          <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }}>
+            <motion.h2 variants={fadeUp} className="text-3xl font-semibold text-white mb-6">
+              Downloads & Resources
+            </motion.h2>
+            <motion.div variants={fadeUp} className="grid md:grid-cols-3 gap-6">
+              {[
+                ["FRINSO V5.0 Brochure (PDF)", "#"],
+                ["Technical Datasheet (PDF)", "#"],
+                ["API Integration Manual (PDF)", "#"],
+              ].map(([label, href], i) => (
+                <Link
+                  key={i}
+                  href={href as string}
+                  className="rounded-2xl bg-white/5 p-6 border border-white/10 hover:bg-white/10 flex items-center gap-3"
+                >
+                  <Download className="w-5 h-5" />
+                  <span>{label}</span>
+                </Link>
+              ))}
+            </motion.div>
+          </motion.div>
+        </Section>
+
+        {/* ---------- FAQ ---------- */}
+        <Section id="faq" bg="bg-[#4585CC]">
+          <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true }}>
+            <motion.h2 variants={fadeUp} className="text-3xl font-semibold text-white mb-6">
+              Frequently Asked Questions
+            </motion.h2>
+            <motion.div variants={fadeUp} className="space-y-4">
+              {[
+                ["Does FRINSO V5.0 support LoRa and NB-IoT?", "Yes, it supports LoRaWAN, GSM, 4G, LTE, and NB-IoT bands."],
+                ["Is the device suitable for outdoor conditions?", "Yes, with IP65 rating and -30°C to +80°C operating range."],
+                ["Can it work offline?", "Yes, with onboard storage for local data buffering."],
+                ["How secure is the data?", "Data is SSL encrypted (256-bit) and transmitted via secure protocols."],
+              ].map(([q, a], i) => (
+                <div key={i} className="rounded-2xl bg-white/5 p-6 border border-white/10">
+                  <div className="flex items-start gap-3">
+                    <Info className="w-5 h-5 text-white/90 flex-shrink-0 mt-1" />
+                    <div>
+                      <h3 className="font-semibold">{q}</h3>
+                      <p className="text-white/80 text-sm mt-1">{a}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </Section>
+
+        {/* ---------- CONTACT CTA ---------- */}
+        <Section id="contact" bg="bg-gradient-to-br from-[#031625] via-[#0a2540] to-[#1e3a8a]">
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-bold text-sky-300">
+              Need Frinso V5.0 for Your Project?
+            </motion.h2>
+            <motion.p
+              variants={fadeUp}
+              className="mt-3 text-white/80 max-w-2xl mx-auto"
+            >
+              Partner with us to bring secure, scalable, and intelligent edge connectivity to your industrial and smart infrastructure solutions.
+            </motion.p>
+            <motion.div variants={fadeUp} className="mt-6 flex items-center justify-center gap-3">
+              <Link
+                href="/demo"
+                className="rounded-xl bg-sky-600 hover:bg-sky-500 px-6 py-3 font-medium shadow"
+              >
+                Request a Demo
+              </Link>
+              <Link
+                href="/contact"
+                className="rounded-xl bg-white/10 hover:bg-white/15 px-6 py-3 font-medium border border-white/15"
+              >
+                Contact Us
+              </Link>
+            </motion.div>
+          </motion.div>
+        </Section>
+
+        
+        
+      </main>
+
+      <Footer />
     </>
   );
 }

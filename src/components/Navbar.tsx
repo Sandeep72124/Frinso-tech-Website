@@ -43,13 +43,16 @@ type MenuCategory = {
       title: "IoT Gateway / Modems / RTU / Telemetry / Data Loggers",
       icon: Cpu,
       sub: [
-        { name: "F1", href: "/Nav_Product/IOT_Gatway/f1" },
-        { name: "F1: CGWA", href: "/Nav_Product/IOT_Gatway/f1_cgwa" },
-        { name: "F1: 4-20 mA", href: "/Nav_Product/IOT_Gatway/f_4-20_ma" },
-        { name: "F6 - PLC", href: "/Nav_Product/IOT_Gatway/f6_plc" },
-        { name: "F10 Battery Based", href: "/Nav_Product/IOT_Gatway/f10_battery_based" },
-        { name: "F10 Pulse and Battery Based", href: "/Nav_Product/IOT_Gatway/f10_pulse" },
-        { name: "F5", href: "/Nav_Product/IOT_Gatway/f5" },
+        { name: "F1: IoT Edge Gateway/RTU/Telemetry ", href: "/Nav_Product/IOT_Gatway/f1" },
+        { name: " F1: Telemetry for CGWA ", href: "/Nav_Product/IOT_Gatway/f1_cgwa" },
+        { name: "F1: IoT Edge Gateway with 4.20 mA", href: "/Nav_Product/IOT_Gatway/f_4-20_ma" },
+        { name: "F5: 4G+LAN IoT Gateway", href: "/Nav_Product/IOT_Gatway/f5" },
+        { name: "F6: IOT Gateway for PLC/Solar Inverter/Machine/High Speed data", href: "/Nav_Product/IOT_Gatway/f6_plc" },
+        { name: "F8: Solar Pump Remote Monitoring System (RMS)",href:"/Nav_Product/IOT_Gatway/f8"},
+        { name: "F9:Frinso LoRaWAN Gateway",href:"/Nav_Product/IOT_Gatway/f9"},
+        { name: " F10: Battery Based IoT Gateway", href: "/Nav_Product/IOT_Gatway/f10_battery_based" },
+        { name: "F10: Battery Based IoT Gateway with Plus Output for Pluses based Water Meter", href: "/Nav_Product/IOT_Gatway/f10_pulse" },
+       
       ],
     },
     {
@@ -195,9 +198,9 @@ type MenuCategory = {
         {[
           { label: "About Us", href: "/Nav_Company/about", icon: "🏢" },
           { label: "Social Impact", href: "/Nav_Company/social", icon: "🌍" },
-          { label: "Media Wall", href: "/Nav_Company/wall", icon: "📰" },
+         
           { label: "Vision & Mission", href: "/Nav_Company/vision", icon: "🎯" },
-          { label: "Our Team", href: "/Nav_Company/team", icon: "👥" },
+          
           { label: "Careers", href: "/Nav_Company/careers", icon: "💼" },
         ].map((item, index) => (
           <motion.div
@@ -506,7 +509,7 @@ type MenuCategory = {
         {[
           { label: "Water", href: "/Nav_Project/water", icon: "💧" },
           { label: "Energy Management System", href: "/Nav_Project/energy_manage", icon: "⚡" },
-          { label: "HVAC", href: "/Nav_Project/hvac", icon: "🌬️" },
+          { label: "HVAC", href: "/Nav_Project/HVAC", icon: "🌬️" },
           { label: "Solar", href: "/Nav_Project/solar", icon: "☀️" },
           { label: "Building Management System", href: "/Nav_Project/building", icon: "🏢" },
         ].map((item, index) => (
@@ -546,7 +549,7 @@ type MenuCategory = {
             </a>
           ) : (
             <Link
-              href="/contact"
+              href="/demo"
               className="rounded-lg bg-sky-500 text-white px-4 py-2 transition hover:bg-sky-600 hover:scale-105"
             >
               Request Demo
@@ -701,25 +704,25 @@ type MenuCategory = {
       <Link href="/case-studies" onClick={() => setIsOpen(false)} className="px-2 py-2 hover:text-sky-600">Case Studies</Link>
       <Link href="/contact" onClick={() => setIsOpen(false)} className="px-2 py-2 hover:text-sky-600">Contact Us</Link>
 
-      {/* --- CTA Button --- */}
-      {isHomePage ? (
-        <a
-          href="https://frinso.co.in/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-3 w-full text-center rounded-lg border border-sky-500 py-2 hover:bg-sky-500 hover:text-white transition"
-        >
-          Login
-        </a>
-      ) : (
-        <Link
-          href="/contact"
-          onClick={() => setIsOpen(false)}
-          className="mt-3 w-full text-center rounded-lg bg-sky-500 text-white py-2 hover:bg-sky-600 transition"
-        >
-          Request Demo
-        </Link>
-      )}
+   {/* --- CTA Button --- */}
+{isHomePage ? (
+  <a
+    href="https://frinso.co.in/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="mt-3 w-full text-center rounded-lg border border-sky-500 py-2 hover:bg-sky-500 hover:text-white transition"
+  >
+    Login
+  </a>
+) : (
+  <Link
+    href="/demo"
+    className="mt-3 w-full text-center rounded-lg bg-sky-500 text-white py-2 hover:bg-sky-600 transition"
+  >
+    Request Demo
+  </Link>
+)}
+
     </motion.div>
   )}
 </AnimatePresence>

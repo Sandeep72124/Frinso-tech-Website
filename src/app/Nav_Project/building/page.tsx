@@ -70,7 +70,7 @@ export default function BMSProjectPage() {
               </motion.p>
 
               <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-4">
-                <Link href="/contact" className="rounded-xl bg-sky-600 px-6 py-3 font-medium text-white shadow hover:scale-105 hover:bg-sky-500 transition">
+                <Link href="/demo" className="rounded-xl bg-sky-600 px-6 py-3 font-medium text-white shadow hover:scale-105 hover:bg-sky-500 transition">
                   Request Demo
                 </Link>
                 <a href="#architecture" className="rounded-xl border border-white/60 px-6 py-3 font-medium text-white hover:bg-white hover:text-sky-700 hover:scale-105 transition">
@@ -195,7 +195,7 @@ export default function BMSProjectPage() {
               <Image alt="BMS dashboard" src="/dashboards/building.png" width={1600} height={900} className="w-full object-cover" />
             </motion.div>
             <motion.div variants={fadeUp} className="mt-8">
-              <Link href="/contact" className="inline-flex items-center gap-2 rounded-xl bg-sky-600 px-6 py-3 font-medium text-white shadow hover:scale-105 hover:bg-sky-500 transition">
+              <Link href="/demo" className="inline-flex items-center gap-2 rounded-xl bg-sky-600 px-6 py-3 font-medium text-white shadow hover:scale-105 hover:bg-sky-500 transition">
                 <PhoneCall className="h-4 w-4" />
                 Schedule a Walkthrough
               </Link>

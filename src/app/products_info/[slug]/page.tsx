@@ -46,7 +46,7 @@ const productData: Record<
     description:
       "Rugged industrial-grade device for seamless connection of field instruments, sensors, and actuators to the cloud.",
   },
-  air: {
+  "air": {
     title: "Air Quality & Noise Monitoring Device",
     image: "/air.png",
     description:

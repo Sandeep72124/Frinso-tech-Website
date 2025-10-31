@@ -174,7 +174,7 @@ export default function WaterProjectPage() {
 
               <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-4">
                 <Link
-                  href="/contact"
+                  href="/demo"
                   className="rounded-xl bg-sky-600 px-6 py-3 font-medium text-white shadow hover:scale-105 hover:bg-sky-500 transition"
                 >
                   Request Demo
@@ -428,7 +428,7 @@ export default function WaterProjectPage() {
 
           <motion.div variants={fadeUp} className="mt-8">
             <Link
-              href="/contact"
+              href="/demo"
               className="inline-flex items-center gap-2 rounded-xl bg-sky-600 px-6 py-3 font-medium text-white shadow hover:scale-105 hover:bg-sky-500 transition"
             >
               <PhoneCall className="h-4 w-4" />

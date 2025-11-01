@@ -1,10 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 
 export default function ClientsSection() {
-  const logos: { src: string; alt: string }[] = [
+  // --- Logo List ---
+  const logos = [
     { src: "/clients/tata-projects.jpg", alt: "Tata Projects" },
     { src: "/clients/larsen-toubro.jpg", alt: "Larsen & Toubro" },
     { src: "/clients/bosch.jpg", alt: "Bosch" },
@@ -43,24 +44,25 @@ export default function ClientsSection() {
     { src: "/clients/kec.jpg", alt: "KEC" },
   ];
 
-  const logoVariant = {
+  // --- Animation Variants ---
+  const logoVariant: Variants = {
     hidden: { opacity: 0, y: 40, scale: 0.9 },
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
       scale: 1,
       transition: {
-        delay: i * 0.08,
+        delay: i * 0.05,
         type: "spring",
         stiffness: 100,
-        damping: 10,
+        damping: 15,
       },
     }),
   };
 
   return (
     <section className="py-24 bg-gradient-to-b from-white via-sky-50 to-sky-100 relative overflow-hidden">
-      {/* Background moving glow */}
+      {/* --- Animated Background Glow --- */}
       <motion.div
         className="absolute inset-0 bg-gradient-to-r from-sky-200/40 via-white to-sky-100/60 opacity-40 blur-2xl"
         animate={{
@@ -73,7 +75,7 @@ export default function ClientsSection() {
         }}
       />
 
-      {/* Title Section */}
+      {/* --- Title Section --- */}
       <div className="text-center mb-14 relative z-10">
         <h2 className="text-4xl font-extrabold text-sky-700 tracking-tight">
           Our Clients & End Users
@@ -84,9 +86,9 @@ export default function ClientsSection() {
         <div className="mx-auto mt-4 h-1 w-24 bg-sky-500 rounded-full"></div>
       </div>
 
-      {/* Animated Logo Grid */}
+      {/* --- Logo Grid --- */}
       <div className="relative z-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 px-6 md:px-16">
-        {logos.map((logo: { src: string; alt: string }, i: number) => (
+        {logos.map((logo, i) => (
           <motion.div
             key={i}
             custom={i}
@@ -95,12 +97,12 @@ export default function ClientsSection() {
             whileInView="visible"
             viewport={{ once: true }}
             whileHover={{
-              scale: 1.15,
+              scale: 1.12,
               rotate: 2,
               transition: { duration: 0.3 },
             }}
             animate={{
-              y: [0, -5, 0],
+              y: [0, -4, 0],
             }}
             transition={{
               duration: 3 + Math.random() * 2,
@@ -109,10 +111,10 @@ export default function ClientsSection() {
             }}
             className="relative flex items-center justify-center bg-white rounded-xl shadow-md hover:shadow-2xl transition-all duration-500 group overflow-hidden"
           >
-            {/* Glow on hover */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-sky-100 via-transparent to-sky-200 opacity-0 group-hover:opacity-60 transition duration-700 blur-md"></div>
+            {/* Hover Glow */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-sky-100 via-transparent to-sky-200 opacity-0 group-hover:opacity-60 transition duration-700 blur-md" />
 
-            {/* Logo Image */}
+            {/* Client Logo */}
             <Image
               src={logo.src}
               alt={logo.alt}
@@ -121,7 +123,7 @@ export default function ClientsSection() {
               className="object-contain relative z-10 transition-transform duration-700 group-hover:scale-125"
             />
 
-            {/* Shimmer Shine */}
+            {/* Subtle Shine Effect */}
             <motion.div
               className="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent opacity-0 group-hover:opacity-100"
               animate={{ x: ["-100%", "100%"] }}

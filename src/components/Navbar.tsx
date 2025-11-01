@@ -56,7 +56,7 @@ type MenuCategory = {
       ],
     },
     {
-      title: "Real Time IoT Dashboard / SCADA",
+      title: "Real Time IoT Dashboard",
       icon: MonitorSmartphone,
       sub: [
         { name: "SCADA for Jal Jeevan Mission / AMRUT 2.0 / WTP / STP / ETP Project", href: "/Nav_Product/IOT_Dashboard/scada-jjm" },
@@ -64,8 +64,15 @@ type MenuCategory = {
         { name: "SCADA for Smart Grid", href: "/Nav_Product/IOT_Dashboard/scada-grid" },
         { name: "Real-Time Dashboard for Water Management", href: "/Nav_Product/IOT_Dashboard/dashboard-water" },
         { name: "Real-Time Dashboard for Energy Management", href: "/Nav_Product/IOT_Dashboard/dashboard-energy" },
-      ],
-    },
+      ],},
+    // },{
+    // title:"SCADA Automation"
+   
+    // sub:[
+    //    {name:},
+   
+    // ]
+    // },
     {
       title: "Meters / Sensors / Analyzers",
       icon: Activity,

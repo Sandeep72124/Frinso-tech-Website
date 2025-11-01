@@ -37,7 +37,7 @@ export default function ClientsSection() {
     { src: "/clients/central.jpg", alt: "Central Ground Water Board" },
     { src: "/clients/pepsico.jpg", alt: "Pepsico" },
     { src: "/clients/godrej1.jpg", alt: "Godrej Agrovet" },
-    { src: "/clients/redisson.jpg", alt: "Redisson" },
+    { src: "/clients/radisson.jpg", alt: "Redisson" },
     { src: "/clients/kirlostar.jpg", alt: "kirlostar" },
     { src: "/clients/irrigation.jpg", alt: "Irrigation" },
     { src: "/clients/volts.jpg", alt: "VOLTS A TATA Enterprise" },
